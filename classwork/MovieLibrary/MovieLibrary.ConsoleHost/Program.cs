@@ -12,20 +12,63 @@ decimal budget = 125.45M;
 
 bool isBlackAndWhite = false;
 
-//Get the Title
-Console.WriteLine("Enter A Title");
-title = Console.ReadLine();
+//Get Movie Details and Display
+GetMovie();
+DisplayMovie();
 
-Console.WriteLine("Enter A Description");
-description = Console.ReadLine();
+//Functions
 
-//TODO: Fix Length
-Console.WriteLine("Enter The Run Length in Minutes");
-string lengthString = Console.ReadLine();
+void GetMovie ()
+{
+    title = ReadString("Enter A Title:", true);
+    description = ReadString("Enter A Description:", false);
 
-Console.WriteLine(title);
-Console.WriteLine(description);
-Console.WriteLine(lengthString);
+    length = ReadInt("Enter The Run Lenth in Minutes", 0);
+    releaseYear = ReadInt("Enter The Date of the Release Year", 1900);
+}
+
+void DisplayMovie ()
+{
+    Console.WriteLine(title);
+    Console.WriteLine(description);
+    Console.WriteLine(length);
+}
+
+int ReadInt ( string message, int minimumValue)
+{
+    Console.WriteLine(message);
+
+    string value = Console.ReadLine();
+
+    //int result = Int32.Parse(value);
+    int result;
+    if (Int32.TryParse(value,out result))
+        if (result >= minimumValue)
+     return result;
+
+    //TODO: Input Validation
+    return 0;
+}
+
+string ReadString (string message, bool isRequired)
+{
+    Console.WriteLine(message);
+
+    string value = Console.ReadLine();
+    if (!isRequired)
+        return value;
+    //else
+    //    return "";
+
+    //TODO: INPUT VALIDATION FOR REQUIRED
+    return value;
+   // if (false)
+    //{
+   //     if (true)
+   //         Console.WriteLine();
+   // } else
+   //     Console.WriteLine();
+}
 
 //double someFloatingValue = 3.14159;
 //char letterGrade = 'A';
