@@ -95,6 +95,7 @@ int ReadInt ( string message, int minimumValue)
         //int result = Int32.Parse(value);
         //int result;
         //if (Int32.TryParse(value, out result)) ;
+        //Incase
         if (Int32.TryParse(value, out int result))
                 if (result >= minimumValue)
                 return result;
