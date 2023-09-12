@@ -57,7 +57,7 @@ int DisplayMenu ()
     Console.WriteLine("(A)dd Movie");
     Console.WriteLine("(E)dit Movie");
     Console.WriteLine("(D)elete Movie");
-    Console.WriteLine("(V)iew Movie");
+    Console.WriteLine("(V)iew Movie");      
     Console.WriteLine("(Q)uit");
 
     do

@@ -1,32 +1,54 @@
 ﻿
 
-
+var awake = false;
 Introduction();
 
-//do
-//{
-//    switch(DreamMenu())
-//    {
-//        case 1:
-//        case 2:
-//        case 3:
-//        case 4: 
-//        case 0:
-//           {
-//
-//           }
-//    }
-//     
-//   default: Console.WriteLine("You Freeze up in Confusion on What you Wanted to do (Unknown Key)")
-//}
+do
+{
+    switch (DreamMenu())
+    {
+        case 1: HeadWest(); break;
+        case 2: HeadNorth(); break;
+        case 3: HeadEast(); break;
+        case 4: HeadSouth(); break;
+        case 0:
+        {
+            awake = true;
+              break;
+        }
+        default: Console.WriteLine("You Freeze up in Confusion on What you Wanted to do (Unknown Key)"); break;
+    }
+
+  
+}while (!awake);
 
 
 
-void EndingTheDream()
+void EndingTheDream ()
 {
     if (!Confirm("Do You Want to Wake Up (Y/N)"))
         return;
 
+}
+
+void HeadWest ()
+{
+    Console.WriteLine("Not Yet Inplented");
+}
+
+void HeadNorth()
+{
+    Console.WriteLine("Not Yet Inplented");
+}
+
+void HeadEast()
+{
+    Console.WriteLine("Not Yet Inplented");
+}
+
+void HeadSouth()
+{
+    Console.WriteLine("Not Yet Inplented");
 }
 
 bool Confirm (string message)
