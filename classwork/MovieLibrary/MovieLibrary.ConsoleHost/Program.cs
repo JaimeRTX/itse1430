@@ -117,11 +117,15 @@ void AddMovie ()
 
 void DeleteMovie ()
 {
-    if (!Confirm("Are you Sure you Would Like to Delete this Movie (Y/N)"))
-        return;
-    Console.WriteLine("Not Implimented Yet");
-}
+    if (String.IsNullOrEmpty(title))
 
+        return;
+
+    if (!Confirm($"Are you Sure you Would Like to Delete this Movie '{title}' (Y/N)"))
+        return;
+
+    title= "";
+}
 void EditMovie ()
 {
     Console.WriteLine("Not Implimented Yet");
@@ -129,22 +133,49 @@ void EditMovie ()
 
 void ViewMovie ()
 {
-    //Console.WriteLine();
-    //Console.WriteLine("-------------");
-    Console.WriteLine("\n-------------");
+    //Lenght of a String
+
+    int len = title.Length;
+
+    if(String.IsNullOrEmpty(title))
+    {
+        Console.WriteLine("No Movies Availible");
+        return;
+    };
+
+    Console.WriteLine();
+    // Console.WriteLine("-------------");
+    Console.WriteLine("".PadLeft(15, '-'));
+   // Console.WriteLine("\n-------------");
     Console.WriteLine(title);
 
+    //String Formating
     //Run Length: # Minutes
     //Console.WriteLine("Run Length: " + length + " Minutes");
-    Console.WriteLine("Run Length: " + length.ToString() + " Minutes");
+    //1. Concat
+    // Console.WriteLine("Run Length: " + length.ToString() + " Minutes");
+    //var message = String.Concat("Run Lenght: ", length.ToString(), " mins");
+    //Console.WriteLine(message);
+    //var message2 = String.Join(" ", "Run Length:", length, "mins");
+    //2. String.Format
+    //string message = String.Format("Run Lenght: {0:000} mins", length);
+    //Console.WriteLine(message);
+    //Console.WriteLine("Run Lenght: {0} mins", length);
+    //3. String Interpolation
+    string message = $"Run Lenght: {length} mins";
+    Console.WriteLine(message);
+
+
+
 
     //Released yyy
-    Console.WriteLine("Relased " + releaseYear);
+   // Console.WriteLine("Relased " + releaseYear);
+   Console.WriteLine($"Released {releaseYear}");
 
     Console.WriteLine(genre);
 
     //MPAA Rating
-    Console.WriteLine("MPAA Rating: " + rating);
+    Console.WriteLine($"MPAA Rating: {rating}");
 
     //Black and White?
     // string format = "Color";
@@ -159,6 +190,8 @@ void ViewMovie ()
     //Console.WriteLine("Format " + (isBlackAndWhite ? "Black and White" : "Color"));
 
     Console.WriteLine(description);
+
+    //More String Functions
 }
 
 bool Confirm (string message)
@@ -225,11 +258,11 @@ string ReadString (string message, bool isRequired)
 
     do
     { 
-    string value = Console.ReadLine();
+    string value = Console.ReadLine().Trim();
 
-        if (!isRequired || String.IsNullOrEmpty(value))
+        if (!isRequired || !String.IsNullOrEmpty(value))
         return value;
-    //if (!isRequired)
+    //if (!isRequired)g
     //    return value;
 
     //if (value != "")
@@ -249,13 +282,22 @@ string ReadRating ( string message)
     {
         string value = Console.ReadLine();
 
-        if (value == "PG")
+        // if (value == "PG")
+        //1. String Compare 1 --> Don't Use
+        // if (value.ToUpper() == "PG")
+       // value = value.ToLower();
+       //if (value == "pg")
+       //2. String Comapre 2
+      // if (String.Compare(value, "PG", true) == 0) 
+      //if (value.CompareTo("PG") == 0)
+      //3 . String Equals --> Preferred
+      if(String.Equals(value, "PG", StringComparison.CurrentCultureIgnoreCase))
             return "PG";
-        else if (value == "G")
+        else if (String.Equals(value, "G", StringComparison.CurrentCultureIgnoreCase))
             return "G";
-        else if (value == "PG-13")
+        else if (String.Equals(value, "PG-13", StringComparison.CurrentCultureIgnoreCase))
             return "PG-13";
-        else if (value == "R")
+        else if (String.Equals(value, "R", StringComparison.CurrentCultureIgnoreCase))
             return "R";
         //else if (value == "")
         //   return "";
