@@ -11,11 +11,7 @@ do
         case 2: HeadNorth(); break;
         case 3: HeadEast(); break;
         case 4: HeadSouth(); break;
-        case 0:
-        {
-            awake = true;
-              break;
-        }
+        case 0: EndingTheDream(); break;
         default: Console.WriteLine("You Freeze up in Confusion on What you Wanted to do (Unknown Key)"); break;
     }
 
@@ -113,7 +109,10 @@ void DreamArea1()
 
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
     Console.WriteLine(" The Sourounding Area You See a Calm Beach that Seems to have been Untouched by Time To the East If You Can Safely ");
-    Console.WriteLine(" Make the Down Trip, While in the South you a Countinue to the Mountain Where ");
+    Console.WriteLine(" Make the Down Trip, While in the South you a Countinue to the Mountain Where What you Think is a Bridge Further in");
+    Console.WriteLine(" The Distance");
+    Console.WriteLine();
+    Console.WriteLine(" ");
 
 }
 
@@ -124,7 +123,7 @@ void DreamArea2()
     Console.WriteLine("  Deep Purples, WHile the West has the Sand Falling off the Broken Land, while on the other side of the gap is a Rocky");
     Console.WriteLine("  Path Leading to Mountain With What You Believe to be a Tree on Top, While the East Looks like a Collection of Small ");
     Console.WriteLine("  Islands Sourrounding a Slighty Bigger one with a Broken Statue");
-    Console.WriteLine(" ");
+    Console.WriteLine();
     Console.WriteLine("  The Direct Area Around You Is a Calm Beach With Sand that has a Purple Tint, With the Water Still With a Pink Lining.");
     Console.WriteLine("  There is a Few Palm Trees Near the Edge Outside, Yet the Land itself seems Barren. You Feel Calm Yet in The Back of ");
     Console.WriteLine("  Your Mind You Feel a sense of Unease at the Emptiness of the Land and What Could've Caused it");
@@ -136,7 +135,7 @@ void DreamArea3()
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
     Console.WriteLine(" The Sourounding Area You See a Calm Beach that Seems to have been Untouched by Time To the West If You Make Swift");
     Console.WriteLine(" Jumps. While the South has a Single Path inside a Deep Part of the Forest, Unknown to you of What Could be Inside");
-    Console.WriteLine(" ");
+    Console.WriteLine();
     Console.WriteLine(" The Direct Area Around you See is Multiple Pieces of an Island, The Center Island is the Most Prominent From");
     Console.WriteLine(" Being the Biggest Piece as Well Having What Seems to be Broken Statue. Upon Closer Inspection It Looks to be");
     Console.WriteLine(" Religious in Orgin, but From what Religion it Eludes you. From that Relevation you see that Other Pieces");
@@ -146,30 +145,30 @@ void DreamArea3()
 
 void DreamArea4()
 {
-
+    Console.WriteLine("PlaceHolder");
 }
 
 void DreamArea5()
 {
-
+    Console.WriteLine("PlaceHolder");
 }
 
 void DreamArea6()
 {
-
+    Console.WriteLine("PlaceHolder");
 }
 
 void DreamArea7()
 {
-
+    Console.WriteLine("PlaceHolder");
 }
 
 void DreamArea8()
 {
-
+    Console.WriteLine("PlaceHolder");
 }
 
 void DreamArea9()
 {
-
+    Console.WriteLine("PlaceHolder");
 }
