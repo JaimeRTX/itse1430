@@ -11,21 +11,17 @@ do
         case 2: HeadNorth(); break;
         case 3: HeadEast(); break;
         case 4: HeadSouth(); break;
-        case 0: EndingTheDream(); break;
-        default: Console.WriteLine("You Freeze up in Confusion on What you Wanted to do (Unknown Key)"); break;
+        case 0:
+        {
+            if (Confirm("Do You Want to End the Dream(Y/N)"))
+                return;
+            break;
+        }
+            default: Console.WriteLine("You Freeze up in Confusion on What you Wanted to do (Unknown Key)"); break;
     }
 
   
 }while (!awake);
-
-
-
-void EndingTheDream ()
-{
-    if (!Confirm("Do You Want to Wake Up (Y/N)"))
-        return;
-
-}
 
 void HeadWest ()
 {

@@ -1,16 +1,8 @@
-﻿// Get Movies
-// Tittle genre, description, MPAA Rating
-// Length, relase year, budget
-// IsBlackAndWhite
-// Operation, Add, Edit, View, delete
+﻿
+//TODO: Remove This
+using MovieLibrary;
 
-string title = "", genre = "";
-string description = "", rating = "";
-
-int length = 0, releaseYear = 1900;
-decimal budget = 125.45M;
-
-bool isBlackAndWhite = false;
+Movie movie = new Movie();
 
 //Entry Point
 var done = false;
@@ -29,11 +21,18 @@ do
     //    done = true;
     switch (DisplayMenu())
     {
-        case 1: AddMovie(); break;
-        case 2: EditMovie(); break;
-        case 3: DeleteMovie(); break;
-        case 4: ViewMovie(); break;
-        case 0:
+        case MenuCommand.Add: movie = AddMovie(); break;
+        case MenuCommand.Edit: EditMovie(); break;
+        case MenuCommand.Delete:
+        {
+            //TODO: Clean This Up
+            if(DeleteMovie(movie))
+             movie = new Movie();
+            break;
+        }
+
+        case MenuCommand.View: ViewMovie(movie); break;
+        case MenuCommand.Quit:
         {
             done = true; 
             //Do More Stuff Here
@@ -50,7 +49,8 @@ do
 //Get Movie Details and Display
 //Functions
 
-int DisplayMenu () 
+
+MenuCommand DisplayMenu () 
 {
 
     Console.WriteLine("----------------");
@@ -63,81 +63,72 @@ int DisplayMenu ()
     do
     {
 
-
-        //var input = Console.ReadLine();
-        //if (input == "A" || input == "a")
-        //    return 1;
-        //else if (input == "E" || input == "e")
-        //    return 2;
-        //else if (input == "D" || input == "d")
-        //    return 3;
-        //else if (input == "V" || input == "v")
-        //    return 4;
-        //else if (input == "Q" || input == "q")
-        //    return 0;
-
         switch(Console.ReadKey(true).Key)
             {
             //case "A": //return 1;
             // case "a": return 1;
-            case ConsoleKey.A: return 1;
+            case ConsoleKey.A: return MenuCommand.Add;
 
             //case "E": //return 2;
             //case "e": return 2;
-            case ConsoleKey.E: return 2;
+            case ConsoleKey.E: return MenuCommand.Edit;
 
             // case "D": //return 3;
             // case "d": return 3;
-            case ConsoleKey.D: return 3;
+            case ConsoleKey.D: return MenuCommand.Delete;
 
             // case "V": //return 4;
             // case "v": return 4;
-            case ConsoleKey.V: return 4;
+            case ConsoleKey.V: return MenuCommand.View;
 
             // case "Q": //return 0;
             // case "q": return 0;
-            case ConsoleKey.Q: return 0;
+            case ConsoleKey.Q: return MenuCommand.Quit;
         };
     } while (true);
 }
 
-void AddMovie ()
+Movie AddMovie ()
 {
-    title = ReadString("Enter A Title:", true);
-    description = ReadString("Enter A Description:", false);
+    var movie = new Movie();
+    movie.title = ReadString("Enter A Title:", true);
+    movie.description = ReadString("Enter A Description:", false);
 
-    length = ReadInt("Enter The Run Lenth in Minutes", 0);
-    releaseYear = ReadInt("Enter The Date of the Release Year", 1900);
+    movie.length = ReadInt("Enter The Run Lenth in Minutes", 0);
+    movie.releaseYear = ReadInt("Enter The Date of the Release Year", 1900);
 
-    genre = ReadString("Enter a Genre: ", false);
-    rating = ReadRating("Enter a Rating: ");
+    movie.genre = ReadString("Enter a Genre: ", false);
+    movie.rating = ReadRating("Enter a Rating: ");
 
-    isBlackAndWhite = ReadBoolean("Is the Movie in Black and White? (Y/N)");
+    movie.isBlackAndWhite = ReadBoolean("Is the Movie in Black and White? (Y/N)");
+    return movie;
 }
 
-void DeleteMovie ()
+bool DeleteMovie (Movie movie)
 {
-    if (String.IsNullOrEmpty(title))
 
-        return;
+    if (String.IsNullOrEmpty(movie.title))
 
-    if (!Confirm($"Are you Sure you Would Like to Delete this Movie '{title}' (Y/N)"))
-        return;
+        return false;
 
-    title= "";
+    if (!Confirm($"Are you Sure you Would Like to Delete this Movie '{movie.title}' (Y/N)"))
+        return false;
+
+    //TODO: Delete Movie
+    //title= "";
+    return true;
 }
 void EditMovie ()
 {
     Console.WriteLine("Not Implimented Yet");
 }
 
-void ViewMovie ()
+void ViewMovie (Movie movie)
 {
     //Lenght of a String
 
-    int len = title.Length;
 
-    if(String.IsNullOrEmpty(title))
+    if(String.IsNullOrEmpty(movie.title))
     {
         Console.WriteLine("No Movies Availible");
         return;
@@ -147,7 +138,7 @@ void ViewMovie ()
     // Console.WriteLine("-------------");
     Console.WriteLine("".PadLeft(15, '-'));
    // Console.WriteLine("\n-------------");
-    Console.WriteLine(title);
+    Console.WriteLine(movie.title);
 
     //String Formating
     //Run Length: # Minutes
@@ -162,7 +153,7 @@ void ViewMovie ()
     //Console.WriteLine(message);
     //Console.WriteLine("Run Lenght: {0} mins", length);
     //3. String Interpolation
-    string message = $"Run Lenght: {length} mins";
+    string message = $"Run Lenght: {movie.length} mins";
     Console.WriteLine(message);
 
 
@@ -170,12 +161,12 @@ void ViewMovie ()
 
     //Released yyy
    // Console.WriteLine("Relased " + releaseYear);
-   Console.WriteLine($"Released {releaseYear}");
+   Console.WriteLine($"Released {movie.releaseYear}");
 
-    Console.WriteLine(genre);
+    Console.WriteLine(movie.genre);
 
     //MPAA Rating
-    Console.WriteLine($"MPAA Rating: {rating}");
+    Console.WriteLine($"MPAA Rating: {movie.rating}");
 
     //Black and White?
     // string format = "Color";
@@ -183,13 +174,13 @@ void ViewMovie ()
     //    format = "Black and White";
 
     //v2
-    string format = isBlackAndWhite ? "Black and White" : "Color";
+    string format = movie.isBlackAndWhite ? "Black and White" : "Color";
      Console.WriteLine("Format:" + format);
 
     //v3
     //Console.WriteLine("Format " + (isBlackAndWhite ? "Black and White" : "Color"));
 
-    Console.WriteLine(description);
+    Console.WriteLine(movie.description);
 
     //More String Functions
 }
@@ -310,15 +301,11 @@ string ReadRating ( string message)
 
 }
 
-
-//double someFloatingValue = 3.14159;
-//char letterGrade = 'A';
-
-//{
-// int hours = 5;
-//int title = 54;
-//title = "Jaws";
-
-// Console.WriteLine(title);
-// Console.WriteLine(length);
-//}
+enum MenuCommand
+{
+    Add = 1,
+    Edit,
+    Delete,
+    View,
+    Quit = 0
+}
