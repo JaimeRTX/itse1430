@@ -1,19 +1,27 @@
 ﻿
 
 var awake = false;
+int newX = 0;
+int newY = 0;
+int MaximumX = 1;
+int MaximumY = 1;
 Introduction();
 
-do
-{
+
+if (newX >= 0 && newX < MaximumX && newY >= 0 && newY < MaximumY)
+
+    do
+    {
     switch (DreamMenu())
     {
-        case 1: HeadWest(); break;
-        case 2: HeadNorth(); break;
-        case 3: HeadEast(); break;
-        case 4: HeadSouth(); break;
+
+        case 1: newX -=1; break; // x minus
+        case 2: newY +=1; break; // y plus
+        case 3: newX +=1; break; // x plus
+        case 4: newY -=1; break; // y minus
         case 0:
         {
-            if (Confirm("Do You Want to End the Dream(Y/N)"))
+            if (EndingTheDream("Do You Want to End the Dream(Y/N)"))
                 return;
             break;
         }
@@ -43,7 +51,7 @@ void HeadSouth()
     Console.WriteLine("Not Yet Inplented");
 }
 
-bool Confirm (string message)
+bool EndingTheDream (string message)
 {
     return ReadBoolean(message);
 }
@@ -168,3 +176,18 @@ void DreamArea9()
 {
     Console.WriteLine("PlaceHolder");
 }
+
+//int DreamTracker (int dreamX, int dreamY)
+
+//{
+//    MaximumX = 1;
+//    MaximumY = 1;
+//    int roomNumber = dreamX + (MaximumX * (dreamY - 1));
+
+//    switch (roomNumber)
+//    {
+//        case 1: DreamArea1(); break;
+//        case 2: DreamArea2(); break;
+//        case 3: DreamArea3(); break;
+//    };
+//}
