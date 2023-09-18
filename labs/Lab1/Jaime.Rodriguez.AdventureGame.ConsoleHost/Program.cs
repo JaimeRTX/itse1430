@@ -1,6 +1,10 @@
 ﻿
 
-using System.ComponentModel.Design;
+/*
+ * Jaime Rodriguez
+ * ITSE 1430 
+ * Lab 1
+ */
 
 var awake = false;
 Introduction();
