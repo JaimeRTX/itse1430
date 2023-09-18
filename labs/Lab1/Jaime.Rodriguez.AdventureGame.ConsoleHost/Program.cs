@@ -1,24 +1,25 @@
 ﻿
 
+using System.ComponentModel.Design;
+
 var awake = false;
-int newX = 0;
-int newY = 0;
-int MaximumX = 1;
-int MaximumY = 1;
 Introduction();
 
 
-if (newX >= 0 && newX < MaximumX && newY >= 0 && newY < MaximumY)
 
     do
     {
+        int dreamX = 0;
+        int dreamY = 0;
+
+   DreamTracker(dreamX, dreamY);
     switch (DreamMenu())
     {
-
-        case 1: newX -=1; break; // x minus
-        case 2: newY +=1; break; // y plus
-        case 3: newX +=1; break; // x plus
-        case 4: newY -=1; break; // y minus
+        
+        case 1: HeadWest(dreamX); break;
+        case 2: HeadNorth(dreamY); break;
+        case 3: HeadEast(dreamX); break; 
+        case 4: HeadSouth(dreamY); break;
         case 0:
         {
             if (EndingTheDream("Do You Want to End the Dream(Y/N)"))
@@ -26,30 +27,35 @@ if (newX >= 0 && newX < MaximumX && newY >= 0 && newY < MaximumY)
             break;
         }
             default: Console.WriteLine("You Freeze up in Confusion on What you Wanted to do (Unknown Key)"); break;
+
     }
 
-  
-}while (!awake);
 
-void HeadWest ()
+
+} while (!awake);
+
+
+int HeadWest ( int MinusX )
 {
-    Console.WriteLine("Not Yet Inplented");
+    return MinusX--;
 }
 
-void HeadNorth()
+int HeadNorth ( int PlusY )
 {
-    Console.WriteLine("Not Yet Inplented");
+    return PlusY++;
 }
 
-void HeadEast()
+int HeadEast ( int PlusX )
 {
-    Console.WriteLine("Not Yet Inplented");
+    return PlusX + 1;
 }
 
-void HeadSouth()
+int HeadSouth ( int MinusY )
 {
-    Console.WriteLine("Not Yet Inplented");
+    return MinusY--;
 }
+
+
 
 bool EndingTheDream (string message)
 {
@@ -149,45 +155,56 @@ void DreamArea3()
 
 void DreamArea4()
 {
-    Console.WriteLine("PlaceHolder");
+    Console.WriteLine("PlaceHolder For Room 4");
 }
 
 void DreamArea5()
 {
-    Console.WriteLine("PlaceHolder");
+    Console.WriteLine("PlaceHolder For Room 5");
 }
 
 void DreamArea6()
 {
-    Console.WriteLine("PlaceHolder");
+    Console.WriteLine("PlaceHolder for Room 6");
 }
 
 void DreamArea7()
 {
-    Console.WriteLine("PlaceHolder");
+    Console.WriteLine("PlaceHolder For Room 7");
 }
 
 void DreamArea8()
 {
-    Console.WriteLine("PlaceHolder");
+    Console.WriteLine("PlaceHolder for Room 8");
 }
 
 void DreamArea9()
 {
-    Console.WriteLine("PlaceHolder");
+    Console.WriteLine("PlaceHolder For Room 9");
 }
 
-//int DreamTracker (int dreamX, int dreamY)
+int DreamTracker ( int dreamX, int dreamY )
+{
+    int MaximumX = 3;
+    int MaximumY = 3;
+    int roomNumber = dreamX + (MaximumX * (dreamY - 1));
 
-//{
-//    MaximumX = 1;
-//    MaximumY = 1;
-//    int roomNumber = dreamX + (MaximumX * (dreamY - 1));
+    if (dreamX >= 0 && dreamX < MaximumX && dreamY >= 0 && dreamY < MaximumY)
+        switch (roomNumber)
+        {
+            case -3: DreamArea1(); break;
+            case -2: DreamArea2(); break;
+            case -1: DreamArea3(); break;
+            case 0: DreamArea4(); break;
+            case 2: DreamArea5(); break;
+            case 1: DreamArea6(); break;
+            case 3: DreamArea7(); break;
+            case 4: DreamArea8(); break;
+            case 5: DreamArea9(); break;
+        } return roomNumber;
+}
 
-//    switch (roomNumber)
-//    {
-//        case 1: DreamArea1(); break;
-//        case 2: DreamArea2(); break;
-//        case 3: DreamArea3(); break;
-//    };
-//}
+void WrongMove()
+{
+    Console.WriteLine("You Can't Find a Way to Keep Going");
+}
