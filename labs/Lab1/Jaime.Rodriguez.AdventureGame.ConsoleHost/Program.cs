@@ -6,6 +6,8 @@
  * Lab 1
  */
 
+using System.ComponentModel;
+
 var awake = false;
 Introduction();
 
@@ -98,7 +100,7 @@ bool ReadBoolean(string message)
 
 int DreamMenu()
 {
-    Console.WriteLine("|".PadLeft(18, '-'));
+    Console.WriteLine("|----------------|");
     Console.WriteLine("Head (W)est");
     Console.WriteLine("Head (N)orth");
     Console.WriteLine("Head (E)ast");
@@ -125,9 +127,9 @@ void Introduction ()
 {
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
     Console.WriteLine("  You Remember Lying in your Bed Trying to go to Sleep, After Some Time You Feel the Surface of your Bed Change. When ");
-    Console.WriteLine("  You Open Your Eyes you Find Yourself On what Seems like a Beach of a Seemingly Magical, yet Broken World");
+    Console.WriteLine("  You Open Your Eyes you Find Yourself On A Mountain With the Only Thing With you is a Solitary Tree");
     Console.WriteLine();
-    Console.WriteLine("  Everything seems to be of Cool Colors, and things like the Sand, Water, and Surrounding Rocks have a tints of ");
+    Console.WriteLine("  You Look Down Around You for a Glance at the Land and Everything seems to have have a tints of ");
     Console.WriteLine("  Purples and Blues. Most Importantly you see That the Overall Land is Made up of Broken Islands. Thankfully");
     Console.WriteLine("  you Feel Way Lighter on Your Feet.");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
@@ -138,10 +140,13 @@ void DreamArea1()
 
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
     Console.WriteLine(" The Sourounding Area You See a Calm Beach that Seems to have been Untouched by Time To the East If You Can Safely ");
-    Console.WriteLine(" Make the Down Trip, While in the South you a Countinue to the Mountain Where What you Think is a Bridge Further in");
+    Console.WriteLine(" Make the Down Trip, While in the South you is a Countinue to the Mountain Where What you Think is a Bridge Further in");
     Console.WriteLine(" The Distance");
     Console.WriteLine();
-    Console.WriteLine(" ");
+    Console.WriteLine(" The Direct Area Around You is A Mountanous Area Where the Top is Flat, but What Catches your Eye is Rhat in The Center");
+    Console.WriteLine(" From a Small Area of Soil a Lone Singular Tree is Standing Tall, with Darkish Purple Bark and Pink Leaves");
+    Console.WriteLine("  [You Are in Position (0,0)]");
+    Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 
 }
 
@@ -150,12 +155,13 @@ void DreamArea2()
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
     Console.WriteLine("  The Sourounding Area you see a Clearing to the South a Narrow Path full of plant Life Ranging from Bright Blues to ");
     Console.WriteLine("  Deep Purples, WHile the West has the Sand Falling off the Broken Land, while on the other side of the gap is a Rocky");
-    Console.WriteLine("  Path Leading to Mountain With What You Believe to be a Tree on Top, While the East Looks like a Collection of Small ");
+    Console.WriteLine("  Path Leading to Mountain You Woke on With the Tree Still on Top, While the East Looks like a Collection of Small ");
     Console.WriteLine("  Islands Sourrounding a Slighty Bigger one with a Broken Statue");
     Console.WriteLine();
     Console.WriteLine("  The Direct Area Around You Is a Calm Beach With Sand that has a Purple Tint, With the Water Still With a Pink Lining.");
     Console.WriteLine("  There is a Few Palm Trees Near the Edge Outside, Yet the Land itself seems Barren. You Feel Calm Yet in The Back of ");
     Console.WriteLine("  Your Mind You Feel a sense of Unease at the Emptiness of the Land and What Could've Caused it");
+    Console.WriteLine("  [You Are in Position (1,0)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
 
@@ -169,37 +175,58 @@ void DreamArea3()
     Console.WriteLine(" Being the Biggest Piece as Well Having What Seems to be Broken Statue. Upon Closer Inspection It Looks to be");
     Console.WriteLine(" Religious in Orgin, but From what Religion it Eludes you. From that Relevation you see that Other Pieces");
     Console.WriteLine(" of Land Have some Rubble of What Could've Been a Church");
+    Console.WriteLine("  [You Are in Position (2,0)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
 
 void DreamArea4()
 {
-    Console.WriteLine("PlaceHolder For Room 4");
+    Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
+    Console.WriteLine(" The Sourounding Area You See in the North The Mountain You Woke up on With the Still Tree on Top of it, While on the ");
+    Console.WriteLine(" East There Seems to be Rementants of Starcase Leading Down to What You Make Out To Be A Fountain In the Middle of");
+    Console.WriteLine(" Heavy Vegitation, While the South The Bridge Seems to Start to Incline Down into A Broken Building");
+    Console.WriteLine();
+    Console.WriteLine(" The Direct Area Around You, Seems to be a Border Between the full Nature of this land Being Untouched and Man-Made");
+    Console.WriteLine(" Structures. You Do Wonder What Happened to the People That Made These, But from how the Quality of Material Does ");
+    Console.WriteLine(" Feel Fresh in a Way, so You Can only Assume all The Broken Areas and Parts Were Destroyed and You Don't Want To");
+    Console.WriteLine(" Think What Could've Caused It");
+    Console.WriteLine("  [You Are in Position (0,1)]");
 }
 
 void DreamArea5()
 {
-    Console.WriteLine("PlaceHolder For Room 5");
+    Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
+    Console.WriteLine(" The Sourounding Area You See The Sourounding Area You See a Calm Beach that Seems to have been Untouched by Time To");
+    Console.WriteLine(" The North If You Can Get Through the Narrow Path. While the West has a Single Path inside a Deep Part of the Forest,");
+    Console.WriteLine("  Unknown to you of What Could be Inside. The South Has a Suprisngly Clear Path to A Broken Off Island with A Structure");
+    Console.WriteLine("  Way Further Off the Distance");
+    Console.WriteLine();
+    Console.WriteLine(" ");
+    Console.WriteLine("  [You Are in Position (1,1)]");
 }
 
 void DreamArea6()
 {
     Console.WriteLine("PlaceHolder for Room 6");
+    Console.WriteLine("  [You Are in Position (2,1)]");
 }
 
 void DreamArea7()
 {
     Console.WriteLine("PlaceHolder For Room 7");
+    Console.WriteLine("  [You Are in Position (0,2)]");
 }
 
 void DreamArea8()
 {
-    Console.WriteLine("PlaceHolder for Room 8");
+    Console.WriteLine("PlaceHolder for Room 8"); 
+    Console.WriteLine("  [You Are in Position (1,2)]");
 }
 
 void DreamArea9()
 {
     Console.WriteLine("PlaceHolder For Room 9");
+    Console.WriteLine("  [You Are in Position (2,2)]");
 }
 
 int DreamTracker ( int dreamX, int dreamY )
