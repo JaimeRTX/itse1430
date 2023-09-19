@@ -227,7 +227,12 @@ void DreamArea6()
 void DreamArea7()
 {
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
-    Console.WriteLine(" The Sourounding Area has the North Having a Bride Upwards to a Mountainous Area, While in the East ");
+    Console.WriteLine(" The Sourounding Area You Notice the North Having a Bride Upwards to a Mountainous Area, While in the East There is a");
+    Console.WriteLine(" Trail Of Broken Pices of Island Down to a Island Platform As well You Notice a Large Structure Way Further Away");
+    Console.WriteLine();
+    Console.WriteLine(" The Direct Area Around You See a Ruined Building, the Walls Outside Mostly Gone, as well with most of what is Inside.");
+    Console.WriteLine(" What's Left Seems to be Scattered Tools and Broken Down Workstations. You Assume this Building Helped and Habored");
+    Console.WriteLine(" The Materials and Tools Used to Make all of the Structures and Buildings in this Landmass");
     Console.WriteLine("  [You Are in Position (0,2)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
@@ -235,6 +240,14 @@ void DreamArea7()
 void DreamArea8()
 {
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
+    Console.WriteLine(" The Sourounding Area Has the North Having a Clear Path to What Looks like a Fountain, The West has an Elavating Trail");
+    Console.WriteLine(" On Top of a Mountanous Area with Something on Top of it, Finally in the East has a Path Towards an Object Covered");
+    Console.WriteLine(" In Vegitation");
+    Console.WriteLine();
+    Console.WriteLine(" The Direct Area Around You is Itself not That Interesting Since it is just a Basic Flat Grasslands, But What Cacthes");
+    Console.WriteLine(" Your Eye is What You think is a Large Ornate Gate. Unlike the Other Parts of the Broken Island You don't Think You");
+    Console.WriteLine(" Make a Jump Towards it Even with Your Ability. You Aren't Sure if it's From it Actually Being Too Far Away to Jump");
+    Console.WriteLine(" Or Something is Making You Not Try To");
     Console.WriteLine("  [You Are in Position (1,2)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
@@ -242,6 +255,13 @@ void DreamArea8()
 void DreamArea9()
 {
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
+    Console.WriteLine(" The Sourounding Area You see the North has at First a Clear Path to the Forrest that Quickly Becomes Obscured The");
+    Console.WriteLine(" Further North it is, While in the West has a Slightly Crumbling Path to a Broken Half of an Island Facing Towards");
+    Console.WriteLine(" A Large Structure");
+    Console.WriteLine();
+    Console.WriteLine(" The Direct Area Around You Outside of All the Thick Trees and Plantlife What Catches your Eye is of What Seems Like");
+    Console.WriteLine(" Of a Patch of Flowers. Closer Inspection You Find that the Flowers are Covering a Grave, You Can't Make Out the");
+    Console.WriteLine(" Name of it, But You Still Take the Time To Pay Your Respects to the Grave");
     Console.WriteLine("  [You Are in Position (2,2)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
@@ -273,6 +293,11 @@ int DreamTracker ( int dreamX, int dreamY )
         WrongMove();
         return 0;
     }
+}
+
+int DreamRandomPercentage()
+{
+    return Random.Shared.Next(1, 101);
 }
 
 void WrongMove()
