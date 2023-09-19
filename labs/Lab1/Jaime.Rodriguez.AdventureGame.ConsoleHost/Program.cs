@@ -145,6 +145,12 @@ void DreamArea1()
     Console.WriteLine();
     Console.WriteLine(" The Direct Area Around You is A Mountanous Area Where the Top is Flat, but What Catches your Eye is Rhat in The Center");
     Console.WriteLine(" From a Small Area of Soil a Lone Singular Tree is Standing Tall, with Darkish Purple Bark and Pink Leaves");
+    if (DreamRandomPercentage() <= 5)
+    {
+        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+    }
     Console.WriteLine("  [You Are in Position (0,0)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 
@@ -161,6 +167,12 @@ void DreamArea2()
     Console.WriteLine("  The Direct Area Around You Is a Calm Beach With Sand that has a Purple Tint, With the Water Still With a Pink Lining.");
     Console.WriteLine("  There is a Few Palm Trees Near the Edge Outside, Yet the Land itself seems Barren. You Feel Calm Yet in The Back of ");
     Console.WriteLine("  Your Mind You Feel a sense of Unease at the Emptiness of the Land and What Could've Caused it");
+    if (DreamRandomPercentage() <= 5)
+    {
+        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+    }
     Console.WriteLine("  [You Are in Position (1,0)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
@@ -175,6 +187,12 @@ void DreamArea3()
     Console.WriteLine(" Being the Biggest Piece as Well Having What Seems to be Broken Statue. Upon Closer Inspection It Looks to be");
     Console.WriteLine(" Religious in Orgin, but From what Religion it Eludes you. From that Relevation you see that Other Pieces");
     Console.WriteLine(" of Land Have some Rubble of What Could've Been a Church");
+    if (DreamRandomPercentage() <= 5)
+    {
+        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+    }
     Console.WriteLine("  [You Are in Position (2,0)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
@@ -190,6 +208,12 @@ void DreamArea4()
     Console.WriteLine(" Structures. You Do Wonder What Happened to the People That Made These, But from how the Quality of Material Does ");
     Console.WriteLine(" Feel Fresh in a Way, so You Can only Assume all The Broken Areas and Parts Were Destroyed and You Don't Want To");
     Console.WriteLine(" Think What Could've Caused It");
+    if (DreamRandomPercentage() <= 5)
+    {
+        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+    }
     Console.WriteLine("  [You Are in Position (0,1)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
@@ -206,6 +230,12 @@ void DreamArea5()
     Console.WriteLine(" The Direct Area Around You is Heavy Vegitation, but What Catched Your Eye is the Middle. A Fountain Which Feels Alien");
     Console.WriteLine(" Since for Some Reason the Fountain and the Grass Touching it Seems to be of a More Natural Color with no Purples,  ");
     Console.WriteLine(" Pinks, or Blues. That Makes You Feel Better in a way You Can't Really Describe");
+    if (DreamRandomPercentage() <= 5)
+    {
+        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+    }
     Console.WriteLine("  [You Are in Position (1,1)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
@@ -220,6 +250,12 @@ void DreamArea6()
     Console.WriteLine(" The Direct Area Around You is Just full of Trees, Bushes, and Any Other Plantlife From What You Can See. It Feels");
     Console.WriteLine(" Catastrophic Due to How Hard is it to Move Through it All. Yet It Makes You Think What had Happened to all of the");
     Console.WriteLine(" Animals in This Place. Either they are Hiding or Something had Wiped them Out. You Try to Push that Thought Away");
+    if (DreamRandomPercentage() <= 5)
+    {
+        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+    }
     Console.WriteLine("  [You Are in Position (2,1)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
@@ -233,6 +269,12 @@ void DreamArea7()
     Console.WriteLine(" The Direct Area Around You See a Ruined Building, the Walls Outside Mostly Gone, as well with most of what is Inside.");
     Console.WriteLine(" What's Left Seems to be Scattered Tools and Broken Down Workstations. You Assume this Building Helped and Habored");
     Console.WriteLine(" The Materials and Tools Used to Make all of the Structures and Buildings in this Landmass");
+    if (DreamRandomPercentage() <= 5)
+    {
+        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+    }
     Console.WriteLine("  [You Are in Position (0,2)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
@@ -248,6 +290,12 @@ void DreamArea8()
     Console.WriteLine(" Your Eye is What You think is a Large Ornate Gate. Unlike the Other Parts of the Broken Island You don't Think You");
     Console.WriteLine(" Make a Jump Towards it Even with Your Ability. You Aren't Sure if it's From it Actually Being Too Far Away to Jump");
     Console.WriteLine(" Or Something is Making You Not Try To");
+    if (DreamRandomPercentage() <= 5)
+    {
+        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+    }
     Console.WriteLine("  [You Are in Position (1,2)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
@@ -262,6 +310,13 @@ void DreamArea9()
     Console.WriteLine(" The Direct Area Around You Outside of All the Thick Trees and Plantlife What Catches your Eye is of What Seems Like");
     Console.WriteLine(" Of a Patch of Flowers. Closer Inspection You Find that the Flowers are Covering a Grave, You Can't Make Out the");
     Console.WriteLine(" Name of it, But You Still Take the Time To Pay Your Respects to the Grave");
+    if (DreamRandomPercentage() <= 5)
+    {
+        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+    }
+
     Console.WriteLine("  [You Are in Position (2,2)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
