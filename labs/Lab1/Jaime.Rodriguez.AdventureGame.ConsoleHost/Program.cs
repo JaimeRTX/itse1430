@@ -215,6 +215,11 @@ void DreamArea6()
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
     Console.WriteLine(" The Sourounding Area has the North Way Obscured, but You Think you See Multiple Floating Objects, While the West");
     Console.WriteLine(" Has a Narrow Path You Think You can Barely Fit Towards to a Less Heavy Part of the Forest, Finally to your Surprise");
+    Console.WriteLine(" In The South There is a Cut Path Towards a Clearing to an Area");
+    Console.WriteLine();
+    Console.WriteLine(" The Direct Area Around You is Just full of Trees, Bushes, and Any Other Plantlife From What You Can See. It Feels");
+    Console.WriteLine(" Catastrophic Due to How Hard is it to Move Through it All. Yet It Makes You Think What had Happened to all of the");
+    Console.WriteLine(" Animals in This Place. Either they are Hiding or Something had Wiped them Out. You Try to Push that Thought Away");
     Console.WriteLine("  [You Are in Position (2,1)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
@@ -222,6 +227,7 @@ void DreamArea6()
 void DreamArea7()
 {
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
+    Console.WriteLine(" The Sourounding Area has the North Having a Bridge to ");
     Console.WriteLine("  [You Are in Position (0,2)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
