@@ -9,13 +9,16 @@
 var awake = false;
 Introduction();
 
+int dreamX = 0;
+int dreamY = 0;
 
-
-    do
+do
     {
-        int dreamX = 0;
-        int dreamY = 0;
-
+    
+    dreamX = HeadWest(dreamX);
+    dreamX = HeadEast(dreamX);
+    dreamY = HeadSouth(dreamY);
+    dreamY = HeadNorth(dreamY);
    DreamTracker(dreamX, dreamY);
     switch (DreamMenu())
     {
@@ -41,22 +44,26 @@ Introduction();
 
 int HeadWest ( int MinusX )
 {
-    return MinusX--;
+    MinusX = MinusX - 1;
+    return MinusX;
 }
 
 int HeadNorth ( int PlusY )
 {
-    return PlusY++;
+    PlusY = PlusY + 1;
+    return PlusY;
 }
 
 int HeadEast ( int PlusX )
-{
-    return PlusX + 1;
+{   
+    PlusX = PlusX + 1;
+    return PlusX;
 }
 
 int HeadSouth ( int MinusY )
 {
-    return MinusY--;
+    MinusY = MinusY - 1;
+    return MinusY;
 }
 
 
