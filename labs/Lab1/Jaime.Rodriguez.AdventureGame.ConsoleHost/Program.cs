@@ -227,7 +227,7 @@ void DreamArea6()
 void DreamArea7()
 {
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
-    Console.WriteLine(" The Sourounding Area has the North Having a Bridge to ");
+    Console.WriteLine(" The Sourounding Area has the North Having a Bride Upwards to a Mountainous Area, While in the East ");
     Console.WriteLine("  [You Are in Position (0,2)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
