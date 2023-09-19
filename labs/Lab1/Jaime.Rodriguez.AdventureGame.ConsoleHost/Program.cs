@@ -11,14 +11,18 @@ Introduction();
 
 int dreamX = 0;
 int dreamY = 0;
+dreamX = HeadWest(dreamX);
+dreamX = HeadEast(dreamX);
+dreamY = HeadSouth(dreamY);
+dreamY = HeadNorth(dreamY);
 
 do
     {
     
-    dreamX = HeadWest(dreamX);
-    dreamX = HeadEast(dreamX);
-    dreamY = HeadSouth(dreamY);
-    dreamY = HeadNorth(dreamY);
+    //dreamX = HeadWest(dreamX);
+    //dreamX = HeadEast(dreamX);
+    //dreamY = HeadSouth(dreamY);
+    //dreamY = HeadNorth(dreamY);
    DreamTracker(dreamX, dreamY);
     switch (DreamMenu())
     {
@@ -200,7 +204,9 @@ int DreamTracker ( int dreamX, int dreamY )
     int MaximumY = 3;
     int roomNumber = dreamX + (MaximumX * (dreamY - 1));
 
+    
     if (dreamX >= 0 && dreamX < MaximumX && dreamY >= 0 && dreamY < MaximumY)
+    {
         switch (roomNumber)
         {
             case -3: DreamArea1(); break;
@@ -212,7 +218,13 @@ int DreamTracker ( int dreamX, int dreamY )
             case 3: DreamArea7(); break;
             case 4: DreamArea8(); break;
             case 5: DreamArea9(); break;
-        } return roomNumber;
+        }
+        return roomNumber;
+    } else
+    {
+        WrongMove();
+        return 0;
+    }
 }
 
 void WrongMove()
