@@ -191,42 +191,53 @@ void DreamArea4()
     Console.WriteLine(" Feel Fresh in a Way, so You Can only Assume all The Broken Areas and Parts Were Destroyed and You Don't Want To");
     Console.WriteLine(" Think What Could've Caused It");
     Console.WriteLine("  [You Are in Position (0,1)]");
+    Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
 
 void DreamArea5()
 {
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
-    Console.WriteLine(" The Sourounding Area You See The Sourounding Area You See a Calm Beach that Seems to have been Untouched by Time To");
-    Console.WriteLine(" The North If You Can Get Through the Narrow Path. While the West has a Single Path inside a Deep Part of the Forest,");
-    Console.WriteLine("  Unknown to you of What Could be Inside. The South Has a Suprisngly Clear Path to A Broken Off Island with A Structure");
-    Console.WriteLine("  Way Further Off the Distance");
+    Console.WriteLine(" The Sourounding Area You See a Calm Beach that Seems to have been Untouched by Time To The North If You Can Get");
+    Console.WriteLine(" Through the Narrow Path. While the West has a Single Path inside a Deep Part of the Forest, Unknown to you of What");
+    Console.WriteLine(" Could be Inside. The South Has a Suprisngly Clear Path to A Broken Off Island with A Structure Way Further Off the ");
+    Console.WriteLine(" Distance. Finally in the East You See A Broken Staircase Leading to a Point in the Mountain, You Feel Confortable That");
+    Console.WriteLine(" You Can Jump Up To Each Piece Walking Up to the Mountain Area");
     Console.WriteLine();
-    Console.WriteLine(" ");
+    Console.WriteLine(" The Direct Area Around You is Heavy Vegitation, but What Catched Your Eye is the Middle. A Fountain Which Feels Alien");
+    Console.WriteLine(" Since for Some Reason the Fountain and the Grass Touching it Seems to be of a More Natural Color with no Purples,  ");
+    Console.WriteLine(" Pinks, or Blues. That Makes You Feel Better in a way You Can't Really Describe");
     Console.WriteLine("  [You Are in Position (1,1)]");
+    Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
 
 void DreamArea6()
 {
-    Console.WriteLine("PlaceHolder for Room 6");
+    Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
+    Console.WriteLine(" The Sourounding Area has the North Way Obscured, but You Think you See Multiple Floating Objects, While the West");
+    Console.WriteLine(" Has a Narrow Path You Think You can Barely Fit Towards to a Less Heavy Part of the Forest, Finally to your Surprise");
     Console.WriteLine("  [You Are in Position (2,1)]");
+    Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
 
 void DreamArea7()
 {
-    Console.WriteLine("PlaceHolder For Room 7");
+    Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
     Console.WriteLine("  [You Are in Position (0,2)]");
+    Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
 
 void DreamArea8()
 {
-    Console.WriteLine("PlaceHolder for Room 8"); 
+    Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
     Console.WriteLine("  [You Are in Position (1,2)]");
+    Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
 
 void DreamArea9()
 {
-    Console.WriteLine("PlaceHolder For Room 9");
+    Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
     Console.WriteLine("  [You Are in Position (2,2)]");
+    Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
 }
 
 int DreamTracker ( int dreamX, int dreamY )
