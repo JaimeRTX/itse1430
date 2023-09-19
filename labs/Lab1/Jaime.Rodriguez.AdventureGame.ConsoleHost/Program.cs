@@ -11,19 +11,23 @@ Introduction();
 
 int dreamX = 0;
 int dreamY = 0;
-dreamX = HeadWest(dreamX);
-dreamX = HeadEast(dreamX);
-dreamY = HeadSouth(dreamY);
-dreamY = HeadNorth(dreamY);
+//dreamX = HeadWest(dreamX);
+//dreamX = HeadEast(dreamX);
+//dreamY = HeadSouth(dreamY);
+//dreamY = HeadNorth(dreamY);
 
 do
     {
-    
+
     //dreamX = HeadWest(dreamX);
     //dreamX = HeadEast(dreamX);
     //dreamY = HeadSouth(dreamY);
     //dreamY = HeadNorth(dreamY);
-   DreamTracker(dreamX, dreamY);
+    DreamTracker(dreamX, dreamY);
+    dreamX = HeadWest(dreamX);
+    dreamX = HeadEast(dreamX);
+    dreamY = HeadSouth(dreamY);
+    dreamY = HeadNorth(dreamY);
     switch (DreamMenu())
     {
         
