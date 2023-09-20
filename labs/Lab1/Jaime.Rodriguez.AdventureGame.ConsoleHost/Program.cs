@@ -22,7 +22,7 @@ do
         case 1: dreamX = HeadWest(dreamX); break;
         case 2: dreamY = HeadNorth(dreamY); break;
         case 3: dreamX = HeadEast(dreamX); break; 
-        case 4: dreamY =HeadSouth(dreamY); break;
+        case 4: dreamY = HeadSouth(dreamY); break;
         case 0:
         {
             if (EndingTheDream("Do You Want to End the Dream(Y/N)"))
@@ -38,28 +38,28 @@ do
 } while (!awake);
 
 
-int HeadWest ( int MinusX )
+int HeadWest ( int PlusX )
 {
-    MinusX = MinusX - 1;
-    return MinusX;
-}
-
-int HeadNorth ( int PlusY )
-{
-    PlusY = PlusY + 1;
-    return PlusY;
-}
-
-int HeadEast ( int PlusX )
-{   
     PlusX = PlusX + 1;
     return PlusX;
 }
 
-int HeadSouth ( int MinusY )
+int HeadNorth ( int MinusY )
 {
     MinusY = MinusY - 1;
     return MinusY;
+}
+
+int HeadEast ( int MinusX )
+{   
+    MinusX = MinusX - 1;
+    return MinusX;
+}
+
+int HeadSouth ( int PlusY )
+{
+    PlusY = PlusY + 1;
+    return PlusY;
 }
 
 
@@ -133,9 +133,10 @@ void DreamArea1()
     Console.WriteLine(" From a Small Area of Soil a Lone Singular Tree is Standing Tall, with Darkish Purple Bark and Pink Leaves");
     if (DreamRandomPercentage() <= 5)
     {
-        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
-        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
-        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+        Console.WriteLine();
+        Console.WriteLine("  You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine("  You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine("  No Evidence of What you Assume is a Creature Even Was Here");
     }
     Console.WriteLine("  [You Are in Position (0,0)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
@@ -155,9 +156,10 @@ void DreamArea2()
     Console.WriteLine("  Your Mind You Feel a sense of Unease at the Emptiness of the Land and What Could've Caused it");
     if (DreamRandomPercentage() <= 5)
     {
-        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
-        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
-        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+        Console.WriteLine();
+        Console.WriteLine("  You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine("  You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine("  No Evidence of What you Assume is a Creature Even Was Here");
     }
     Console.WriteLine("  [You Are in Position (1,0)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
@@ -175,9 +177,10 @@ void DreamArea3()
     Console.WriteLine(" of Land Have some Rubble of What Could've Been a Church");
     if (DreamRandomPercentage() <= 5)
     {
-        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
-        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
-        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+        Console.WriteLine();
+        Console.WriteLine("  You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine("  You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine("  No Evidence of What you Assume is a Creature Even Was Here");
     }
     Console.WriteLine("  [You Are in Position (2,0)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
@@ -196,9 +199,10 @@ void DreamArea4()
     Console.WriteLine(" Think What Could've Caused It");
     if (DreamRandomPercentage() <= 5)
     {
-        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
-        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
-        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+        Console.WriteLine();
+        Console.WriteLine("  You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine("  You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine("  No Evidence of What you Assume is a Creature Even Was Here");
     }
     Console.WriteLine("  [You Are in Position (0,1)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
@@ -218,9 +222,10 @@ void DreamArea5()
     Console.WriteLine(" Pinks, or Blues. That Makes You Feel Better in a way You Can't Really Describe");
     if (DreamRandomPercentage() <= 5)
     {
-        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
-        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
-        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+        Console.WriteLine();
+        Console.WriteLine("  You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine("  You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine("  No Evidence of What you Assume is a Creature Even Was Here");
     }
     Console.WriteLine("  [You Are in Position (1,1)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
@@ -238,9 +243,10 @@ void DreamArea6()
     Console.WriteLine(" Animals in This Place. Either they are Hiding or Something had Wiped them Out. You Try to Push that Thought Away");
     if (DreamRandomPercentage() <= 5)
     {
-        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
-        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
-        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+        Console.WriteLine();
+        Console.WriteLine("  You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine("  You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine("  No Evidence of What you Assume is a Creature Even Was Here");
     }
     Console.WriteLine("  [You Are in Position (2,1)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
@@ -257,9 +263,10 @@ void DreamArea7()
     Console.WriteLine(" The Materials and Tools Used to Make all of the Structures and Buildings in this Landmass");
     if (DreamRandomPercentage() <= 5)
     {
-        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
-        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
-        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+        Console.WriteLine();
+        Console.WriteLine("  You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine("  You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine("  No Evidence of What you Assume is a Creature Even Was Here");
     }
     Console.WriteLine("  [You Are in Position (0,2)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
@@ -278,9 +285,10 @@ void DreamArea8()
     Console.WriteLine(" Or Something is Making You Not Try To");
     if (DreamRandomPercentage() <= 5)
     {
-        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
-        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
-        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+        Console.WriteLine();
+        Console.WriteLine("  You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine("  You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine("  No Evidence of What you Assume is a Creature Even Was Here");
     }
     Console.WriteLine("  [You Are in Position (1,2)]");
     Console.WriteLine(" |-------------------------------------------------------------------------------------------------------------------|");
@@ -298,9 +306,10 @@ void DreamArea9()
     Console.WriteLine(" Name of it, But You Still Take the Time To Pay Your Respects to the Grave");
     if (DreamRandomPercentage() <= 5)
     {
-        Console.WriteLine(" You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
-        Console.WriteLine(" You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
-        Console.WriteLine(" No Evidence of What you Assume is a Creature Even Was Here");
+        Console.WriteLine();
+        Console.WriteLine("  You Feel A Sharp Pain In Your Head and Fall to Your Knees, Before You Try to Figure Out What to do");
+        Console.WriteLine("  You Feel Something Move Above You Quickly. By the Time the Pain Passes, You Look up and See");
+        Console.WriteLine("  No Evidence of What you Assume is a Creature Even Was Here");
     }
 
     Console.WriteLine("  [You Are in Position (2,2)]");
@@ -332,7 +341,7 @@ int DreamTracker ( int dreamX, int dreamY )
     } else
     {
         WrongMove();
-        return 0;
+        return 9;
     }
 }
 
