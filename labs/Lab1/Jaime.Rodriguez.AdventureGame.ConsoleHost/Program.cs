@@ -6,37 +6,23 @@
  * Lab 1
  */
 
-using System.ComponentModel;
-
 var awake = false;
 Introduction();
 
 int dreamX = 0;
 int dreamY = 0;
-//dreamX = HeadWest(dreamX);
-//dreamX = HeadEast(dreamX);
-//dreamY = HeadSouth(dreamY);
-//dreamY = HeadNorth(dreamY);
 
 do
     {
-
-    //dreamX = HeadWest(dreamX);
-    //dreamX = HeadEast(dreamX);
-    //dreamY = HeadSouth(dreamY);
-    //dreamY = HeadNorth(dreamY);
     DreamTracker(dreamX, dreamY);
-    dreamX = HeadWest(dreamX);
-    dreamX = HeadEast(dreamX);
-    dreamY = HeadSouth(dreamY);
-    dreamY = HeadNorth(dreamY);
+    
     switch (DreamMenu())
     {
         
-        case 1: HeadWest(dreamX); break;
-        case 2: HeadNorth(dreamY); break;
-        case 3: HeadEast(dreamX); break; 
-        case 4: HeadSouth(dreamY); break;
+        case 1: dreamX = HeadWest(dreamX); break;
+        case 2: dreamY = HeadNorth(dreamY); break;
+        case 3: dreamX = HeadEast(dreamX); break; 
+        case 4: dreamY =HeadSouth(dreamY); break;
         case 0:
         {
             if (EndingTheDream("Do You Want to End the Dream(Y/N)"))
