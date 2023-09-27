@@ -128,6 +128,7 @@ partial class Program
             movie.Rating = ReadRating("Enter a Rating: ");
             //if (movie.Rating != null)
             //    movie.Rating.Name = "Whatever";
+            //
 
             movie.IsBlackAndWhite = ReadBoolean("Is the Movie in Black and White? (Y/N)");
 
