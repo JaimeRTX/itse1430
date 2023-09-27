@@ -10,6 +10,16 @@
     {
         //Fields-Data
 
+        /// <summary>
+        /// Minimum Release Year
+        /// </summary>
+        public const int MininumReleaseYear = 1900;
+
+        //Const - Compile Time Constant, must recompile to change
+        //Readonly- Runtime Contsant, do not recompile to change
+        //public const string DefaultRating = "PG";
+        public readonly string DefaultRating = "PG";
+
         private string _title;
 
         private string _genre;
@@ -49,18 +59,20 @@
         /// <summary>
         /// Gets or Sets The Rating of Movie
         /// </summary>
-        public string Rating
-        {
-            get {
-                if (String.IsNullOrEmpty(_rating))
-                    return "";
+        //public string Rating
+        //{
+        //    get {
+        //        if (String.IsNullOrEmpty(_rating))
+        //            return "";
 
-                return _rating;
-            }
-            set {
-                _rating = value;
-            }
-        }
+        //        return _rating;
+        //    }
+        //    set {
+        //        _rating = value;
+        //    }
+        //}
+
+        public Rating Rating { get; set; }
 
         private int _length;
 
@@ -99,7 +111,7 @@
         //    }
         //}
 
-        public int ReleaseYear { get; set; } = 1900;
+        public int ReleaseYear { get; set; } = MininumReleaseYear;
 
         //private bool _isBlackAndWhite;
 
@@ -155,6 +167,19 @@
         }
 
         /// <summary>
+        /// Gets the or sets the unique identifier of the movie
+        /// </summary>
+        public int Id
+        { 
+            //Mixed Accesibility - getter/setter has different access than property
+            get;
+            /* set;*/
+            private set;
+        }
+
+      
+
+        /// <summary>
         /// Download Metadata From the Internet
         /// </summary>
         /// <remarks>
@@ -178,8 +203,8 @@
                 return "Title is Required";
             //error
             //Release Year =1900
-            if (ReleaseYear < 1900)
-                return "Release Year must be >= 1900";
+            if (ReleaseYear < MininumReleaseYear)
+                return $"Release Year must be >= {MininumReleaseYear}";
             //Length >= 0
             if (_length < 0)
                 return "Length must be at least 0";
