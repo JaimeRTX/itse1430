@@ -111,6 +111,7 @@ partial class Program
     Movie AddMovie ()
     {
         var movie = new Movie();
+        //var movie = new Movie(10, "Something");
         do
         {
 
@@ -133,7 +134,8 @@ partial class Program
             movie.IsBlackAndWhite = ReadBoolean("Is the Movie in Black and White? (Y/N)");
 
             //Validate
-            var error = movie.Validate();
+            ValidatableObject validInstance = movie;
+            var error = validInstance.Validate();
             if (String.IsNullOrEmpty(error))
                 return movie;
 

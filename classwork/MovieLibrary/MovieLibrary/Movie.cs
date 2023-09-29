@@ -6,9 +6,56 @@
     ///<remarls>
     ///ParaGraphs of Descriptions
     ///</remarls>
-    public class Movie
+    public class Movie : ValidatableObject
     {
+        //ctors(constructors)- Initilize instance
+
+        //Default Constructor
+        public Movie ()
+        {
+            //In It Anything that fields initlize won't work with
+            _initilized = true;
+        }
+        /// <summary>
+        /// Initializes the Movie Class
+        /// </summary>
+        /// <param name="id">Identifier of the Movie</param>
+        public Movie ( int id, string title ):this ()
+        {
+           Id = id;
+           Title = title;
+
+        }
+
+        public Movie(int id) :this(id,"")
+        {
+
+        }
+
+        public Movie(string title) :this (0, title)
+        {
+
+        }
+        /// <summary>
+        /// Gets the or sets the unique identifier of the movie
+        /// </summary>
+        public int Id
+        {
+            //Mixed Accesibility - getter/setter has different access than property
+            get;
+            /* set;*/
+            private set;
+        }
+
+        //private void Initialize(int id, string title)
+        //{
+        //    Id = id;
+        //    Title = title;
+        //}
+
         //Fields-Data
+
+        private readonly bool _initilized = false;
 
         /// <summary>
         /// Minimum Release Year
@@ -166,18 +213,7 @@
             }
         }
 
-        /// <summary>
-        /// Gets the or sets the unique identifier of the movie
-        /// </summary>
-        public int Id
-        { 
-            //Mixed Accesibility - getter/setter has different access than property
-            get;
-            /* set;*/
-            private set;
-        }
 
-      
 
         /// <summary>
         /// Download Metadata From the Internet
@@ -196,25 +232,40 @@
         /// <returns?>
         /// Error Message if Invalid or empty string otherwise
         /// </returns>
-        public string Validate ()
+        public override bool TryValidate ( out string message )
         {
             //Title is Required
             if (String.IsNullOrEmpty(_title))
-                return "Title is Required";
+            {
+                message = "Title is Required";
+                return false;
+            }
             //error
             //Release Year =1900
             if (ReleaseYear < MininumReleaseYear)
-                return $"Release Year must be >= {MininumReleaseYear}";
+            {
+                message = $"Release Year must be >= {MininumReleaseYear}";
+                return false;
+            }
             //Length >= 0
             if (_length < 0)
-                return "Length must be at least 0";
+            {
+                message = "Length must be at least 0";
+                return false;
+            }
             //Rating is in a list
             //If ReleaseYear < 1940 then IsBlackAndWhite must be true
             if (ReleaseYear < 1940 && !IsBlackAndWhite)
-                return "Movies Before 1940 must be in Black or White";
+            {
+                message ="Movies Before 1940 must be in Black or White";
+                return false;
+            }
 
             //Valid
-            return "";
+            return base.TryValidate ( out message );
+            //message = "";
+            //return true;
         }
     }
+
 }
