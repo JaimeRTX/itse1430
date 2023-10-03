@@ -5,8 +5,6 @@
  */
 namespace JaimeRodriguez.CharacterCreator.ConsoleHost;
 
-partial class Program
-{
     enum CharacterMenuOptions
     {
         Add = 1,
@@ -15,9 +13,6 @@ partial class Program
         View,
         Quit = 0
     }
-
-
-}
 
 
 
