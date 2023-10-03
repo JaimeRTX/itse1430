@@ -56,7 +56,34 @@
         //Fields-Data
 
         private readonly bool _initilized = false;
+        private string _title;
+        private string _genre;
+        private string _description = "";
+        private string _rating = "";
+        private int _length;
 
+        //Properties - data wuth functionality
+
+        /// <summary>
+        /// Gets or Sets The Title of Movie
+        /// </summary>
+        public string Title
+        {
+            //MUst Eventually Return a String
+            get {
+                if (String.IsNullOrEmpty(_title))
+                    return "";
+
+
+                return _title;
+            }
+            set {
+                if (value != null)
+                    value = value.Trim();
+                _title = value;
+
+            }
+        }
         /// <summary>
         /// Minimum Release Year
         /// </summary>
@@ -66,10 +93,6 @@
         //Readonly- Runtime Contsant, do not recompile to change
         //public const string DefaultRating = "PG";
         public readonly string DefaultRating = "PG";
-
-        private string _title;
-
-        private string _genre;
 
         /// <summary>
         /// Gets or Sets The Genre of Movie
@@ -84,7 +107,6 @@
             }
             set { _genre = value; }
         }
-        private string _description = "";
 
         /// <summary>
         /// Gets or Sets The Description of Movie
@@ -101,7 +123,6 @@
                 _description = value;
             }
         }
-        private string _rating = "";
 
         /// <summary>
         /// Gets or Sets The Rating of Movie
@@ -120,8 +141,6 @@
         //}
 
         public Rating Rating { get; set; }
-
-        private int _length;
 
         /// <summary>
         /// Gets or Sets The Rating of Movie
@@ -190,30 +209,7 @@
             //}
         }
 
-        //Properties - data wuth functionality
-
-        /// <summary>
-        /// Gets or Sets The Title of Movie
-        /// </summary>
-        public string Title
-        {
-            //MUst Eventually Return a String
-            get {
-                if (String.IsNullOrEmpty(_title))
-                    return "";
-
-
-                return _title;
-            }
-            set {
-                if (value != null)
-                    value = value.Trim();
-                _title = value;
-
-            }
-        }
-
-
+     
 
         /// <summary>
         /// Download Metadata From the Internet
