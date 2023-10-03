@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace JaimeRodriguez.CharacterCreator_
 {
-    internal class CharacterInformation
+    public class Character
     {
+        private string _name;
+        private string _profession;
+        private string _race;
+        //private string _biography; //TODO: Optional Maybe Do It
+
+        //public string Name
+        //{
+        //    get {
+
+        //    }
+        //    set {
+
+        //    }
+        //}
     }
 }
