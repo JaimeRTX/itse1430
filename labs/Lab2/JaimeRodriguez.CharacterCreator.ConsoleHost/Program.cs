@@ -5,17 +5,20 @@
  */
 using System.ComponentModel.Design;
 
+using JaimeRodriguez.CharacterCreator_;
+
 namespace JaimeRodriguez.CharacterCreator.ConsoleHost;
 
 partial class Program
 {
-    static void Main()
+    static void Main ()
     {
         var app = new Program();
-        app.Run ();
+        app.Run();
     }
-    void Run()
+    void Run ()
     {
+        Character character = new Character();
         var menu = false;
         do
         {
@@ -32,11 +35,11 @@ partial class Program
                     break;
                 }
             }
-        }while (!menu);
+        } while (!menu);
     }
 
 
-    CharacterMenuOptions DisplayMenu()
+    CharacterMenuOptions DisplayMenu ()
     {
         Console.WriteLine("-----------------------------");
         Console.WriteLine("(A) Add A New Character");
@@ -56,12 +59,14 @@ partial class Program
                 case ConsoleKey.Q: return CharacterMenuOptions.Quit;
             }
 
-        }while (true);
+        } while (true);
     }
 
-    void AddCharacter()
+    Character AddCharacter ()
     {
+        var character = new Character();
         Console.WriteLine("PlaceHolder");
+        return character;
     }
 
     void ViewCharacter ()
@@ -69,12 +74,12 @@ partial class Program
         Console.WriteLine("PlaceHolder");
     }
 
-    void DeleteCharacter()
+    void DeleteCharacter ()
     {
         Console.WriteLine("PlaceHolder");
     }
 
-    void EditCharacter()
+    void EditCharacter ()
     {
         Console.WriteLine("PlaceHolder");
     }
@@ -95,8 +100,11 @@ partial class Program
 
     bool QuitCreator ( string message )
     {
-        return ReadBoolean ( message );
+        return ReadBoolean(message);
     }
+
+
+
 }
 
 

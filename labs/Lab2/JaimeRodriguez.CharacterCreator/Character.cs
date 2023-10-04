@@ -28,5 +28,29 @@ namespace JaimeRodriguez.CharacterCreator_
             }
         }
 
+        public string Profession
+        {
+            get {
+                if (String.IsNullOrEmpty(_profession))
+                    return "";
+
+                return _profession;
+            }
+            set {
+                _profession = value;
+            }
+        }
+
+        public string Race 
+        {
+            get {
+                if (String.IsNullOrEmpty(_race))
+                    return "";
+                return _race;
+            }
+            set {
+                _profession = value;
+            }
+        }
     }
 }
