@@ -13,15 +13,20 @@ namespace JaimeRodriguez.CharacterCreator_
         private string _race;
         //private string _biography; //TODO: Optional Maybe Do It
 
-        //public string Name
-        //{
-        //    get {
+        public string Name
+        {
+            get 
+            {
+                if (String.IsNullOrEmpty(_name))
+                    return "";
+                return _name;
+            }
+            set {
+                if (value != null)
+                    value = value.Trim();
+                _name = value;
+            }
+        }
 
-        //    }
-        //    set {
-
-        //    }
-        //}
-        //
     }
 }

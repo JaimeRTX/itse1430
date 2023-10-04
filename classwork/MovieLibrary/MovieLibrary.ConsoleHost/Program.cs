@@ -350,4 +350,8 @@ partial class Program
 
     }
 
+    void Display (Object value)
+    {
+        //value.
+    }
 }
