@@ -24,10 +24,15 @@ partial class Program
         {
             switch (DisplayMenu())
             {
-                case CharacterMenuOptions.Add: AddCharacter(); break;
-                case CharacterMenuOptions.View: ViewCharacter(); break;
+                case CharacterMenuOptions.Add: character = AddCharacter(); break;
+                case CharacterMenuOptions.View: ViewCharacter(character); break;
                 case CharacterMenuOptions.Edit: EditCharacter(); break;
-                case CharacterMenuOptions.Delete: DeleteCharacter(); break;
+                case CharacterMenuOptions.Delete:
+                {
+                   if(DeleteCharacter(character))
+                    character = new Character();
+                    break;
+                }
                 case CharacterMenuOptions.Quit:
                 {
                     if (QuitCreator("Do You Wish To Exit the Creator? (Y/N)"))
@@ -65,18 +70,45 @@ partial class Program
     Character AddCharacter ()
     {
         var character = new Character();
-        Console.WriteLine("PlaceHolder");
-        return character;
+        do
+        {
+            character.Name = ReadString("Enter Your Name: ", true);
+
+            character.Profession = ReadProfession("Select a Profession [Athlete, Priest, Builder, Botanist, Hermit]");
+
+            character.Race = ReadRace("What is Your Lineage [Human, Elf, Astral-Born, Dwarf, Dragonborn]");
+
+            return character;
+        }while (true);
+
     }
 
-    void ViewCharacter ()
+    void ViewCharacter (Character character)
     {
-        Console.WriteLine("PlaceHolder");
+      if(String.IsNullOrEmpty(character.Name))
+        {
+            Console.WriteLine("No Chracter's Made");
+            return;
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("".PadLeft(25, '-'));
+        Console.WriteLine($"Character Name: {character.Name}");
+        Console.WriteLine($"Character Profession: {character.Profession}");
+        Console.WriteLine($"Race of the Character: {character.Race}");
+
     }
 
-    void DeleteCharacter ()
+    bool DeleteCharacter (Character character)
     {
-        Console.WriteLine("PlaceHolder");
+        if (String.IsNullOrEmpty(character.Name))
+
+            return false;
+
+        if (!QuitCreator($"Are you Sure You Would To Delete '{character.Name}' (Y/N)"))
+            return false;
+
+        return true;
     }
 
     void EditCharacter ()
@@ -97,14 +129,74 @@ partial class Program
 
         };
     }
-
+        
     bool QuitCreator ( string message )
     {
         return ReadBoolean(message);
     }
 
+    string ReadString ( string message, bool isRequired )
+    {
+        Console.WriteLine(message);
+
+        do
+        {
+            string value = Console.ReadLine().Trim();
+
+            if (!isRequired || !String.IsNullOrEmpty(value))
+                return value;
+
+            Console.WriteLine("Please Enter a Value");
+
+        } while (true);
+
+    }
+
+    string ReadProfession (string message)
+    {
+        Console.WriteLine(message);
+        do
+        {
+            string value = Console.ReadLine();
+
+            if (String.Equals(value, "Athlete", StringComparison.CurrentCultureIgnoreCase))
+                return "Athlete";
+            else if (String.Equals(value, "Priest", StringComparison.CurrentCultureIgnoreCase))
+                return "Priest";
+            else if (String.Equals(value, "Builder", StringComparison.CurrentCultureIgnoreCase))
+                return "Builder";
+            else if (String.Equals(value, "Botanist", StringComparison.CurrentCultureIgnoreCase))
+                return "Botanist";
+            else if (String.Equals(value, "Hermit", StringComparison.CurrentCultureIgnoreCase))
+                return "Hermit";
+            else if (String.IsNullOrEmpty(value))
+                return "";
+
+        } while (true);
+    }
+
+    string ReadRace (string message)
+    {
+        Console.WriteLine(message);
+        do
+        {
+            string value = Console.ReadLine();
+            if (String.Equals(value, "Human", StringComparison.CurrentCultureIgnoreCase))
+                return "Human";
+            else if (String.Equals(value, "Elf", StringComparison.CurrentCultureIgnoreCase))
+                return "Elf";
+            else if (String.Equals(value, "Astral-Born", StringComparison.CurrentCultureIgnoreCase))
+                return "Astral-Born";
+            else if (String.Equals(value, "Dwarf", StringComparison.CurrentCultureIgnoreCase))
+                return "Dwarf";
+            else if (String.Equals(value, "Dragonborn", StringComparison.CurrentCultureIgnoreCase))
+                return "Dragonborn";
+            else if (String.IsNullOrEmpty(value))
+                return "";
 
 
+        } while (true);
+    }
 }
 
 

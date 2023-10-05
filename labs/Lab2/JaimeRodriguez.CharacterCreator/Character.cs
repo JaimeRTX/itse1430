@@ -49,7 +49,7 @@ namespace JaimeRodriguez.CharacterCreator_
                 return _race;
             }
             set {
-                _profession = value;
+                _race = value;
             }
         }
     }
