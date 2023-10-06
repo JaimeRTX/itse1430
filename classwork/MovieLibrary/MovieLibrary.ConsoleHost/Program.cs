@@ -18,9 +18,9 @@ partial class Program
     void Run ()
     {
 
-    
 
-        Movie movie = new Movie();
+        //Movie movie = new Movie();
+        Movie movie = null; /* new Movie();*/
 
         //Entry Point
         var done = false;
@@ -146,12 +146,16 @@ partial class Program
     bool DeleteMovie ( Movie movie )
     {
 
-        if (String.IsNullOrEmpty(movie.Title))
-
+        //if (String.IsNullOrEmpty(movie.Title))
+        if (movie == null)
+        {
             return false;
+        }
 
-        if (!Confirm($"Are you Sure you Would Like to Delete this Movie '{movie.Title}' (Y/N)"))
-            return false;
+        if (!Confirm($"Are you Sure you Would Like to Delete this Movie '{movie.Title}' (Y/N)")) 
+        {
+            return false; 
+        }
 
         //TODO: Delete Movie
         //title= "";
@@ -167,7 +171,8 @@ partial class Program
         //Lenght of a String
 
 
-        if (String.IsNullOrEmpty(movie.Title))
+        //if (String.IsNullOrEmpty(movie.Title))
+        if (movie == null)
         {
             Console.WriteLine("No Movies Availible");
             return;
@@ -350,8 +355,48 @@ partial class Program
 
     }
 
-    void Display (Object value)
+    void Display (object value)
     {
-        //value.
+        //If a String Call ToString
+        //If a Int Call ToString with minimum 2 digits
+        //If a Float Call ToString With minimum 2 digits precision
+        //If Boolean then Print Yes or No
+        //Otherwise ToString
+
+        //Type Checking/Casting
+        //1. is_expression :: = E is T (boolan)
+        //Cast 2. c_style :: = (T)E
+        //3. as_expression ::= E as T (T)
+        //4. pattern_matching ::=
+
+        //if (value is string)
+        //{
+        //    //Is a string - dangerous
+        //    //var valueString = (string)value;  
+        //    var valueString = value as string;
+        //    Console.WriteLine(valueString);
+
+        //    //string x = "Hello";
+        //    //int y = (int)x;
+        //};
+
+        //Approach 3
+        //var valueString = value as string;
+        //if(valueString != null)
+        //{
+        //    Console.WriteLine(valueString);
+        //}
+
+        //pattern match (preferred)
+        if (value is string str)
+        {
+            Console.WriteLine(str);
+        }
+
+        //if (value is int)
+        //{
+        //    //Blows up if fail
+        //    int y = (int)value;
+        //};
     }
 }

@@ -35,7 +35,7 @@ partial class Program
                 }
                 case CharacterMenuOptions.Quit:
                 {
-                    if (QuitCreator("Do You Wish To Exit the Creator? (Y/N)"))
+                    if (Confirm("Do You Wish To Exit the Creator? (Y/N)"))
                         return;
                     break;
                 }
@@ -105,7 +105,7 @@ partial class Program
 
             return false;
 
-        if (!QuitCreator($"Are you Sure You Would To Delete '{character.Name}' (Y/N)"))
+        if (!Confirm($"Are you Sure You Would To Delete '{character.Name}' (Y/N)"))
             return false;
 
         return true;
@@ -130,7 +130,7 @@ partial class Program
         };
     }
         
-    bool QuitCreator ( string message )
+    bool Confirm ( string message )
     {
         return ReadBoolean(message);
     }

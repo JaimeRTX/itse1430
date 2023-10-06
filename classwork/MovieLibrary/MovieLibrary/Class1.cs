@@ -32,5 +32,7 @@ namespace MovieLibrary
 
         //}
         //private string _name;
+        public override string ToString ()
+        { return Name; }
     }
 }
