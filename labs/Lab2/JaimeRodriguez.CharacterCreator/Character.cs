@@ -11,7 +11,11 @@ namespace JaimeRodriguez.CharacterCreator_
         private string _name;
         private string _profession;
         private string _race;
-        //private string _biography; //TODO: Optional Maybe Do It
+        private int _strength;
+        private int _inteligence;
+        private int _agility;
+        private int _constitution;
+        private int _charisma;
 
         public string Name
         {
@@ -52,5 +56,14 @@ namespace JaimeRodriguez.CharacterCreator_
                 _race = value;
             }
         }
+
+        public const int MinimumStat = 0;
+        public const int MaximumStat = 100;
+
+        public int Strength { get; set; } = MinimumStat;
+        public int Inteligence { get; set; } = MinimumStat;
+        public int Agility { get; set; } = MinimumStat;
+        public int Constitution { get; set; } = MinimumStat;
+        public int charisma { get; set; } = MinimumStat;
     }
 }

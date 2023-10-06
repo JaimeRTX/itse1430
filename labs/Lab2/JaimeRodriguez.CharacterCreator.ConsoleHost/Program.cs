@@ -197,6 +197,21 @@ partial class Program
 
         } while (true);
     }
+
+    int ReadInt (string message, int minimumValue, int maximumValue)
+    {
+        Console.WriteLine(message);
+
+        do
+        {
+            string value = Console.ReadLine();
+            if (Int32.TryParse(value, out int result))
+                if(result >= minimumValue && result <= maximumValue)
+                    return result;
+            //
+           Console.WriteLine($"The Stat Needs to be Between {minimumValue} and {maximumValue}");
+        } while (true);
+    }
 }
 
 
