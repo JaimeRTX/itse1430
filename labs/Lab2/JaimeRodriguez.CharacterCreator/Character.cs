@@ -64,6 +64,6 @@ namespace JaimeRodriguez.CharacterCreator_
         public int Inteligence { get; set; } = MinimumStat;
         public int Agility { get; set; } = MinimumStat;
         public int Constitution { get; set; } = MinimumStat;
-        public int charisma { get; set; } = MinimumStat;
+        public int Charisma { get; set; } = MinimumStat;
     }
 }

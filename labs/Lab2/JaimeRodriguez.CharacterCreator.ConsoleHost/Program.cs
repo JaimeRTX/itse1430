@@ -3,7 +3,6 @@
  * ITSE 1430 
  * Lab 2
  */
-using System.ComponentModel.Design;
 
 using JaimeRodriguez.CharacterCreator_;
 
@@ -26,7 +25,7 @@ partial class Program
             {
                 case CharacterMenuOptions.Add: character = AddCharacter(); break;
                 case CharacterMenuOptions.View: ViewCharacter(character); break;
-                case CharacterMenuOptions.Edit: EditCharacter(); break;
+                case CharacterMenuOptions.Edit: EditCharacter(character); break;
                 case CharacterMenuOptions.Delete:
                 {
                    if(DeleteCharacter(character))
@@ -78,6 +77,16 @@ partial class Program
 
             character.Race = ReadRace("What is Your Lineage [Human, Elf, Astral-Born, Dwarf, Dragonborn]");
 
+            character.Strength = ReadInt("Enter Your Strength Stat [0-100]", Character.MinimumStat, Character.MaximumStat);
+
+            character.Inteligence = ReadInt("Enter Your Inteligence Stat [0-100]", Character.MinimumStat, Character.MaximumStat);
+
+            character.Agility = ReadInt("Enter Your Agility Stat [0-100]", Character.MinimumStat, Character.MaximumStat);
+
+            character.Constitution = ReadInt("Enter Your Constitution Stat [0-100]", Character.MinimumStat, Character.MaximumStat);
+
+            character.Charisma = ReadInt("Enter Your Charisma Stat [0-100]", Character.MinimumStat, Character.MaximumStat);
+
             return character;
         }while (true);
 
@@ -96,6 +105,11 @@ partial class Program
         Console.WriteLine($"Character Name: {character.Name}");
         Console.WriteLine($"Character Profession: {character.Profession}");
         Console.WriteLine($"Race of the Character: {character.Race}");
+        Console.WriteLine($"Strength Stat: {character.Strength}");
+        Console.WriteLine($"Inteligence Stat: {character.Inteligence}");
+        Console.WriteLine($"Agility Stat: {character.Agility}");
+        Console.WriteLine($"Constitution Stat: {character.Constitution}");
+        Console.WriteLine($"Charisma Stat: {character.Charisma}");
 
     }
 
@@ -111,10 +125,58 @@ partial class Program
         return true;
     }
 
-    void EditCharacter ()
+    Character EditCharacter (Character character)
     {
-        Console.WriteLine("PlaceHolder");
+       
+        if (String.IsNullOrEmpty(character.Name))
+        {
+            Console.WriteLine("No Chracter To Edit");
+            return character;
+        }
+
+        if (Confirm("Would You Like to Change Your Name(Y/N)"))
+        {
+            character.Name = ReadString("Enter Your New Name", true);
+        }
+
+        if (Confirm("Would You Like to Change Your Profession(Y/N)"))
+        {
+            character.Profession = ReadString("Enter Your New Profession", true);
+        }
+
+        if (Confirm("Would You Like to Change Your Race(Y/N)"))
+        {
+            character.Race = ReadString("Enter Your New Race", true);
+        }
+
+        if (Confirm("Would You Like to Change Your Strength Stat(Y/N)"))
+        {
+            character.Strength = ReadInt("Enter Your New Strength[0-100]", Character.MinimumStat, Character.MaximumStat);
+        }
+
+        if (Confirm("Would You Like to Change Your Inteligence Stat(Y/N)"))
+        {
+            character.Inteligence = ReadInt("Enter Your New Inteligence[0-100]", Character.MinimumStat, Character.MaximumStat);
+        }
+
+        if (Confirm("Would You Like to Change Your Agility Stat(Y/N)"))
+        {
+            character.Agility = ReadInt("Enter Your New Agility[0-100]", Character.MinimumStat, Character.MaximumStat);
+        }
+
+        if (Confirm("Would You Like to Change Your Constitution Stat(Y/N)"))
+        {
+            character.Constitution = ReadInt("Enter Your New Constitution[0-100]", Character.MinimumStat, Character.MaximumStat);
+        }
+
+        if (Confirm("Would You Like to Change Your Charisma Stat(Y/N)"))
+        {
+            character.Charisma = ReadInt("Enter Your New Charisma[0-100]", Character.MinimumStat, Character.MaximumStat);
+        }
+
+        return character;
     }
+
     bool ReadBoolean ( string message )
     {
         Console.WriteLine(message);
@@ -208,7 +270,7 @@ partial class Program
             if (Int32.TryParse(value, out int result))
                 if(result >= minimumValue && result <= maximumValue)
                     return result;
-            //
+            
            Console.WriteLine($"The Stat Needs to be Between {minimumValue} and {maximumValue}");
         } while (true);
     }
