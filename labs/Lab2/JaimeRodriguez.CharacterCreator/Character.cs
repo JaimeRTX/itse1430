@@ -11,12 +11,10 @@ namespace JaimeRodriguez.CharacterCreator_
         private string _name;
         private string _profession;
         private string _race;
-        private int _strength;
-        private int _inteligence;
-        private int _agility;
-        private int _constitution;
-        private int _charisma;
 
+        /// <summary>
+        /// This Stores The Name of the Character User Makes
+        /// </summary>
         public string Name
         {
             get 
@@ -32,6 +30,9 @@ namespace JaimeRodriguez.CharacterCreator_
             }
         }
 
+        /// <summary>
+        /// This Stores the Profession of the Character User Makes
+        /// </summary>
         public string Profession
         {
             get {
@@ -45,6 +46,9 @@ namespace JaimeRodriguez.CharacterCreator_
             }
         }
 
+        /// <summary>
+        /// This Stores The Race of the Character User Makes
+        /// </summary>
         public string Race 
         {
             get {
@@ -57,13 +61,39 @@ namespace JaimeRodriguez.CharacterCreator_
             }
         }
 
+        /// <summary>
+        /// The Value of the Minimum Value for Stats
+        /// </summary>
         public const int MinimumStat = 0;
+
+        /// <summary>
+        /// The Value of the Maximum Value for Stats
+        /// </summary>
         public const int MaximumStat = 100;
 
+        /// <summary>
+        /// Holds The Value for the Character's Strength 
+        /// </summary>
         public int Strength { get; set; } = MinimumStat;
+
+        /// <summary>
+        /// Holds The Value for the Character's Inteligence
+        /// </summary>
         public int Inteligence { get; set; } = MinimumStat;
+
+        /// <summary>
+        /// Holds The Value for the Character's Agility
+        /// </summary>
         public int Agility { get; set; } = MinimumStat;
+
+        /// <summary>
+        /// Holds The Value for the Character's Constitution
+        /// </summary>
         public int Constitution { get; set; } = MinimumStat;
+
+        /// <summary>
+        /// Holds The Value for the Character's Charisma 
+        /// </summary>
         public int Charisma { get; set; } = MinimumStat;
     }
 }

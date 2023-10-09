@@ -221,19 +221,22 @@ partial class Program
         {
             string value = Console.ReadLine();
 
-            if (String.Equals(value, "Athlete", StringComparison.CurrentCultureIgnoreCase))
-                return "Athlete";
-            else if (String.Equals(value, "Priest", StringComparison.CurrentCultureIgnoreCase))
-                return "Priest";
-            else if (String.Equals(value, "Builder", StringComparison.CurrentCultureIgnoreCase))
-                return "Builder";
-            else if (String.Equals(value, "Botanist", StringComparison.CurrentCultureIgnoreCase))
-                return "Botanist";
-            else if (String.Equals(value, "Hermit", StringComparison.CurrentCultureIgnoreCase))
-                return "Hermit";
-            else if (String.IsNullOrEmpty(value))
-                return "";
+            if (!String.IsNullOrEmpty(value))
+            {
 
+                if (String.Equals(value, "Athlete", StringComparison.CurrentCultureIgnoreCase))
+                    return "Athlete";
+                else if (String.Equals(value, "Priest", StringComparison.CurrentCultureIgnoreCase))
+                    return "Priest";
+                else if (String.Equals(value, "Builder", StringComparison.CurrentCultureIgnoreCase))
+                    return "Builder";
+                else if (String.Equals(value, "Botanist", StringComparison.CurrentCultureIgnoreCase))
+                    return "Botanist";
+                else if (String.Equals(value, "Hermit", StringComparison.CurrentCultureIgnoreCase))
+                    return "Hermit";
+            } 
+
+            Console.WriteLine("Please Enter A Proper Profession");
         } while (true);
     }
 
@@ -243,20 +246,22 @@ partial class Program
         do
         {
             string value = Console.ReadLine();
-            if (String.Equals(value, "Human", StringComparison.CurrentCultureIgnoreCase))
-                return "Human";
-            else if (String.Equals(value, "Elf", StringComparison.CurrentCultureIgnoreCase))
-                return "Elf";
-            else if (String.Equals(value, "Astral-Born", StringComparison.CurrentCultureIgnoreCase))
-                return "Astral-Born";
-            else if (String.Equals(value, "Dwarf", StringComparison.CurrentCultureIgnoreCase))
-                return "Dwarf";
-            else if (String.Equals(value, "Dragonborn", StringComparison.CurrentCultureIgnoreCase))
-                return "Dragonborn";
-            else if (String.IsNullOrEmpty(value))
-                return "";
 
+            if (!String.IsNullOrEmpty(value))
+            {
+                if (String.Equals(value, "Human", StringComparison.CurrentCultureIgnoreCase))
+                    return "Human";
+                else if (String.Equals(value, "Elf", StringComparison.CurrentCultureIgnoreCase))
+                    return "Elf";
+                else if (String.Equals(value, "Astral-Born", StringComparison.CurrentCultureIgnoreCase))
+                    return "Astral-Born";
+                else if (String.Equals(value, "Dwarf", StringComparison.CurrentCultureIgnoreCase))
+                    return "Dwarf";
+                else if (String.Equals(value, "Dragonborn", StringComparison.CurrentCultureIgnoreCase))
+                    return "Dragonborn";
+            }
 
+            Console.WriteLine("Please Enter A Race From the List");
         } while (true);
     }
 
