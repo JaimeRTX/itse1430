@@ -139,12 +139,12 @@ partial class Program
             character.Name = ReadString("Enter Your New Name", true);
         }
 
-        if (Confirm("Would You Like to Change Your Profession(Y/N)"))
+        if (Confirm("Would You Like to Change Your Profession[Athlete, Priest, Builder, Botanist, Hermit](Y/N)"))
         {
             character.Profession = ReadString("Enter Your New Profession", true);
         }
 
-        if (Confirm("Would You Like to Change Your Race(Y/N)"))
+        if (Confirm("Would You Like to Change Your Race[Human, Elf, Astral-Born, Dwarf, Dragonborn](Y/N)"))
         {
             character.Race = ReadString("Enter Your New Race", true);
         }
