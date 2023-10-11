@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace JaimeRodriguez.CharacterCreator_
 {
+    ///<remarks>
+    ///This Class Holds The Values and Initizilatzation of different aspect used for the Charactrer Creator. 
+    ///</remarks>
+    /// <summary>
+    /// It Represents the Character and each aspect of it 
+    /// </summary>
     public class Character
     {
         private string _name;
