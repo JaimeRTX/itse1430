@@ -7,6 +7,19 @@ public partial class MainForm : Form
         InitializeComponent();
     }
 
+    protected override void OnFormClosing (FormClosingEventArgs e)
+    {
+        if(_movie != null)
+        {
+            if(!Confirm("Exit", "Do You Want to Exit?"))
+            {
+                e.Cancel = true;
+                return;
+            }
+        };
+        base.OnFormClosing(e);
+    }
+
     private void OnFileExit ( object sender, EventArgs e )
     {
         Close();
@@ -18,12 +31,34 @@ public partial class MainForm : Form
 
         //ShowDialog = modal
         //Show -modeless
-        dlg.ShowDialog();
+        if (dlg.ShowDialog() != DialogResult.OK)
+        {
+            return;
+        }
+
+        //TODO:Add Movie to Library
+        _movie = dlg.Movie;
+        RefreshMovies();
     }
 
     private void OnEditMovie ( object sender, EventArgs e )
     {
-        MessageBox.Show("Edit Not Implemented");
+        var movie = GetSelectedMovie();
+        if(movie == null)
+        {
+            return;
+        }
+
+        var dlg = new MovieForm();
+        dlg.Movie = movie;
+
+        if (dlg.ShowDialog() != DialogResult.OK)
+        {
+            return;
+        }
+
+        _movie = dlg.Movie;
+        RefreshMovies();
     }
 
     private void OnDeleteMovie ( object sender, EventArgs e )
@@ -38,6 +73,7 @@ public partial class MainForm : Form
         }
 
         _movie = null;
+        RefreshMovies();
     }
 
     private void OnHelpAbout (object sender, EventArgs e)
@@ -57,7 +93,18 @@ public partial class MainForm : Form
         return _movie;
     }
 
-    private Movie _movie = new Movie() { Title = "Jaws" };
+    private void RefreshMovies()
+    {
+        _lstMovies.DataSource = null;
+        
+        //HACK: Fix This
+        if(_movie != null )
+        {
+            _lstMovies.DataSource = new[] { _movie };
+        }
+    }
+
+    private Movie _movie;
 
     //private Movie _movie;
     //private MovieLibrary.Movie _movie;

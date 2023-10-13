@@ -17,8 +17,53 @@ namespace MovieLibrary.WinHost
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Gets the New Movie
+        /// </summary>
+        public Movie Movie { get; set; }
+
+        protected override void OnLoad ( EventArgs e )
+        {
+            base.OnLoad ( e );
+
+            if(Movie != null)
+            {
+                Text = "Edit Movie";
+                _txtTitle.Text = Movie.Title;
+                _txtDescription.Text = Movie.Description;
+                _txtGenre.Text = Movie.Genre;
+
+                _cbRating.Text = Movie.Rating?.Name;
+                _txtReleaseYear.Text = Movie.ReleaseYear.ToString();
+                _txtRunLength.Text = Movie.RunLength.ToString();
+
+                _chkBlackWhite.Checked = Movie.IsBlackAndWhite;
+            }
+        }
+
         private void OnSave ( object sender, EventArgs e )
         {
+
+            var button = sender as Button;
+            var movie = new Movie();
+
+            //Populate from the UI
+            movie.Title = _txtTitle.Text;
+            movie.Description = _txtDescription.Text;
+            movie.Genre = _txtGenre.Text;
+
+            movie.Rating = new Rating(_cbRating.Text);
+            movie.ReleaseYear = GetInt32(_txtReleaseYear, 0);
+            movie.RunLength = GetInt32( _txtReleaseYear, -1);
+
+            movie.IsBlackAndWhite = _chkBlackWhite.Checked;
+
+            if(!movie.TryValidate(out var error))
+            {
+                MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            Movie = movie;
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -27,6 +72,16 @@ namespace MovieLibrary.WinHost
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private int GetInt32(Control control, int defaultValue)
+        {
+            if (Int32.TryParse(control.Text, out var value))
+            {
+                return value;
+            }
+
+            return defaultValue;
         }
     }
 }
