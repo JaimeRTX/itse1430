@@ -109,6 +109,7 @@
             this._txtReleaseYear.Name = "_txtReleaseYear";
             this._txtReleaseYear.Size = new System.Drawing.Size(75, 23);
             this._txtReleaseYear.TabIndex = 2;
+            this._txtReleaseYear.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateReleaseYear);
             // 
             // _txtGenre
             // 
@@ -132,6 +133,7 @@
             this._cbRating.Name = "_cbRating";
             this._cbRating.Size = new System.Drawing.Size(75, 23);
             this._cbRating.TabIndex = 1;
+            this._cbRating.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateRating);
             // 
             // _txtRunLength
             // 
@@ -139,6 +141,7 @@
             this._txtRunLength.Name = "_txtRunLength";
             this._txtRunLength.Size = new System.Drawing.Size(75, 23);
             this._txtRunLength.TabIndex = 4;
+            this._txtRunLength.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateRunLength);
             // 
             // label1
             // 
