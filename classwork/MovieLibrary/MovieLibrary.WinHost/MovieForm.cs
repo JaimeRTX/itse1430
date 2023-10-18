@@ -60,12 +60,13 @@ namespace MovieLibrary.WinHost
 
             if(!movie.TryValidate(out var error))
             {
-                MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.None;
                 return;
             }
             Movie = movie;
-            DialogResult = DialogResult.OK;
-            Close();
+            //DialogResult = DialogResult.OK;
+            //Close();
         }
 
         private void OnCancel ( object sender, EventArgs e )
@@ -82,6 +83,63 @@ namespace MovieLibrary.WinHost
             }
 
             return defaultValue;
+        }
+
+        private void MovieForm_Load ( object sender, EventArgs e )
+        {
+
+        }
+
+        private void OnValidateTitle ( object sender, CancelEventArgs e )
+        {
+            if (String.IsNullOrEmpty(_txtRunLength.Text))
+            {
+                _errors.SetError(_txtTitle, "Title Is Required");
+                e.Cancel = true;
+            } else
+            {
+                _errors.SetError(_txtTitle, "");
+            }
+
+        }
+
+        private void OnValidateReleaseYear ( object sender, CancelEventArgs e )
+        {
+            if (String.IsNullOrEmpty(_txtReleaseYear.Text))
+            {
+                _errors.SetError(_txtReleaseYear, "Release Year must be at least 1900");
+                e.Cancel = true;
+            } else
+            {
+                _errors.SetError(_txtReleaseYear, "");
+            }
+
+        }
+
+        private void OnValidateRunLength ( object sender, CancelEventArgs e )
+        {
+            if (String.IsNullOrEmpty(_txtRunLength.Text))
+            {
+                _errors.SetError(_txtRunLength, "Run Length Must Be >= 0");
+                e.Cancel = true;
+            } else
+            {
+                _errors.SetError(_txtRunLength, "");
+            }
+
+        }
+
+        private void OnValidateRating ( object sender, CancelEventArgs e )
+        {
+            if (String.IsNullOrEmpty(_cbRating.Text))
+            {
+                _errors.SetError(_cbRating, "Rating Is Required");
+                e.Cancel = true;
+            } else
+            {
+                _errors.SetError(_cbRating, "");
+            }
+
         }
     }
 }

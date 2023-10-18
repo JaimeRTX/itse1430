@@ -31,7 +31,7 @@ public partial class MainForm : Form
 
         //ShowDialog = modal
         //Show -modeless
-        if (dlg.ShowDialog() != DialogResult.OK)
+        if (dlg.ShowDialog(this) != DialogResult.OK)
         {
             return;
         }
@@ -52,7 +52,7 @@ public partial class MainForm : Form
         var dlg = new MovieForm();
         dlg.Movie = movie;
 
-        if (dlg.ShowDialog() != DialogResult.OK)
+        if (dlg.ShowDialog(this) != DialogResult.OK)
         {
             return;
         }
@@ -79,12 +79,12 @@ public partial class MainForm : Form
     private void OnHelpAbout (object sender, EventArgs e)
     {
         var about = new AboutBox();
-        about.ShowDialog();
+        about.ShowDialog(this);
     }
 
     private bool Confirm (string title, string message)
     {
-       return MessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+       return MessageBox.Show(this, message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
 
     }
 
