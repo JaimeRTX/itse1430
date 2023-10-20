@@ -44,7 +44,7 @@ public class Movie : ValidatableObject
         //Mixed Accesibility - getter/setter has different access than property
         get;
         /* set;*/
-        private set;
+        set;
     }
 
     //private void Initialize(int id, string title)

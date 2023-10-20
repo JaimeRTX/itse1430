@@ -39,10 +39,18 @@ namespace MovieLibrary.WinHost
 
                 _chkBlackWhite.Checked = Movie.IsBlackAndWhite;
             }
+
+            ValidateChildren();
         }
 
         private void OnSave ( object sender, EventArgs e )
         {
+            //Validate and abort if necesarry
+           if(!ValidateChildren())
+            {
+                DialogResult = DialogResult.None;
+                return;
+            }
 
             var button = sender as Button;
             var movie = new Movie();
@@ -92,7 +100,7 @@ namespace MovieLibrary.WinHost
 
         private void OnValidateTitle ( object sender, CancelEventArgs e )
         {
-            if (String.IsNullOrEmpty(_txtRunLength.Text))
+            if (String.IsNullOrEmpty(_txtTitle.Text))
             {
                 _errors.SetError(_txtTitle, "Title Is Required");
                 e.Cancel = true;
@@ -105,7 +113,8 @@ namespace MovieLibrary.WinHost
 
         private void OnValidateReleaseYear ( object sender, CancelEventArgs e )
         {
-            if (String.IsNullOrEmpty(_txtReleaseYear.Text))
+            var value = GetInt32(_txtReleaseYear, 1);
+            if (value < 1900)
             {
                 _errors.SetError(_txtReleaseYear, "Release Year must be at least 1900");
                 e.Cancel = true;
@@ -118,7 +127,9 @@ namespace MovieLibrary.WinHost
 
         private void OnValidateRunLength ( object sender, CancelEventArgs e )
         {
-            if (String.IsNullOrEmpty(_txtRunLength.Text))
+
+            var value = GetInt32 (_txtRunLength, 1);
+            if (value < 0)
             {
                 _errors.SetError(_txtRunLength, "Run Length Must Be >= 0");
                 e.Cancel = true;

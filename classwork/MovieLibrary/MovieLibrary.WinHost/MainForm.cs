@@ -7,17 +7,24 @@ public partial class MainForm : Form
         InitializeComponent();
     }
 
-    protected override void OnFormClosing (FormClosingEventArgs e)
+    //protected override void OnFormClosing (FormClosingEventArgs e)
+    //{
+    //    if(_movie != null)
+    //    {
+    //        if(!Confirm("Exit", "Do You Want to Exit?"))
+    //        {
+    //            e.Cancel = true;
+    //            return;
+    //        }
+    //    };
+    //    base.OnFormClosing(e);
+    //}
+
+    protected override void OnLoad ( EventArgs e)
     {
-        if(_movie != null)
-        {
-            if(!Confirm("Exit", "Do You Want to Exit?"))
-            {
-                e.Cancel = true;
-                return;
-            }
-        };
-        base.OnFormClosing(e);
+        base.OnLoad (e);
+
+        RefreshMovies();
     }
 
     private void OnFileExit ( object sender, EventArgs e )
@@ -29,15 +36,27 @@ public partial class MainForm : Form
     {
         var dlg = new MovieForm();
 
-        //ShowDialog = modal
-        //Show -modeless
-        if (dlg.ShowDialog(this) != DialogResult.OK)
+        do
         {
-            return;
-        }
 
-        //TODO:Add Movie to Library
-        _movie = dlg.Movie;
+
+            //ShowDialog = modal
+            //Show -modeless
+            if (dlg.ShowDialog(this) != DialogResult.OK)
+            {
+                return;
+            }
+
+            //TODO:Add Movie to Library
+            //_movie = dlg.Movie;
+            var error = _database.Add(dlg.Movie);
+            if (String.IsNullOrEmpty(error))
+            {
+                break;
+            }
+            MessageBox.Show(this, error, "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        } while (true);
+
         RefreshMovies();
     }
 
@@ -57,7 +76,8 @@ public partial class MainForm : Form
             return;
         }
 
-        _movie = dlg.Movie;
+        //_movie = dlg.Movie;
+        _database.Update(dlg.Movie);
         RefreshMovies();
     }
 
@@ -72,7 +92,8 @@ public partial class MainForm : Form
             return;
         }
 
-        _movie = null;
+        //_movie = null;
+        _database.Delete(movie.Id);
         RefreshMovies();
     }
 
@@ -90,21 +111,23 @@ public partial class MainForm : Form
 
     private Movie GetSelectedMovie()
     {
-        return _movie;
+        return _lstMovies.SelectedItem as Movie;
     }
 
     private void RefreshMovies()
     {
         _lstMovies.DataSource = null;
-        
+
         //HACK: Fix This
-        if(_movie != null )
-        {
-            _lstMovies.DataSource = new[] { _movie };
-        }
+        var movie = _database.GetAll();
+        _lstMovies.DataSource = movie;
+
+        //movie[10] = new Movie() { Title = "Bob" };
+
+        //var movies2 = _database.GetAll();
     }
 
-    private Movie _movie;
+    private MovieDatabase _database = new MovieDatabase();
 
     //private Movie _movie;
     //private MovieLibrary.Movie _movie;
