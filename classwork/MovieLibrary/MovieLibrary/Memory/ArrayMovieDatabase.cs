@@ -1,14 +1,13 @@
-﻿
-namespace MovieLibrary;
+﻿namespace MovieLibrary.Memory;
 
 /// <summary>
 /// Represents a Database of Movies
 /// </summary>
 
-public class MovieDatabase
+public class ArrayMovieDatabase
 {
 
-    public MovieDatabase ()
+    public ArrayMovieDatabase ()
     {
         //Object Initializer
         //var movie = new Movie();
@@ -20,43 +19,48 @@ public class MovieDatabase
         //_movies[0] = movie;
 
 
-        _movies[0]= new Movie() {
-            Id = _id++,
-            Title = "Jaws",
-            ReleaseYear = 1990,
-            Rating = Rating.R,
-            RunLength = 120,
+        var movies = new[] {
+            new Movie() {
+                Title = "Jaws",
+                ReleaseYear = 1990,
+                Rating = Rating.R,
+                RunLength = 120,
+            },
+
+            new Movie() {
+                Title = "Jaws 2",
+                ReleaseYear = 1992,
+                Rating = Rating.R,
+                RunLength = 135,
+            },
+
+
+            new Movie() {
+                Title = "Jaws 3",
+                ReleaseYear = 1997,
+                Rating = Rating.R,
+                RunLength = 120,
+            },
+
         };
 
-        movie = new Movie();
-        movie.Id = _id++;
-        movie.Title = "Jaws 2";
-        movie.ReleaseYear = 1993;
-        movie.Rating = Rating.R;
-        movie.RunLength = 135;
-        _movies[1] = movie;
 
-        movie = new Movie();
-        movie.Id = _id++;
-        movie.Title = "Jaws 3";
-        movie.ReleaseYear = 1997;
-        movie.Rating = Rating.R;
-        movie.RunLength = 120;
-        _movies[2] = movie;
+        //Enumeration-use foreach
+        //foreach- statement ::=foreach (T id in array) S;
+        //1. Loop Varient is Readonly
+        //2. array must be immutable while enumarating
+        //for(int index = 0; index < movies.Length; index++)
+        foreach (var movie in movies)
+        {
+            Add(movie);
+        }
 
-        movie = new Movie();
-        movie.Id = _id++;
-        movie.Title = "Jaws 4: New Bites";
-        movie.ReleaseYear = 1999;
-        movie.Rating = Rating.R;
-        movie.RunLength = 200;
-        _movies[3] = movie;
     }
 
     public string Add ( Movie movie )
     {
         //Validate: null, invalid movie
-        if ( movie == null )
+        if (movie == null)
         {
             return "Movie is null";
         }
@@ -125,14 +129,14 @@ public class MovieDatabase
             }
         }
 
-            return items;
+        return items;
     }
 
     private readonly Movie[] _movies = new Movie[100];
     private int _id = 1;
 
 
-    private Movie Clone (Movie movie)
+    private Movie Clone ( Movie movie )
     {
         var item = new Movie();
         item.Id = movie.Id;
@@ -147,7 +151,7 @@ public class MovieDatabase
         return item;
     }
 
-    private Movie FindByTitle (string title)
+    private Movie FindByTitle ( string title )
     {
         for (var index = 0; index < _movies.Length; ++index)
         {
@@ -159,7 +163,7 @@ public class MovieDatabase
         return null;
     }
 
-    private int FindById(int id)
+    private int FindById ( int id )
     {
         for (var index = 0; index < _movies.Length; ++index)
         {
@@ -170,4 +174,4 @@ public class MovieDatabase
         }
         return -1;
     }
-    }
+}

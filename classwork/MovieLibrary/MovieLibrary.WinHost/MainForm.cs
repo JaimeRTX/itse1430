@@ -1,3 +1,5 @@
+using MovieLibrary.Memory;
+
 namespace MovieLibrary.WinHost;
 
 public partial class MainForm : Form
@@ -71,13 +73,25 @@ public partial class MainForm : Form
         var dlg = new MovieForm();
         dlg.Movie = movie;
 
-        if (dlg.ShowDialog(this) != DialogResult.OK)
-        {
-            return;
-        }
 
-        //_movie = dlg.Movie;
-        _database.Update(dlg.Movie);
+        do
+        {
+
+
+            if (dlg.ShowDialog(this) != DialogResult.OK)
+            {
+                return;
+            }
+
+            //_movie = dlg.Movie;
+            var error = _database.Update(movie.Id, dlg.Movie);
+            if (String.IsNullOrEmpty(error))
+            {
+                break;
+            }
+            MessageBox.Show(this, error, "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        } while (true);
+
         RefreshMovies();
     }
 
@@ -127,7 +141,7 @@ public partial class MainForm : Form
         //var movies2 = _database.GetAll();
     }
 
-    private MovieDatabase _database = new MovieDatabase();
+    private MemoryMovieDatabase _database = new MemoryMovieDatabase();
 
     //private Movie _movie;
     //private MovieLibrary.Movie _movie;
