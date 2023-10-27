@@ -156,36 +156,46 @@ public class MemoryMovieDatabase
 
     }
 
-    public Movie[] GetAll ()
+    public IEnumerable<Movie> GetAll ()
     {
-        var count = _movies.Count;
-        //How Many Are Not Null
-        //var count = 0;
-        //for (var index = 0; index < _movies.Length; ++index)
+        //var count = _movies.Count;
+        ////How Many Are Not Null
+        ////var count = 0;
+        ////for (var index = 0; index < _movies.Length; ++index)
+        ////{
+        ////    if (_movies[index] != null)
+        ////    {
+        ////        ++count;
+        ////    }
+
+        ////}
+        ////Clone Array
+        //var items = new Movie[_movies.Count];
+        //var itemIndex = 0;
+        //foreach (var movie in _movies)
+        //    items[itemIndex++] = movie;
+        ////for (var index = 0; index < _movies.Length; ++index)
+        ////{
+        ////    if (_movies[index] != null)
+        ////    {
+        ////        items[itemIndex++] = Clone(_movies[index]);
+        ////    }
+        ////}
+
+        //If Return Type is IEnumerable<T> then you say Iterator to implement
+        //var items = new List<Movie>();
+        //foreach (var movie in _movies)
         //{
-        //    if (_movies[index] != null)
-        //    {
-        //        ++count;
-        //    }
-
+        //    items.Add(Clone(movie));
         //}
+        //return _movies;
 
+        foreach(var movie in _movies)
+        {
+            //Yield Only Allowed in an Iterator
+            yield return Clone(movie);
+        }
 
-
-        //Clone Array
-        var items = new Movie[_movies.Count];
-        var itemIndex = 0;
-        foreach (var movie in _movies)
-            items[itemIndex++] = movie;
-        //for (var index = 0; index < _movies.Length; ++index)
-        //{
-        //    if (_movies[index] != null)
-        //    {
-        //        items[itemIndex++] = Clone(_movies[index]);
-        //    }
-        //}
-
-        return items;
     }
 
     //private readonly Movie[] _movies = new Movie[100];
