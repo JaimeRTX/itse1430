@@ -4,7 +4,7 @@ namespace MovieLibrary.WinHost;
 
 public partial class MainForm : Form
 {
-    public MainForm()
+    public MainForm ()
     {
         InitializeComponent();
     }
@@ -22,9 +22,9 @@ public partial class MainForm : Form
     //    base.OnFormClosing(e);
     //}
 
-    protected override void OnLoad ( EventArgs e)
+    protected override void OnLoad ( EventArgs e )
     {
-        base.OnLoad (e);
+        base.OnLoad(e);
 
         RefreshMovies();
     }
@@ -65,7 +65,7 @@ public partial class MainForm : Form
     private void OnEditMovie ( object sender, EventArgs e )
     {
         var movie = GetSelectedMovie();
-        if(movie == null)
+        if (movie == null)
         {
             return;
         }
@@ -111,24 +111,24 @@ public partial class MainForm : Form
         RefreshMovies();
     }
 
-    private void OnHelpAbout (object sender, EventArgs e)
+    private void OnHelpAbout ( object sender, EventArgs e )
     {
         var about = new AboutBox();
         about.ShowDialog(this);
     }
 
-    private bool Confirm (string title, string message)
+    private bool Confirm ( string title, string message )
     {
-       return MessageBox.Show(this, message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        return MessageBox.Show(this, message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
 
     }
 
-    private Movie GetSelectedMovie()
+    private Movie GetSelectedMovie ()
     {
         return _lstMovies.SelectedItem as Movie;
     }
 
-    private void RefreshMovies()
+    private void RefreshMovies ()
     {
         _lstMovies.DataSource = null;
 
@@ -142,6 +142,11 @@ public partial class MainForm : Form
     }
 
     private MemoryMovieDatabase _database = new MemoryMovieDatabase();
+
+    private void _lstMovies_SelectedIndexChanged ( object sender, EventArgs e )
+    {
+
+    }
 
     //private Movie _movie;
     //private MovieLibrary.Movie _movie;

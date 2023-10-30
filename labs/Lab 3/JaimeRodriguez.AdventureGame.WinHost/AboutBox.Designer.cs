@@ -1,4 +1,4 @@
-﻿namespace MovieLibrary.WinHost
+﻿namespace JaimeRodriguez.AdventureGame.WinHost
 {
     partial class AboutBox
     {

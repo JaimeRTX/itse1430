@@ -24,9 +24,9 @@ namespace MovieLibrary.WinHost
 
         protected override void OnLoad ( EventArgs e )
         {
-            base.OnLoad ( e );
+            base.OnLoad(e);
 
-            if(Movie != null)
+            if (Movie != null)
             {
                 Text = "Edit Movie";
                 _txtTitle.Text = Movie.Title;
@@ -46,7 +46,7 @@ namespace MovieLibrary.WinHost
         private void OnSave ( object sender, EventArgs e )
         {
             //Validate and abort if necesarry
-           if(!ValidateChildren())
+            if (!ValidateChildren())
             {
                 DialogResult = DialogResult.None;
                 return;
@@ -62,11 +62,11 @@ namespace MovieLibrary.WinHost
 
             movie.Rating = new Rating(_cbRating.Text);
             movie.ReleaseYear = GetInt32(_txtReleaseYear, 0);
-            movie.RunLength = GetInt32( _txtReleaseYear, -1);
+            movie.RunLength = GetInt32(_txtReleaseYear, -1);
 
             movie.IsBlackAndWhite = _chkBlackWhite.Checked;
 
-            if(!movie.TryValidate(out var error))
+            if (!movie.TryValidate(out var error))
             {
                 MessageBox.Show(this, error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult = DialogResult.None;
@@ -83,7 +83,7 @@ namespace MovieLibrary.WinHost
             Close();
         }
 
-        private int GetInt32(Control control, int defaultValue)
+        private int GetInt32 ( Control control, int defaultValue )
         {
             if (Int32.TryParse(control.Text, out var value))
             {
@@ -128,7 +128,7 @@ namespace MovieLibrary.WinHost
         private void OnValidateRunLength ( object sender, CancelEventArgs e )
         {
 
-            var value = GetInt32 (_txtRunLength, 1);
+            var value = GetInt32(_txtRunLength, 1);
             if (value < 0)
             {
                 _errors.SetError(_txtRunLength, "Run Length Must Be >= 0");
@@ -150,6 +150,11 @@ namespace MovieLibrary.WinHost
             {
                 _errors.SetError(_cbRating, "");
             }
+
+        }
+
+        private void _txtTitle_TextChanged ( object sender, EventArgs e )
+        {
 
         }
     }
