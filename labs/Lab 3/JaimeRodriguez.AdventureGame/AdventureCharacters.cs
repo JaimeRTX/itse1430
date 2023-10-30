@@ -1,195 +1,201 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace JaimeRodriguez.AdventureGame
-{
-        ///<remarks>
-        ///This Class Holds The Values and Initizilatzation of different aspect used for the Charactrer Creator. 
-        ///</remarks>
-        /// <summary>
-        /// It Represents the Character and each aspect of it 
-        /// </summary>
-        public class AdventureCharacters : IValidatableObject
+namespace JaimeRodriguez.AdventureGame;
+
+    ///<remarks>
+    ///This Class Holds The Values and Initizilatzation of different aspect used for the Charactrer Creator. 
+    ///</remarks>
+    /// <summary>
+    /// It Represents the Character and each aspect of it 
+    /// </summary>
+    public class AdventureCharacters : IValidatableObject
     {
-            private string _name;
-            private string _profession;
-            private string _race;
 
-            /// <summary>
-            /// This Stores The Name of the Character User Makes
-            /// </summary>
-            public string Name
-            {
-                get {
-                    if (String.IsNullOrEmpty(_name))
-                        return "";
-                    return _name;
-                }
-                set {
-                    if (value != null)
-                        value = value.Trim();
-                    _name = value;
-                }
-            }
+        public AdventureCharacters()
+    {
+        _initilized = true;
+    }
+        private readonly bool _initilized = false;
+        private string _name;
+        private string _profession;
+        private string _race;
 
-            /// <summary>
-            /// This Stores the Profession of the Character User Makes
-            /// </summary>
-            public string Profession
-            {
-                get {
-                    if (String.IsNullOrEmpty(_profession))
-                        return "";
-
-                    return _profession;
-                }
-                set {
-                    _profession = value;
-                }
-            }
-
-            /// <summary>
-            /// This Stores The Race of the Character User Makes
-            /// </summary>
-            public string Race
-            {
-                get {
-                    if (String.IsNullOrEmpty(_race))
-                        return "";
-                    return _race;
-                }
-                set {
-                    _race = value;
-                }
-            }
-
-            /// <summary>
-            /// The Value of the Minimum Value for Stats
-            /// </summary>
-            public const int MinimumStat = 1;
-
-            /// <summary>
-            /// The Value of the Maximum Value for Stats
-            /// </summary>
-            public const int MaximumStat = 100;
-
-            /// <summary>
-            /// Holds The Value for the Character's Strength 
-            /// </summary>
-            public int Strength { get; set; } = MinimumStat;
-
-            /// <summary>
-            /// Holds The Value for the Character's Inteligence
-            /// </summary>
-            public int Inteligence { get; set; } = MinimumStat;
-
-            /// <summary>
-            /// Holds The Value for the Character's Agility
-            /// </summary>
-            public int Agility { get; set; } = MinimumStat;
-
-            /// <summary>
-            /// Holds The Value for the Character's Constitution
-            /// </summary>
-            public int Constitution { get; set; } = MinimumStat;
-
-            /// <summary>
-            /// Holds The Value for the Character's Charisma 
-            /// </summary>
-            public int Charisma { get; set; } = MinimumStat;
-
-            /// <summary>
-            /// Holds Unique ID for each charcter
-            /// </summary>
-            public int CharacterId { get; set; }
-
-        public bool TryValidate ( out string message )
+        /// <summary>
+        /// This Stores The Name of the Character User Makes
+        /// </summary>
+        public string Name
         {
-            if(String.IsNullOrEmpty(_name))
-            {
-                message = "Character Name can't be Empty";
-                return false;
+            get {
+                if (String.IsNullOrEmpty(_name))
+                    return "";
+                return _name;
             }
-            if(String.IsNullOrEmpty(_profession)) 
-            {
-
-                message = "Profession Can't be Empty";
-                return false;
+            set {
+                if (value != null)
+                    value = value.Trim();
+                _name = value;
             }
+        }
 
-            if (Strength!<= MaximumStat && Strength!>= MinimumStat)
-            {
-                message = "Strength Stat Must be between 1-100";
-                return false;
+        /// <summary>
+        /// This Stores the Profession of the Character User Makes
+        /// </summary>
+        public string Profession
+        {
+            get {
+                if (String.IsNullOrEmpty(_profession))
+                    return "";
+
+                return _profession;
             }
-
-            if (Inteligence!<= MaximumStat && Inteligence!>= MinimumStat)
-            {
-                message = "Inteligence Stat Must be between 1-100";
-                return false;
+            set {
+                _profession = value;
             }
+        }
 
-            if (Agility!<= MaximumStat && Agility!>= MinimumStat)
-            {
-                message = "Agility Stat Must be between 1-100";
-                return false;
+        /// <summary>
+        /// This Stores The Race of the Character User Makes
+        /// </summary>
+        public string Race
+        {
+            get {
+                if (String.IsNullOrEmpty(_race))
+                    return "";
+                return _race;
             }
-
-            if (Constitution!<= MaximumStat && Constitution!>= MinimumStat)
-            {
-                message = "Constitution Stat Must be between 1-100";
-                return false;
+            set {
+                _race = value;
             }
+        }
 
-            if (Charisma!<= MaximumStat && Charisma!>= MinimumStat)
-            {
-                message = "Charisma Stat Must be between 1-100";
-                return false;
-            }
+        /// <summary>
+        /// The Value of the Minimum Value for Stats
+        /// </summary>
+        public const int MinimumStat = 1;
 
-            message = "";
+        /// <summary>
+        /// The Value of the Maximum Value for Stats
+        /// </summary>
+        public const int MaximumStat = 100;
+
+        /// <summary>
+        /// Holds The Value for the Character's Strength 
+        /// </summary>
+        public int Strength { get; set; } = MinimumStat;
+
+        /// <summary>
+        /// Holds The Value for the Character's Inteligence
+        /// </summary>
+        public int Inteligence { get; set; } = MinimumStat;
+
+        /// <summary>
+        /// Holds The Value for the Character's Agility
+        /// </summary>
+        public int Agility { get; set; } = MinimumStat;
+
+        /// <summary>
+        /// Holds The Value for the Character's Constitution
+        /// </summary>
+        public int Constitution { get; set; } = MinimumStat;
+
+        /// <summary>
+        /// Holds The Value for the Character's Charisma 
+        /// </summary>
+        public int Charisma { get; set; } = MinimumStat;
+
+        /// <summary>
+        /// Holds Unique ID for each charcter
+        /// </summary>
+        public int CharacterId { get; set; }
+
+    public bool TryValidate ( out string message )
+    {
+        if(String.IsNullOrEmpty(_name))
+        {
+            message = "Character Name can't be Empty";
+            return false;
+        }
+        if(String.IsNullOrEmpty(_profession)) 
+        {
+
+            message = "Profession Can't be Empty";
             return false;
         }
 
-
-
-
-        public IEnumerable<ValidationResult> Validate ( ValidationContext validationContext )
+        if (Strength!<= MaximumStat && Strength!>= MinimumStat)
         {
-            if (String.IsNullOrEmpty(_name))
-            {
-                yield return new ValidationResult("Character Name is Required");
-            }
+            message = "Strength Stat Must be between 1-100";
+            return false;
+        }
 
-            if(String.IsNullOrEmpty(_profession))
-            {
-                yield return new ValidationResult("Profession is Required");
-            }
+        if (Inteligence!<= MaximumStat && Inteligence!>= MinimumStat)
+        {
+            message = "Inteligence Stat Must be between 1-100";
+            return false;
+        }
 
-            if (Strength !<= MaximumStat && Strength !>= MinimumStat)
-            {
-                yield return new ValidationResult("Strength Stat Must be between 1-100");
-            }
+        if (Agility!<= MaximumStat && Agility!>= MinimumStat)
+        {
+            message = "Agility Stat Must be between 1-100";
+            return false;
+        }
 
-            if (Inteligence !<= MaximumStat && Inteligence !>= MinimumStat)
-            {
-                yield return new ValidationResult("Inteligence Stat Must be between 1-100");
-            }
+        if (Constitution!<= MaximumStat && Constitution!>= MinimumStat)
+        {
+            message = "Constitution Stat Must be between 1-100";
+            return false;
+        }
 
-            if (Agility !<= MaximumStat && Agility !>= MinimumStat)
-            {
-                yield return new ValidationResult("Agility Stat Must be between 1-100");
-            }
+        if (Charisma!<= MaximumStat && Charisma!>= MinimumStat)
+        {
+            message = "Charisma Stat Must be between 1-100";
+            return false;
+        }
 
-            if (Constitution !<= MaximumStat && Constitution !>= MinimumStat)
-            {
-                yield return new ValidationResult("Constitution Stat Must be between 1-100");
-            }
+        message = "";
+        return false;
+    }
 
-            if (Charisma !<= MaximumStat && Charisma !>= MinimumStat)
-            {
-                yield return new ValidationResult("Charisma Stat Must be between 1-100");
-            }
 
+
+
+    public IEnumerable<ValidationResult> Validate ( ValidationContext validationContext )
+    {
+        if (String.IsNullOrEmpty(_name))
+        {
+            yield return new ValidationResult("Character Name is Required");
+        }
+
+        if(String.IsNullOrEmpty(_profession))
+        {
+            yield return new ValidationResult("Profession is Required");
+        }
+
+        if (Strength !<= MaximumStat && Strength !>= MinimumStat)
+        {
+            yield return new ValidationResult("Strength Stat Must be between 1-100");
+        }
+
+        if (Inteligence !<= MaximumStat && Inteligence !>= MinimumStat)
+        {
+            yield return new ValidationResult("Inteligence Stat Must be between 1-100");
+        }
+
+        if (Agility !<= MaximumStat && Agility !>= MinimumStat)
+        {
+            yield return new ValidationResult("Agility Stat Must be between 1-100");
+        }
+
+        if (Constitution !<= MaximumStat && Constitution !>= MinimumStat)
+        {
+            yield return new ValidationResult("Constitution Stat Must be between 1-100");
+        }
+
+        if (Charisma !<= MaximumStat && Charisma !>= MinimumStat)
+        {
+            yield return new ValidationResult("Charisma Stat Must be between 1-100");
         }
 
     }
-    }
+
+}
+
