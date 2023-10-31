@@ -10,4 +10,8 @@
     <Company>Jaime Rodriguez</Company>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JaimeRodriguez.AdventureGame\JaimeRodriguez.AdventureGame.csproj" />
+  </ItemGroup>
+
 </Project>

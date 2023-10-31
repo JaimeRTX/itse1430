@@ -37,7 +37,7 @@
             deleteToolStripMenuItem=new ToolStripMenuItem();
             aboutToolStripMenuItem=new ToolStripMenuItem();
             aboutToolStripMenuItem1=new ToolStripMenuItem();
-            listBox1=new ListBox();
+            _lstCharacters=new ListBox();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -61,7 +61,7 @@
             // 
             exitToolStripMenuItem.Name="exitToolStripMenuItem";
             exitToolStripMenuItem.ShortcutKeys=Keys.Shift|Keys.Delete;
-            exitToolStripMenuItem.Size=new Size(149, 22);
+            exitToolStripMenuItem.Size=new Size(180, 22);
             exitToolStripMenuItem.Text="Exit";
             exitToolStripMenuItem.Click+=OnFileExit;
             // 
@@ -75,20 +75,26 @@
             // addToolStripMenuItem
             // 
             addToolStripMenuItem.Name="addToolStripMenuItem";
-            addToolStripMenuItem.Size=new Size(107, 22);
+            addToolStripMenuItem.ShortcutKeys=Keys.Control|Keys.N;
+            addToolStripMenuItem.Size=new Size(180, 22);
             addToolStripMenuItem.Text="Add";
+            addToolStripMenuItem.Click+=OnAddCharacter;
             // 
             // editToolStripMenuItem
             // 
             editToolStripMenuItem.Name="editToolStripMenuItem";
-            editToolStripMenuItem.Size=new Size(107, 22);
+            editToolStripMenuItem.ShortcutKeys=Keys.Control|Keys.O;
+            editToolStripMenuItem.Size=new Size(180, 22);
             editToolStripMenuItem.Text="Edit";
+            editToolStripMenuItem.Click+=OnEditCharacter;
             // 
             // deleteToolStripMenuItem
             // 
             deleteToolStripMenuItem.Name="deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size=new Size(107, 22);
+            deleteToolStripMenuItem.ShortcutKeys=Keys.Delete;
+            deleteToolStripMenuItem.Size=new Size(180, 22);
             deleteToolStripMenuItem.Text="Delete";
+            deleteToolStripMenuItem.Click+=OnDeleteCharacter;
             // 
             // aboutToolStripMenuItem
             // 
@@ -101,26 +107,26 @@
             // 
             aboutToolStripMenuItem1.Name="aboutToolStripMenuItem1";
             aboutToolStripMenuItem1.ShortcutKeys=Keys.F1;
-            aboutToolStripMenuItem1.Size=new Size(126, 22);
+            aboutToolStripMenuItem1.Size=new Size(180, 22);
             aboutToolStripMenuItem1.Text="About";
             aboutToolStripMenuItem1.Click+=OnHelpAbout;
             // 
-            // listBox1
+            // _lstCharacters
             // 
-            listBox1.Dock=DockStyle.Fill;
-            listBox1.FormattingEnabled=true;
-            listBox1.ItemHeight=15;
-            listBox1.Location=new Point(0, 24);
-            listBox1.Name="listBox1";
-            listBox1.Size=new Size(800, 426);
-            listBox1.TabIndex=1;
+            _lstCharacters.Dock=DockStyle.Fill;
+            _lstCharacters.FormattingEnabled=true;
+            _lstCharacters.ItemHeight=15;
+            _lstCharacters.Location=new Point(0, 24);
+            _lstCharacters.Name="_lstCharacters";
+            _lstCharacters.Size=new Size(800, 426);
+            _lstCharacters.TabIndex=1;
             // 
             // MainForm
             // 
             AutoScaleDimensions=new SizeF(7F, 15F);
             AutoScaleMode=AutoScaleMode.Font;
             ClientSize=new Size(800, 450);
-            Controls.Add(listBox1);
+            Controls.Add(_lstCharacters);
             Controls.Add(menuStrip1);
             MainMenuStrip=menuStrip1;
             Name="MainForm";
@@ -143,6 +149,6 @@
         private ToolStripMenuItem editToolStripMenuItem;
         private ToolStripMenuItem deleteToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem1;
-        private ListBox listBox1;
+        private ListBox _lstCharacters;
     }
 }
