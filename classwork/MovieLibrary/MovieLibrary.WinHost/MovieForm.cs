@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -66,9 +67,13 @@ namespace MovieLibrary.WinHost
 
             movie.IsBlackAndWhite = _chkBlackWhite.Checked;
 
-            if (!movie.TryValidate(out var error))
+            //Validate
+           
+            //if (!movie.TryValidate(out var error))
+            if(!new ObjectValidator().TryValidate(movie, out var results))
             {
-                MessageBox.Show(this, error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var error = results.First();
+                MessageBox.Show(this, error.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult = DialogResult.None;
                 return;
             }

@@ -4,7 +4,7 @@
 /// Represents a Database of Movies
 /// </summary>
 
-public class MemoryMovieDatabase
+public class MemoryMovieDatabase : MovieDatabase
 {
 
     public MemoryMovieDatabase ()
@@ -69,75 +69,25 @@ public class MemoryMovieDatabase
 
     }
 
-    public string Add ( Movie movie )
+    protected override Movie AddCore ( Movie movie )
     {
-        //Validate: null, invalid movie
-        if (movie == null)
-        {
-            return "Movie is null";
-        }
-        if (!movie.TryValidate(out var error))
-        {
-            return error;
-        }
-
-        //Title Must be Unique 
-        var existing = FindByTitle(movie.Title);
-        if (existing != null)
-        {
-            return "Movie title must be Unique";
-        }
-
-        //Find an Empty Slot
-        //for (var index = 0; index < _movies.Length; ++index)
-        //{
-        //    if (_movies[index] == null)
-        //    {
-        //        movie.Id = _id++;
-        //        _movies[index] = Clone(movie);
-        //        return "";
-        //    }
-        //}
+       
         movie.Id = _id++;
         _movies.Add(Clone(movie));
-        return "";
+        return movie;
     }
 
-    public string Update (int id, Movie movie )
+    protected override void UpdateCore ( int id, Movie movie )
     {
-
-        if(id <= 0)
-        {
-            return "ID is Invalid";
-        }
-
-        if (movie == null)
-        {
-            return "Movie is null";
-        }
-
-        if (!movie.TryValidate(out var error))
-        {
-            return error;
-        }
-        
-        //Title must be unique and not self
-        var existing = FindByTitle(movie.Title);
-        if (existing != null && existing.Id != id)
-        {
-            return "Movie title must be Unique";
-        }
-
-        //Movie must exist
-        existing = FindById(id);
-        if(existing == null)
-        {
-            return "Movie Not Found";
-        }
-
-        //Update
+       var  existing = FindById(id);
         Copy(existing, movie);
-        return "";
+    }
+
+    protected override void DeleteCore ( int id )
+    {
+        var movie = FindById(id);
+        if (movie != null)
+            _movies.Remove(movie);
     }
 
     public void Delete ( int id )
@@ -149,14 +99,26 @@ public class MemoryMovieDatabase
         //    _movies[index] = null;
         //}
         var movie = FindById(id);
-        if(movie != null)
+        if (movie != null)
         {
             _movies.Remove(movie); //Reference Equality
         }
 
     }
 
-    public IEnumerable<Movie> GetAll ()
+
+
+    protected override Movie GetCore ( int id )
+    {
+        var movie = FindById(id);
+        if(movie == null)
+        {
+            return null;
+        }
+        return Clone(movie);
+    }
+
+    protected override IEnumerable<Movie> GetAllCore ()
     {
         //var count = _movies.Count;
         ////How Many Are Not Null
@@ -190,7 +152,7 @@ public class MemoryMovieDatabase
         //}
         //return _movies;
 
-        foreach(var movie in _movies)
+        foreach (var movie in _movies)
         {
             //Yield Only Allowed in an Iterator
             yield return Clone(movie);
@@ -213,7 +175,7 @@ public class MemoryMovieDatabase
         return item;
     }
 
-    private void Copy(Movie target, Movie source)
+    private void Copy ( Movie target, Movie source )
     {
         //Don't Copy ID
         target.Title = source.Title;
@@ -225,7 +187,7 @@ public class MemoryMovieDatabase
         target.Genre = source.Genre;
     }
 
-    private Movie FindByTitle ( string title )
+    protected override Movie FindByTitle ( string title )
     {
         //for (var index = 0; index < _movies.Length; ++index)
         //{
@@ -234,15 +196,15 @@ public class MemoryMovieDatabase
         //        return _movies[index];
         //    }
         //}
-        foreach(var movie in _movies)
-            if(String.Equals(title, movie.Title, StringComparison.OrdinalIgnoreCase))
+        foreach (var movie in _movies)
+            if (String.Equals(title, movie.Title, StringComparison.OrdinalIgnoreCase))
             {
                 return movie;
             }
         return null;
     }
 
-    private Movie FindById ( int id )
+    protected override Movie FindById ( int id )
     {
         //for (var index = 0; index < _movies.Length; ++index)
         //{
@@ -251,8 +213,8 @@ public class MemoryMovieDatabase
         //        return index;
         //    }
         //}
-        foreach(var movie in _movies)
-            if(movie.Id == id)
+        foreach (var movie in _movies)
+            if (movie.Id == id)
             {
                 return movie;
             }

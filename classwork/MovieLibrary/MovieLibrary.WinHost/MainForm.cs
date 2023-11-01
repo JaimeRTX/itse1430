@@ -134,14 +134,18 @@ public partial class MainForm : Form
 
         //HACK: Fix This
         var movie = _database.GetAll();
-        _lstMovies.DataSource = movie;
+
+        var source = new BindingSource() { DataSource = movie };
+
+
+        _lstMovies.DataSource = source;
 
         //movie[10] = new Movie() { Title = "Bob" };
 
         //var movies2 = _database.GetAll();
     }
 
-    private MemoryMovieDatabase _database = new MemoryMovieDatabase();
+    private IMovieDatabase _database = new MemoryMovieDatabase();
 
     private void _lstMovies_SelectedIndexChanged ( object sender, EventArgs e )
     {

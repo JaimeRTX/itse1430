@@ -6,4 +6,8 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Memory\ArrayMovieDatabase.cs" />
+  </ItemGroup>
+
 </Project>

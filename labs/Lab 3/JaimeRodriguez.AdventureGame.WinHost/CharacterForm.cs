@@ -172,4 +172,9 @@ public partial class CharacterForm : Form
 
         return defaultValue;
     }
+
+    private void CharacterForm_Load ( object sender, EventArgs e )
+    {
+
+    }
 }

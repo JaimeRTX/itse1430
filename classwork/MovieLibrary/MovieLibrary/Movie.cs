@@ -230,42 +230,42 @@ public class Movie : IValidatableObject
     /// <returns?>
     /// Error Message if Invalid or empty string otherwise
     /// </returns>
-    public bool TryValidate ( out string message )
-    {
-        //TODO: Replace Soon
-        //Title is Required
-        if (String.IsNullOrEmpty(_title))
-        {
-            message = "Title is Required";
-            return false;
-        }
-        //error
-        //Release Year =1900
-        if (ReleaseYear < MininumReleaseYear)
-        {
-            message = $"Release Year must be >= {MininumReleaseYear}";
-            return false;
-        }
-        //Length >= 0
-        if (_length < 0)
-        {
-            message = "Length must be at least 0";
-            return false;
-        }
-        //Rating is in a list
-        //If ReleaseYear < 1940 then IsBlackAndWhite must be true
-        if (ReleaseYear < 1940 && !IsBlackAndWhite)
-        {
-            message ="Movies Before 1940 must be in Black or White";
-            return false;
-        }
+    //public bool TryValidate ( out string message )
+    //{
+    //    //TODO: Replace Soon
+    //    //Title is Required
+    //    if (String.IsNullOrEmpty(_title))
+    //    {
+    //        message = "Title is Required";
+    //        return false;
+    //    }
+    //    //error
+    //    //Release Year =1900
+    //    if (ReleaseYear < MininumReleaseYear)
+    //    {
+    //        message = $"Release Year must be >= {MininumReleaseYear}";
+    //        return false;
+    //    }
+    //    //Length >= 0
+    //    if (_length < 0)
+    //    {
+    //        message = "Length must be at least 0";
+    //        return false;
+    //    }
+    //    //Rating is in a list
+    //    //If ReleaseYear < 1940 then IsBlackAndWhite must be true
+    //    if (ReleaseYear < 1940 && !IsBlackAndWhite)
+    //    {
+    //        message ="Movies Before 1940 must be in Black or White";
+    //        return false;
+    //    }
 
-        //Valid
-        //return base.TryValidate ( out message );
+    //    //Valid
+    //    //return base.TryValidate ( out message );
 
-        message = "";
-        return false;
-    }
+    //    message = "";
+    //    return false;
+    //}
     public override string ToString()
     {
         return $"{Title} [{ReleaseYear}]";

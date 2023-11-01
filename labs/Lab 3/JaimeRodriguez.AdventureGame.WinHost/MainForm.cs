@@ -100,7 +100,10 @@ namespace JaimeRodriguez.AdventureGame.WinHost
             _lstCharacters.DataSource = null;
 
             var character = _database.GetAll();
-            _lstCharacters.DataSource = character;
+
+            var source = new BindingSource { DataSource = character };
+
+            _lstCharacters.DataSource = source;
         }
 
         private AdventureCharacters GetSelectedCharacter ()
@@ -112,5 +115,7 @@ namespace JaimeRodriguez.AdventureGame.WinHost
         {
             return MessageBox.Show(this, message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
+
+    
     }
 }
