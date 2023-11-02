@@ -28,231 +28,230 @@
         /// </summary>
         private void InitializeComponent ()
         {
-            this.components = new System.ComponentModel.Container();
-            this._txtName = new System.Windows.Forms.TextBox();
-            this._cbProfession = new System.Windows.Forms.ComboBox();
-            this._cbRace = new System.Windows.Forms.ComboBox();
-            this._txtStrength = new System.Windows.Forms.TextBox();
-            this._txtInteligence = new System.Windows.Forms.TextBox();
-            this._txtAgility = new System.Windows.Forms.TextBox();
-            this._txtConstitution = new System.Windows.Forms.TextBox();
-            this._txtCharisma = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this._btnSave = new System.Windows.Forms.Button();
-            this._btnCancel = new System.Windows.Forms.Button();
-            this._errors = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this._errors)).BeginInit();
-            this.SuspendLayout();
+            components=new System.ComponentModel.Container();
+            _txtName=new TextBox();
+            _cbProfession=new ComboBox();
+            _cbRace=new ComboBox();
+            _txtStrength=new TextBox();
+            _txtInteligence=new TextBox();
+            _txtAgility=new TextBox();
+            _txtConstitution=new TextBox();
+            _txtCharisma=new TextBox();
+            label1=new Label();
+            label2=new Label();
+            label3=new Label();
+            label4=new Label();
+            label5=new Label();
+            label6=new Label();
+            label7=new Label();
+            label8=new Label();
+            _btnSave=new Button();
+            _btnCancel=new Button();
+            _errors=new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)_errors).BeginInit();
+            SuspendLayout();
             // 
             // _txtName
             // 
-            this._txtName.Location = new System.Drawing.Point(85, 17);
-            this._txtName.Name = "_txtName";
-            this._txtName.Size = new System.Drawing.Size(100, 23);
-            this._txtName.TabIndex = 0;
+            _txtName.Location=new Point(85, 17);
+            _txtName.Name="_txtName";
+            _txtName.Size=new Size(100, 23);
+            _txtName.TabIndex=0;
+            _txtName.Validating+=OnValidateName;
             // 
             // _cbProfession
             // 
-            this._cbProfession.FormattingEnabled = true;
-            this._cbProfession.Items.AddRange(new object[] {
-            "Athlete",
-            "Priest",
-            "Builder",
-            "Botanist",
-            "Hermit"});
-            this._cbProfession.Location = new System.Drawing.Point(85, 46);
-            this._cbProfession.Name = "_cbProfession";
-            this._cbProfession.Size = new System.Drawing.Size(121, 23);
-            this._cbProfession.TabIndex = 1;
+            _cbProfession.FormattingEnabled=true;
+            _cbProfession.Items.AddRange(new object[] { "Athlete", "Priest", "Builder", "Botanist", "Hermit" });
+            _cbProfession.Location=new Point(85, 46);
+            _cbProfession.Name="_cbProfession";
+            _cbProfession.Size=new Size(121, 23);
+            _cbProfession.TabIndex=1;
+            _cbProfession.Validating+=OnValidateProffession;
             // 
             // _cbRace
             // 
-            this._cbRace.FormattingEnabled = true;
-            this._cbRace.Items.AddRange(new object[] {
-            "Human",
-            "Elf",
-            "Astral-Born",
-            "Dwarf",
-            "Dragonborn"});
-            this._cbRace.Location = new System.Drawing.Point(85, 75);
-            this._cbRace.Name = "_cbRace";
-            this._cbRace.Size = new System.Drawing.Size(121, 23);
-            this._cbRace.TabIndex = 2;
+            _cbRace.FormattingEnabled=true;
+            _cbRace.Items.AddRange(new object[] { "Human", "Elf", "Astral-Born", "Dwarf", "Dragonborn" });
+            _cbRace.Location=new Point(85, 75);
+            _cbRace.Name="_cbRace";
+            _cbRace.Size=new Size(121, 23);
+            _cbRace.TabIndex=2;
+            _cbRace.Validating+=OnValidateRace;
             // 
             // _txtStrength
             // 
-            this._txtStrength.Location = new System.Drawing.Point(85, 104);
-            this._txtStrength.Name = "_txtStrength";
-            this._txtStrength.Size = new System.Drawing.Size(100, 23);
-            this._txtStrength.TabIndex = 3;
-            this._txtStrength.Text = "50";
+            _txtStrength.Location=new Point(85, 104);
+            _txtStrength.Name="_txtStrength";
+            _txtStrength.Size=new Size(100, 23);
+            _txtStrength.TabIndex=3;
+            _txtStrength.Text="50";
+            _txtStrength.Validating+=OnValidateStrength;
             // 
             // _txtInteligence
             // 
-            this._txtInteligence.Location = new System.Drawing.Point(85, 133);
-            this._txtInteligence.Name = "_txtInteligence";
-            this._txtInteligence.Size = new System.Drawing.Size(100, 23);
-            this._txtInteligence.TabIndex = 4;
-            this._txtInteligence.Text = "50";
+            _txtInteligence.Location=new Point(85, 133);
+            _txtInteligence.Name="_txtInteligence";
+            _txtInteligence.Size=new Size(100, 23);
+            _txtInteligence.TabIndex=4;
+            _txtInteligence.Text="50";
+            _txtInteligence.Validating+=OnValidateInteligence;
             // 
             // _txtAgility
             // 
-            this._txtAgility.Location = new System.Drawing.Point(85, 162);
-            this._txtAgility.Name = "_txtAgility";
-            this._txtAgility.Size = new System.Drawing.Size(100, 23);
-            this._txtAgility.TabIndex = 5;
-            this._txtAgility.Text = "50";
+            _txtAgility.Location=new Point(85, 162);
+            _txtAgility.Name="_txtAgility";
+            _txtAgility.Size=new Size(100, 23);
+            _txtAgility.TabIndex=5;
+            _txtAgility.Text="50";
+            _txtAgility.Validating+=OnValidateAgility;
             // 
             // _txtConstitution
             // 
-            this._txtConstitution.Location = new System.Drawing.Point(85, 191);
-            this._txtConstitution.Name = "_txtConstitution";
-            this._txtConstitution.Size = new System.Drawing.Size(100, 23);
-            this._txtConstitution.TabIndex = 6;
-            this._txtConstitution.Text = "50";
+            _txtConstitution.Location=new Point(85, 191);
+            _txtConstitution.Name="_txtConstitution";
+            _txtConstitution.Size=new Size(100, 23);
+            _txtConstitution.TabIndex=6;
+            _txtConstitution.Text="50";
+            _txtConstitution.Validating+=OnValidateConstitution;
             // 
             // _txtCharisma
             // 
-            this._txtCharisma.Location = new System.Drawing.Point(85, 220);
-            this._txtCharisma.Name = "_txtCharisma";
-            this._txtCharisma.Size = new System.Drawing.Size(100, 23);
-            this._txtCharisma.TabIndex = 7;
-            this._txtCharisma.Text = "50";
+            _txtCharisma.Location=new Point(85, 220);
+            _txtCharisma.Name="_txtCharisma";
+            _txtCharisma.Size=new Size(100, 23);
+            _txtCharisma.TabIndex=7;
+            _txtCharisma.Text="50";
+            _txtCharisma.Validating+=OnValidateCharisma;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 15);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Name";
+            label1.AutoSize=true;
+            label1.Location=new Point(40, 25);
+            label1.Name="label1";
+            label1.Size=new Size(39, 15);
+            label1.TabIndex=8;
+            label1.Text="Name";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 15);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Profession";
+            label2.AutoSize=true;
+            label2.Location=new Point(17, 54);
+            label2.Name="label2";
+            label2.Size=new Size(62, 15);
+            label2.TabIndex=9;
+            label2.Text="Profession";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 83);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 15);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Race";
+            label3.AutoSize=true;
+            label3.Location=new Point(47, 83);
+            label3.Name="label3";
+            label3.Size=new Size(32, 15);
+            label3.TabIndex=10;
+            label3.Text="Race";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 112);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 15);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Strength";
+            label4.AutoSize=true;
+            label4.Location=new Point(27, 112);
+            label4.Name="label4";
+            label4.Size=new Size(52, 15);
+            label4.TabIndex=11;
+            label4.Text="Strength";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 141);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 15);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Inteligence";
+            label5.AutoSize=true;
+            label5.Location=new Point(14, 141);
+            label5.Name="label5";
+            label5.Size=new Size(65, 15);
+            label5.TabIndex=12;
+            label5.Text="Inteligence";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(38, 170);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 15);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Agility";
+            label6.AutoSize=true;
+            label6.Location=new Point(38, 170);
+            label6.Name="label6";
+            label6.Size=new Size(41, 15);
+            label6.TabIndex=13;
+            label6.Text="Agility";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 199);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 15);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Constitution";
+            label7.AutoSize=true;
+            label7.Location=new Point(6, 199);
+            label7.Name="label7";
+            label7.Size=new Size(73, 15);
+            label7.TabIndex=14;
+            label7.Text="Constitution";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(22, 228);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 15);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Charisma";
+            label8.AutoSize=true;
+            label8.Location=new Point(22, 228);
+            label8.Name="label8";
+            label8.Size=new Size(57, 15);
+            label8.TabIndex=15;
+            label8.Text="Charisma";
             // 
             // _btnSave
             // 
-            this._btnSave.Location = new System.Drawing.Point(47, 249);
-            this._btnSave.Name = "_btnSave";
-            this._btnSave.Size = new System.Drawing.Size(75, 23);
-            this._btnSave.TabIndex = 16;
-            this._btnSave.Text = "Save";
-            this._btnSave.UseVisualStyleBackColor = true;
+            _btnSave.Location=new Point(47, 249);
+            _btnSave.Name="_btnSave";
+            _btnSave.Size=new Size(75, 23);
+            _btnSave.TabIndex=16;
+            _btnSave.Text="Save";
+            _btnSave.UseVisualStyleBackColor=true;
+            _btnSave.Click+=OnSave;
             // 
             // _btnCancel
             // 
-            this._btnCancel.Location = new System.Drawing.Point(131, 249);
-            this._btnCancel.Name = "_btnCancel";
-            this._btnCancel.Size = new System.Drawing.Size(75, 23);
-            this._btnCancel.TabIndex = 17;
-            this._btnCancel.Text = "Cancel";
-            this._btnCancel.UseVisualStyleBackColor = true;
+            _btnCancel.Location=new Point(131, 249);
+            _btnCancel.Name="_btnCancel";
+            _btnCancel.Size=new Size(75, 23);
+            _btnCancel.TabIndex=17;
+            _btnCancel.Text="Cancel";
+            _btnCancel.UseVisualStyleBackColor=true;
+            _btnCancel.Click+=OnCancel;
             // 
             // _errors
             // 
-            this._errors.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this._errors.ContainerControl = this;
+            _errors.BlinkStyle=ErrorBlinkStyle.NeverBlink;
+            _errors.ContainerControl=this;
             // 
             // CharacterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(269, 281);
-            this.Controls.Add(this._btnCancel);
-            this.Controls.Add(this._btnSave);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this._txtCharisma);
-            this.Controls.Add(this._txtConstitution);
-            this.Controls.Add(this._txtAgility);
-            this.Controls.Add(this._txtInteligence);
-            this.Controls.Add(this._txtStrength);
-            this.Controls.Add(this._cbRace);
-            this.Controls.Add(this._cbProfession);
-            this.Controls.Add(this._txtName);
-            this.MaximumSize = new System.Drawing.Size(300, 330);
-            this.MinimumSize = new System.Drawing.Size(285, 320);
-            this.Name = "CharacterForm";
-            this.Text = "Create New Character";
-            this.Load += new System.EventHandler(this.CharacterForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this._errors)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions=new SizeF(7F, 15F);
+            AutoScaleMode=AutoScaleMode.Font;
+            ClientSize=new Size(269, 281);
+            Controls.Add(_btnCancel);
+            Controls.Add(_btnSave);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(_txtCharisma);
+            Controls.Add(_txtConstitution);
+            Controls.Add(_txtAgility);
+            Controls.Add(_txtInteligence);
+            Controls.Add(_txtStrength);
+            Controls.Add(_cbRace);
+            Controls.Add(_cbProfession);
+            Controls.Add(_txtName);
+            MaximumSize=new Size(300, 330);
+            MinimumSize=new Size(285, 320);
+            Name="CharacterForm";
+            Text="Create New Character";
+            Load+=CharacterForm_Load;
+            ((System.ComponentModel.ISupportInitialize)_errors).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

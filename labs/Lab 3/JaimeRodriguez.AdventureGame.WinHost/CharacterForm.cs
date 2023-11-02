@@ -66,9 +66,10 @@ public partial class CharacterForm : Form
         character.Constitution = GetInt32(_txtConstitution, 1);
         character.Charisma = GetInt32(_txtCharisma, 1);
 
-        if (!character.TryValidate(out var error))
+        if (!new ObjectValidator().TryValidate(character, out var results))
         {
-            MessageBox.Show(this, error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            var error = results.First();
+            MessageBox.Show(this, error.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             DialogResult = DialogResult.None;
             return;
         }
@@ -93,10 +94,34 @@ public partial class CharacterForm : Form
         }
     }
 
+    private void OnValidateProffession ( object sender, CancelEventArgs e )
+    {
+        if (String.IsNullOrEmpty(_cbProfession.Text))
+        {
+            _errors.SetError(_cbProfession, "Choose a Profession");
+            e.Cancel = true;
+        } else
+        {
+            _errors.SetError(_cbProfession, "");
+        }
+    }
+
+    private void OnValidateRace ( object sender, CancelEventArgs e )
+    {
+        if (String.IsNullOrEmpty(_cbRace.Text))
+        {
+            _errors.SetError(_cbRace, "Choose a Race");
+            e.Cancel = true;
+        } else
+        {
+            _errors.SetError(_cbRace, "");
+        }
+    }
+
     private void OnValidateStrength ( object sender, CancelEventArgs e )
     {
         var value = GetInt32(_txtStrength, 1);
-        if (value!<= 100 && value!>= 1)
+        if (value > 100 || value < 1)
         {
             _errors.SetError(_txtStrength, "Strength Stat Must be 1-100");
             e.Cancel = true;
@@ -110,7 +135,7 @@ public partial class CharacterForm : Form
     private void OnValidateInteligence ( object sender, CancelEventArgs e )
     {
         var value = GetInt32(_txtInteligence, 1);
-        if (value!<= 100 && value!>= 1)
+        if (value > 100 || value < 1)
         {
             _errors.SetError(_txtInteligence, "Inteligence Stat Must be 1-100");
             e.Cancel = true;
@@ -124,7 +149,7 @@ public partial class CharacterForm : Form
     private void OnValidateAgility ( object sender, CancelEventArgs e )
     {
         var value = GetInt32(_txtAgility, 1);
-        if (value!<= 100 && value!>= 1)
+        if (value > 100 || value < 1)
         {
             _errors.SetError(_txtAgility, "Agility Stat Must be 1-100");
             e.Cancel = true;
@@ -138,7 +163,7 @@ public partial class CharacterForm : Form
     private void OnValidateConstitution ( object sender, CancelEventArgs e )
     {
         var value = GetInt32(_txtConstitution, 1);
-        if (value!<= 100 && value!>= 1)
+        if (value > 100 || value < 1)
         {
             _errors.SetError(_txtConstitution, "Constitution Stat Must be 1-100");
             e.Cancel = true;
@@ -152,7 +177,7 @@ public partial class CharacterForm : Form
     private void OnValidateCharisma ( object sender, CancelEventArgs e )
     {
         var value = GetInt32(_txtCharisma, 1);
-        if (value!<= 100 && value!>= 1)
+        if (value > 100 || value < 1)
         {
             _errors.SetError(_txtCharisma, "Charisma Stat Must be 1-100");
             e.Cancel = true;

@@ -107,53 +107,7 @@ namespace JaimeRodriguez.AdventureGame;
         /// </summary>
         public int CharacterId { get; set; }
 
-    public bool TryValidate ( out string message )
-    {
-        if(String.IsNullOrEmpty(_name))
-        {
-            message = "Character Name can't be Empty";
-            return false;
-        }
-        if(String.IsNullOrEmpty(_profession)) 
-        {
-
-            message = "Profession Can't be Empty";
-            return false;
-        }
-
-        if (Strength!<= MaximumStat && Strength!>= MinimumStat)
-        {
-            message = "Strength Stat Must be between 1-100";
-            return false;
-        }
-
-        if (Inteligence!<= MaximumStat && Inteligence!>= MinimumStat)
-        {
-            message = "Inteligence Stat Must be between 1-100";
-            return false;
-        }
-
-        if (Agility!<= MaximumStat && Agility!>= MinimumStat)
-        {
-            message = "Agility Stat Must be between 1-100";
-            return false;
-        }
-
-        if (Constitution!<= MaximumStat && Constitution!>= MinimumStat)
-        {
-            message = "Constitution Stat Must be between 1-100";
-            return false;
-        }
-
-        if (Charisma!<= MaximumStat && Charisma!>= MinimumStat)
-        {
-            message = "Charisma Stat Must be between 1-100";
-            return false;
-        }
-
-        message = "";
-        return false;
-    }
+   
 
 
 
@@ -170,27 +124,27 @@ namespace JaimeRodriguez.AdventureGame;
             yield return new ValidationResult("Profession is Required");
         }
 
-        if (Strength !<= MaximumStat && Strength !>= MinimumStat)
+        if (Strength > MaximumStat || Strength < MinimumStat)
         {
             yield return new ValidationResult("Strength Stat Must be between 1-100");
         }
 
-        if (Inteligence !<= MaximumStat && Inteligence !>= MinimumStat)
+        if (Inteligence > MaximumStat && Inteligence < MinimumStat)
         {
             yield return new ValidationResult("Inteligence Stat Must be between 1-100");
         }
 
-        if (Agility !<= MaximumStat && Agility !>= MinimumStat)
+        if (Agility > MaximumStat && Agility < MinimumStat)
         {
             yield return new ValidationResult("Agility Stat Must be between 1-100");
         }
 
-        if (Constitution !<= MaximumStat && Constitution !>= MinimumStat)
+        if (Constitution > MaximumStat && Constitution < MinimumStat)
         {
             yield return new ValidationResult("Constitution Stat Must be between 1-100");
         }
 
-        if (Charisma !<= MaximumStat && Charisma !>= MinimumStat)
+        if (Charisma > MaximumStat && Charisma < MinimumStat)
         {
             yield return new ValidationResult("Charisma Stat Must be between 1-100");
         }

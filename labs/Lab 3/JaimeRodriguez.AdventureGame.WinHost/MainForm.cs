@@ -116,6 +116,6 @@ namespace JaimeRodriguez.AdventureGame.WinHost
             return MessageBox.Show(this, message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
 
-    
+
     }
 }
