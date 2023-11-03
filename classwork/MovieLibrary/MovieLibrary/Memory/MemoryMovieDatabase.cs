@@ -7,68 +7,6 @@
 public class MemoryMovieDatabase : MovieDatabase
 {
 
-    public MemoryMovieDatabase ()
-    {
-        //Object Initializer - replace need for creating an object (expression) and then assigning values to properties (statements)
-        //object-initializer ::= new T() {property-assignment+}
-        //Property-assignment ::=id =Et;
-        //var movie = new Movie();
-        //movie.Id = _id++;
-        //movie.Title = "Jaws";
-        //movie.ReleaseYear = 1990;
-        //movie.Rating = Rating.R;
-        //movie.RunLength = 120;
-        //_movies[0] = movie;
-
-
-        //_movies[0]= new Movie() {
-        //    Id = _id++,
-        //    Title = "Jaws",
-        //    ReleaseYear = 1990,
-        //    Rating = Rating.R,
-        //    RunLength = 120,
-        //};
-
-        //Collection Initilizaer syntax
-        //Set Up Movies
-        var movies = new[] {
-            new Movie() {
-                Title = "Jaws",
-                ReleaseYear = 1990,
-                Rating = Rating.R,
-                RunLength = 120,
-            },
-
-            new Movie() {
-                Title = "Jaws 2",
-                ReleaseYear = 1992,
-                Rating = Rating.R,
-                RunLength = 135,
-            },
-
-
-            new Movie() {
-                Title = "Jaws 3",
-                ReleaseYear = 1997,
-                Rating = Rating.R,
-                RunLength = 120,
-            },
-
-        };
-
-
-        //Enumeration-use foreach
-        //foreach- statement ::=foreach (T id in array) S;
-        //1. Loop Varient is Readonly
-        //2. array must be immutable while enumarating
-        //for(int index = 0; index < movies.Length; index++)
-        foreach (var movie in movies)
-        {
-            Add(movie);
-        }
-
-    }
-
     protected override Movie AddCore ( Movie movie )
     {
        

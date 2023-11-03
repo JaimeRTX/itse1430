@@ -70,7 +70,7 @@ namespace MovieLibrary.WinHost
             //Validate
            
             //if (!movie.TryValidate(out var error))
-            if(!new ObjectValidator().TryValidate(movie, out var results))
+            if(!ObjectValidator.TryValidate(movie, out var results))
             {
                 var error = results.First();
                 MessageBox.Show(this, error.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -15,7 +15,7 @@ public abstract class MovieDatabase : IMovieDatabase
         {
             return "Movie is null";
         }
-        if (!new ObjectValidator().TryValidate(movie, out var error))
+        if (!ObjectValidator.TryValidate(movie, out var error))
         {
             return error.First().ErrorMessage;
         }
@@ -59,7 +59,7 @@ public abstract class MovieDatabase : IMovieDatabase
             return "Movie is null";
         }
 
-        if (!new ObjectValidator().TryValidate(movie, out var error))
+        if (!ObjectValidator.TryValidate(movie, out var error))
         {
             return error.First().ErrorMessage;
         }
@@ -139,7 +139,7 @@ public abstract class MovieDatabase : IMovieDatabase
         //    yield return Clone(movie);
         //}
 
-        return GetAllCore();
+        return GetAllCore() ?? Enumerable.Empty<Movie>();
 
     }
 

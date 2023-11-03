@@ -26,7 +26,7 @@ public partial class MainForm : Form
     {
         base.OnLoad(e);
 
-        RefreshMovies();
+        RefreshMovies(true);
     }
 
     private void OnFileExit ( object sender, EventArgs e )
@@ -128,17 +128,26 @@ public partial class MainForm : Form
         return _lstMovies.SelectedItem as Movie;
     }
 
-    private void RefreshMovies ()
+    private void RefreshMovies (bool initial = false)
     {
         _lstMovies.DataSource = null;
 
         //HACK: Fix This
         var movie = _database.GetAll();
 
-        var source = new BindingSource() { DataSource = movie };
+        if (initial && !movie.Any() && Confirm("Seed", "Do You Want to Seed the Database with movies?"))
+        {
+            //_database.Seed();
+            _database.Seed();
+
+            movie =_database.GetAll();
+        }
+
+        // var typedMovies = movies.OfType<Movie>();
+        //var source = new BindingSource() { DataSource = movie };
 
 
-        _lstMovies.DataSource = source;
+        _lstMovies.DataSource = movie.ToArray();
 
         //movie[10] = new Movie() { Title = "Bob" };
 
