@@ -146,7 +146,7 @@ public partial class MainForm : Form
         // var typedMovies = movies.OfType<Movie>();
         //var source = new BindingSource() { DataSource = movie };
 
-
+            //
         _lstMovies.DataSource = movie.ToArray();
 
         //movie[10] = new Movie() { Title = "Bob" };
