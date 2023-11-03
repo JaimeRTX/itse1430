@@ -142,7 +142,7 @@ public partial class MainForm : Form
 
             movie =_database.GetAll();
         }
-
+        ..
         // var typedMovies = movies.OfType<Movie>();
         //var source = new BindingSource() { DataSource = movie };
 
