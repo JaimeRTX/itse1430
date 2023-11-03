@@ -28,117 +28,113 @@
         /// </summary>
         private void InitializeComponent ()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.charactersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this._lstCharacters = new System.Windows.Forms.ListBox();
-            this.menuStrip1.SuspendLayout();
-            this.SuspendLayout();
+            menuStrip1=new MenuStrip();
+            toolStripMenuItem1=new ToolStripMenuItem();
+            exitToolStripMenuItem=new ToolStripMenuItem();
+            charactersToolStripMenuItem=new ToolStripMenuItem();
+            addToolStripMenuItem=new ToolStripMenuItem();
+            editToolStripMenuItem=new ToolStripMenuItem();
+            deleteToolStripMenuItem=new ToolStripMenuItem();
+            aboutToolStripMenuItem=new ToolStripMenuItem();
+            aboutToolStripMenuItem1=new ToolStripMenuItem();
+            _lstCharacters=new ListBox();
+            menuStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.charactersToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, charactersToolStripMenuItem, aboutToolStripMenuItem });
+            menuStrip1.Location=new Point(0, 0);
+            menuStrip1.Name="menuStrip1";
+            menuStrip1.Size=new Size(800, 24);
+            menuStrip1.TabIndex=0;
+            menuStrip1.Text="menuStrip1";
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(42, 20);
-            this.toolStripMenuItem1.Text = "Files";
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { exitToolStripMenuItem });
+            toolStripMenuItem1.Name="toolStripMenuItem1";
+            toolStripMenuItem1.Size=new Size(42, 20);
+            toolStripMenuItem1.Text="Files";
             // 
             // exitToolStripMenuItem
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.Delete)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            exitToolStripMenuItem.Name="exitToolStripMenuItem";
+            exitToolStripMenuItem.ShortcutKeys=Keys.Shift|Keys.Delete;
+            exitToolStripMenuItem.Size=new Size(180, 22);
+            exitToolStripMenuItem.Text="Exit";
+            exitToolStripMenuItem.Click+=OnFileExit;
             // 
             // charactersToolStripMenuItem
             // 
-            this.charactersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.charactersToolStripMenuItem.Name = "charactersToolStripMenuItem";
-            this.charactersToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.charactersToolStripMenuItem.Text = "Characters";
+            charactersToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addToolStripMenuItem, editToolStripMenuItem, deleteToolStripMenuItem });
+            charactersToolStripMenuItem.Name="charactersToolStripMenuItem";
+            charactersToolStripMenuItem.Size=new Size(75, 20);
+            charactersToolStripMenuItem.Text="Characters";
             // 
             // addToolStripMenuItem
             // 
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.addToolStripMenuItem.Text = "Add";
+            addToolStripMenuItem.Name="addToolStripMenuItem";
+            addToolStripMenuItem.ShortcutKeys=Keys.Control|Keys.N;
+            addToolStripMenuItem.Size=new Size(180, 22);
+            addToolStripMenuItem.Text="Add";
+            addToolStripMenuItem.Click+=OnAddCharacter;
             // 
             // editToolStripMenuItem
             // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.editToolStripMenuItem.Text = "Edit";
+            editToolStripMenuItem.Name="editToolStripMenuItem";
+            editToolStripMenuItem.ShortcutKeys=Keys.Control|Keys.O;
+            editToolStripMenuItem.Size=new Size(180, 22);
+            editToolStripMenuItem.Text="Edit";
+            editToolStripMenuItem.Click+=OnEditCharacter;
             // 
             // deleteToolStripMenuItem
             // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
+            deleteToolStripMenuItem.Name="deleteToolStripMenuItem";
+            deleteToolStripMenuItem.ShortcutKeys=Keys.Delete;
+            deleteToolStripMenuItem.Size=new Size(180, 22);
+            deleteToolStripMenuItem.Text="Delete";
+            deleteToolStripMenuItem.Click+=OnDeleteCharacter;
             // 
             // aboutToolStripMenuItem
             // 
-            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem1});
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.aboutToolStripMenuItem.Text = "Help";
+            aboutToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem1 });
+            aboutToolStripMenuItem.Name="aboutToolStripMenuItem";
+            aboutToolStripMenuItem.Size=new Size(44, 20);
+            aboutToolStripMenuItem.Text="Help";
             // 
             // aboutToolStripMenuItem1
             // 
-            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
-            this.aboutToolStripMenuItem1.Text = "About";
+            aboutToolStripMenuItem1.Name="aboutToolStripMenuItem1";
+            aboutToolStripMenuItem1.ShortcutKeys=Keys.F1;
+            aboutToolStripMenuItem1.Size=new Size(180, 22);
+            aboutToolStripMenuItem1.Text="About";
+            aboutToolStripMenuItem1.Click+=OnHelpAbout;
             // 
             // _lstCharacters
             // 
-            this._lstCharacters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._lstCharacters.FormattingEnabled = true;
-            this._lstCharacters.ItemHeight = 15;
-            this._lstCharacters.Location = new System.Drawing.Point(0, 24);
-            this._lstCharacters.Name = "_lstCharacters";
-            this._lstCharacters.Size = new System.Drawing.Size(800, 426);
-            this._lstCharacters.TabIndex = 1;
+            _lstCharacters.Dock=DockStyle.Fill;
+            _lstCharacters.FormattingEnabled=true;
+            _lstCharacters.ItemHeight=15;
+            _lstCharacters.Location=new Point(0, 24);
+            _lstCharacters.Name="_lstCharacters";
+            _lstCharacters.Size=new Size(800, 426);
+            _lstCharacters.TabIndex=1;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this._lstCharacters);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "MainForm";
-            this.Text = "Jaime Rodriguez Adventure Game";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions=new SizeF(7F, 15F);
+            AutoScaleMode=AutoScaleMode.Font;
+            ClientSize=new Size(800, 450);
+            Controls.Add(_lstCharacters);
+            Controls.Add(menuStrip1);
+            MainMenuStrip=menuStrip1;
+            Name="MainForm";
+            Text="Jaime Rodriguez Adventure Game";
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
