@@ -1,14 +1,6 @@
 ﻿namespace JaimeRodriguez.AdventureGame.Memory;
 public class CharacterDatabase
 {
-    public CharacterDatabase ()
-    {
-        foreach (var character in _characters)
-        {
-            Add(character);
-        }
-
-    }
 
     private readonly List<AdventureCharacters> _characters = new List<AdventureCharacters>();
     private int _characterId;
@@ -62,7 +54,7 @@ public class CharacterDatabase
         {
             return "Character is Null";
         }
-        if (!new ObjectValidator().TryValidate(character, out var error))
+        if (!ObjectValidator.TryValidate(character, out var error))
         {
             return error.First().ErrorMessage;
         }
@@ -85,7 +77,7 @@ public class CharacterDatabase
         {
             return "Character is Null";
         }
-        if (!new ObjectValidator().TryValidate(character, out var error))
+        if (!ObjectValidator.TryValidate(character, out var error))
         {
             return error.First().ErrorMessage;
         }

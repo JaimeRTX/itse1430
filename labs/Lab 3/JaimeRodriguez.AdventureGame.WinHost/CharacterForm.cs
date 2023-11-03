@@ -66,7 +66,7 @@ public partial class CharacterForm : Form
         character.Constitution = GetInt32(_txtConstitution, 1);
         character.Charisma = GetInt32(_txtCharisma, 1);
 
-        if (!new ObjectValidator().TryValidate(character, out var results))
+        if (!ObjectValidator.TryValidate(character, out var results))
         {
             var error = results.First();
             MessageBox.Show(this, error.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

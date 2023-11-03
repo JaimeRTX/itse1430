@@ -9,7 +9,7 @@ namespace JaimeRodriguez.AdventureGame;
 
 public class ObjectValidator
 {
-    public bool TryValidate ( IValidatableObject value, out IEnumerable<ValidationResult> results )
+    public static bool TryValidate ( IValidatableObject value, out IEnumerable<ValidationResult> results )
     {
         var context = new ValidationContext(value);
         var items = new System.Collections.ObjectModel.Collection<ValidationResult>();
