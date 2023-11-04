@@ -74,6 +74,8 @@ public partial class CharacterForm : Form
             return;
         }
         Characters = character;
+        DialogResult = DialogResult.OK;
+        Close();
     }
 
     private void OnCancel ( object sender, EventArgs e )

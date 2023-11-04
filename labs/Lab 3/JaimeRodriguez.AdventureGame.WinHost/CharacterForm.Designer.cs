@@ -198,6 +198,7 @@
             // 
             // _btnSave
             // 
+            _btnSave.Anchor=AnchorStyles.Bottom|AnchorStyles.Right;
             _btnSave.Location=new Point(47, 249);
             _btnSave.Name="_btnSave";
             _btnSave.Size=new Size(75, 23);

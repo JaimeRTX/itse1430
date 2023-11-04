@@ -107,10 +107,10 @@ namespace JaimeRodriguez.AdventureGame;
         /// </summary>
         public int CharacterId { get; set; }
 
-   
-
-
-
+    public override string ToString()
+    {
+        return $"{Name} [{Profession}, {Race}]";
+    }
 
     public IEnumerable<ValidationResult> Validate ( ValidationContext validationContext )
     {

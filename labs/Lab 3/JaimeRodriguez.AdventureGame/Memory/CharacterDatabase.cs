@@ -3,7 +3,7 @@ public class CharacterDatabase
 {
 
     private readonly List<AdventureCharacters> _characters = new List<AdventureCharacters>();
-    private int _characterId;
+    private int _characterId = 1;
     private AdventureCharacters FindByName ( string name )
     {
         foreach (var character in _characters)
@@ -19,7 +19,7 @@ public class CharacterDatabase
     private AdventureCharacters FindByCharacterId ( int characterId )
     {
         foreach (var character in _characters)
-            if (characterId == _characterId)
+            if (character.CharacterId == characterId)
             {
                 return character;
             }
@@ -73,6 +73,7 @@ public class CharacterDatabase
         {
             return "Id is Invalid";
         }
+
         if (character == null)
         {
             return "Character is Null";
