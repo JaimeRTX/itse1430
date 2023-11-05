@@ -4,6 +4,10 @@ public class CharacterDatabase
 
     private readonly List<AdventureCharacters> _characters = new List<AdventureCharacters>();
     private int _characterId = 1;
+
+    /// <summary>
+    /// Checks the Name of the Character
+    /// </summary>
     private AdventureCharacters FindByName ( string name )
     {
         foreach (var character in _characters)
@@ -16,6 +20,9 @@ public class CharacterDatabase
         return null;
     }
 
+    /// <summary>
+    /// Checks the ID Of the Character
+    /// </summary>
     private AdventureCharacters FindByCharacterId ( int characterId )
     {
         foreach (var character in _characters)
@@ -48,6 +55,9 @@ public class CharacterDatabase
     }
 
 
+    /// <summary>
+    /// Helps to Validate and to add a character to the list
+    /// </summary>
     public string Add ( AdventureCharacters character )
     {
         if (character == null)
@@ -67,6 +77,10 @@ public class CharacterDatabase
         _characters.Add(Clone(character));
         return "";
     }
+
+    /// <summary>
+    /// Helps to Edit and to Validate the Edit
+    /// </summary>
     public string Update ( int id, AdventureCharacters character )
     {
         if (id <= 0)
@@ -96,6 +110,10 @@ public class CharacterDatabase
         Copy(existing, character);
         return "";
     }
+
+    /// <summary>
+    /// Helps to Delete the Movie from the list
+    /// </summary>
     public void Delete ( int id )
     {
         var character = FindByCharacterId(id);
