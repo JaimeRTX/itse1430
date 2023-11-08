@@ -90,11 +90,24 @@ public class MemoryMovieDatabase : MovieDatabase
         //}
         //return _movies;
 
-        foreach (var movie in _movies)
-        {
-            //Yield Only Allowed in an Iterator
-            yield return Clone(movie);
-        }
+        //1. Foreach - rarely used due to linq
+        //foreach (var movie in _movies)
+        //{
+        //    //Yield Only Allowed in an Iterator
+        //    yield return Clone(movie);
+        //}
+
+        //2 LINQ Syntax
+        // from id in enumerable =T
+        //[Where Condition]
+        //[Orderby property [, property]
+        //select S
+        //Where movie.id == 0
+        //orderby movie.Title descending, movie.ReleaseYear;
+        return from movie in _movies select Clone(movie);
+
+        //3. Extention Method
+        //return _movies.Select();
 
     }
 
@@ -134,12 +147,17 @@ public class MemoryMovieDatabase : MovieDatabase
         //        return _movies[index];
         //    }
         //}
-        foreach (var movie in _movies)
-            if (String.Equals(title, movie.Title, StringComparison.OrdinalIgnoreCase))
-            {
-                return movie;
-            }
-        return null;
+        //foreach (var movie in _movies)
+        //    if (String.Equals(title, movie.Title, StringComparison.OrdinalIgnoreCase))
+        //    {
+        //        return movie;
+        //    }
+        //return null;
+
+        //LINQ SYNTAX
+        //return (from movie in _movies where movie.Id == id select movie).FirstOrDefault();
+        return _movies.FirstOrDefault(x => String.Equals(title, x.Title, StringComparison.OrdinalIgnoreCase));
+
     }
 
     protected override Movie FindById ( int id )
@@ -151,11 +169,37 @@ public class MemoryMovieDatabase : MovieDatabase
         //        return index;
         //    }
         //}
-        foreach (var movie in _movies)
-            if (movie.Id == id)
-            {
-                return movie;
-            }
-        return null;
+
+        //foreach (var movie in _movies)
+        //    if (movie.Id == id)
+        //    {
+        //        return movie;
+        //    }
+        //return null;
+
+        //1. LINQ Syntax
+        //return (from movie in _movies where movie.Id == id select movie).FirstOrDefault();
+
+
+        //2. lambda - annoymous method, only callable in one place
+        //return _movies.Where(x=> x.Id == id)
+        //               .Select(x=> x)
+        //               .FirstOrDefault();
+
+        //return _movies.Where(MatchMovie)
+        //       .Select(SelectMovie)
+        //       .FirstOrDefault();
+
+        return _movies.FirstOrDefault(x => x.Id == id);
     }
+
+    //private bool MatchMovie (Movie movie)
+    //{
+    //    return movie.Id == id;
+    //}
+
+    //private Movie SelectMovie (Movie movie)
+    //{
+    //    return movie;
+    //}
 }

@@ -133,7 +133,7 @@ public partial class MainForm : Form
         _lstMovies.DataSource = null;
 
         //HACK: Fix This
-        var movie = _database.GetAll();
+        IEnumerable<Movie> movie = _database.GetAll();
 
         if (initial && !movie.Any() && Confirm("Seed", "Do You Want to Seed the Database with movies?"))
         {
@@ -142,11 +142,17 @@ public partial class MainForm : Form
 
             movie =_database.GetAll();
         }
-        ..
-        // var typedMovies = movies.OfType<Movie>();
-        //var source = new BindingSource() { DataSource = movie };
+        
+       // var typedMovies = movies.OfType<Movie>();
+       //var source = new BindingSource() { DataSource = movie };
+       // movie = movie.OrderBy();
 
-            //
+
+       movie = from m in movie orderby m.Title, m.ReleaseYear descending select m;
+
+        //movie.OrderBy(x => x.Title)
+        //    .ThenByDescending(x=> x.ReleaseYear);
+
         _lstMovies.DataSource = movie.ToArray();
 
         //movie[10] = new Movie() { Title = "Bob" };

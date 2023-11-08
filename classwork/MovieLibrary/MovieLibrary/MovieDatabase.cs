@@ -99,49 +99,52 @@ public abstract class MovieDatabase : IMovieDatabase
 
     protected abstract void DeleteCore ( int id );
 
-    public virtual IEnumerable<Movie> GetAll ()
-    {
-        //var count = _movies.Count;
-        ////How Many Are Not Null
-        ////var count = 0;
-        ////for (var index = 0; index < _movies.Length; ++index)
-        ////{
-        ////    if (_movies[index] != null)
-        ////    {
-        ////        ++count;
-        ////    }
+    //public virtual IEnumerable<Movie> GetAll ()
+    //{
+    //var count = _movies.Count;
+    ////How Many Are Not Null
+    ////var count = 0;
+    ////for (var index = 0; index < _movies.Length; ++index)
+    ////{
+    ////    if (_movies[index] != null)
+    ////    {
+    ////        ++count;
+    ////    }
 
-        ////}
-        ////Clone Array
-        //var items = new Movie[_movies.Count];
-        //var itemIndex = 0;
-        //foreach (var movie in _movies)
-        //    items[itemIndex++] = movie;
-        ////for (var index = 0; index < _movies.Length; ++index)
-        ////{
-        ////    if (_movies[index] != null)
-        ////    {
-        ////        items[itemIndex++] = Clone(_movies[index]);
-        ////    }
-        ////}
+    ////}
+    ////Clone Array
+    //var items = new Movie[_movies.Count];
+    //var itemIndex = 0;
+    //foreach (var movie in _movies)
+    //    items[itemIndex++] = movie;
+    ////for (var index = 0; index < _movies.Length; ++index)
+    ////{
+    ////    if (_movies[index] != null)
+    ////    {
+    ////        items[itemIndex++] = Clone(_movies[index]);
+    ////    }
+    ////}
 
-        //If Return Type is IEnumerable<T> then you say Iterator to implement
-        //var items = new List<Movie>();
-        //foreach (var movie in _movies)
-        //{
-        //    items.Add(Clone(movie));
-        //}
-        //return _movies;
+    //If Return Type is IEnumerable<T> then you say Iterator to implement
+    //var items = new List<Movie>();
+    //foreach (var movie in _movies)
+    //{
+    //    items.Add(Clone(movie));
+    //}
+    //return _movies;
 
-        //foreach (var movie in _movies)
-        //{
-        //    //Yield Only Allowed in an Iterator
-        //    yield return Clone(movie);
-        //}
+    //foreach (var movie in _movies)
+    //{
+    //    //Yield Only Allowed in an Iterator
+    //    yield return Clone(movie);
+    //}
 
-        return GetAllCore() ?? Enumerable.Empty<Movie>();
+    //    return GetAllCore() ?? Enumerable.Empty<Movie>();
 
-    }
+    //}
+
+    //Expression Body ::= member who uses lambda syntax
+    public virtual IEnumerable<Movie> GetAll () => GetAllCore() ?? Enumerable.Empty<Movie>();
 
     protected abstract IEnumerable<Movie> GetAllCore ();
 

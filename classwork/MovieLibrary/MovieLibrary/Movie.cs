@@ -107,10 +107,12 @@ public class Movie : IValidatableObject
     /// </summary>
     public string Genre
     {
-        get {
-            return _genre ?? "";
-        }
-        set { _genre = value; }
+        //get {
+        //    return _genre ?? "";
+        //}
+        //set { _genre = value; }
+        get => _genre ?? "";
+        set => _genre = value;
     }
 
     /// <summary>
@@ -118,12 +120,15 @@ public class Movie : IValidatableObject
     /// </summary>
     public string Description
     {
-        get {
-            return _description ?? "";
-        }
-        set {
-            _description = value;
-        }
+        //get {
+        //    return _description ?? "";
+        //}
+        //set {
+        //    _description = value;
+        //}
+
+        get => _description ?? "";
+        set => _description = value;
     }
 
     /// <summary>
@@ -200,16 +205,16 @@ public class Movie : IValidatableObject
     public bool IsBlackAndWhite { get; set; }
 
     //Calculated Property
-    public bool NeedsIntermission
-    {
-        //Run Length >150
-        get {
-            return RunLength >= 150;
-        }
-        //set {
+    public bool NeedsIntermission => RunLength >= 150;
+    //{
+    //    //Run Length >150
+    //    get {
+    //        return RunLength >= 150;
+    //    }
+    //    //set {
 
-        //}
-    }
+    //    //}
+    //}
 
  
 
@@ -266,10 +271,8 @@ public class Movie : IValidatableObject
     //    message = "";
     //    return false;
     //}
-    public override string ToString()
-    {
-        return $"{Title} [{ReleaseYear}]";
-    }
+    public override string ToString() => $"{Title} [{ReleaseYear}]";
+   
 
     public IEnumerable<ValidationResult> Validate ( ValidationContext validationContext )
     {
