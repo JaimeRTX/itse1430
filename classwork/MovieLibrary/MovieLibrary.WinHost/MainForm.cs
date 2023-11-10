@@ -51,12 +51,10 @@ public partial class MainForm : Form
 
             //TODO:Add Movie to Library
             //_movie = dlg.Movie;
-            var error = _database.Add(dlg.Movie);
-            if (String.IsNullOrEmpty(error))
-            {
-                break;
-            }
-            MessageBox.Show(this, error, "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            _database.Add(dlg.Movie);
+            break;
+            
+            //MessageBox.Show(this, error, "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
         } while (true);
 
         RefreshMovies();
@@ -84,12 +82,10 @@ public partial class MainForm : Form
             }
 
             //_movie = dlg.Movie;
-            var error = _database.Update(movie.Id, dlg.Movie);
-            if (String.IsNullOrEmpty(error))
-            {
-                break;
-            }
-            MessageBox.Show(this, error, "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            _database.Update(movie.Id, dlg.Movie);
+            break;
+ 
+            //MessageBox.Show(this, error, "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
         } while (true);
 
         RefreshMovies();

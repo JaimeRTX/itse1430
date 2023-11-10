@@ -21,4 +21,10 @@ public class ObjectValidator
         results = items;
         return false;
     }
+
+    public static void Validate (IValidatableObject value)
+    {
+        var context = new ValidationContext(value);
+        Validator.ValidateObject(value, context, true);
+    }
 }

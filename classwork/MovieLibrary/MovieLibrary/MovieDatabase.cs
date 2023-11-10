@@ -8,23 +8,20 @@ public abstract class MovieDatabase : IMovieDatabase
 {
 
 
-    public virtual string Add ( Movie movie )
+    public virtual Movie Add ( Movie movie )
     {
         //Validate: null, invalid movie
         if (movie == null)
         {
-            return "Movie is null";
+            throw new ArgumentNullException(nameof(movie));
         }
-        if (!ObjectValidator.TryValidate(movie, out var error))
-        {
-            return error.First().ErrorMessage;
-        }
+        ObjectValidator.Validate(movie);
 
         //Title Must be Unique 
         var existing = FindByTitle(movie.Title);
         if (existing != null)
         {
-            return "Movie title must be Unique";
+            throw new InvalidOperationException("Movie title must be Unique");
         }
 
         //Find an Empty Slot
@@ -39,48 +36,41 @@ public abstract class MovieDatabase : IMovieDatabase
         //}
 
         //Hack This is a Hack For Now
-        var newMovie = AddCore(movie);
-        movie.Id = newMovie.Id;
-        return "";
+        return AddCore(movie);
     }
 
     protected abstract Movie AddCore ( Movie movie );
 
-    public virtual string Update ( int id, Movie movie )
+    public virtual void Update ( int id, Movie movie )
     {
 
         if (id <= 0)
         {
-            return "ID is Invalid";
+            throw new ArgumentOutOfRangeException(nameof(id), "ID Must Be Greater Than 0");
         }
 
         if (movie == null)
         {
-            return "Movie is null";
+            throw new ArgumentNullException(nameof(movie));
         }
 
-        if (!ObjectValidator.TryValidate(movie, out var error))
-        {
-            return error.First().ErrorMessage;
-        }
+        ObjectValidator.Validate(movie);
 
         //Title must be unique and not self
         var existing = FindByTitle(movie.Title);
         if (existing != null && existing.Id != id)
         {
-            return "Movie title must be Unique";
+            throw new InvalidOperationException("Movie title must be Unique");
         }
-
         //Movie must exist
         existing = FindById(id);
         if (existing == null)
         {
-            return "Movie Not Found";
+            throw new ArgumentException("Movie Not Found", nameof(id));
         }
 
         UpdateCore(id, movie);
-        //Update
-        return "";
+        //Update;
     }
 
     protected abstract void UpdateCore(int id, Movie movie);
@@ -93,8 +83,12 @@ public abstract class MovieDatabase : IMovieDatabase
         //{
         //    _movies[index] = null;
         //}
-        DeleteCore(id);
 
+        if( id <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(id), "ID Must Be Greater Than 0");
+        }
+        DeleteCore(id);
     }
 
     protected abstract void DeleteCore ( int id );
@@ -161,7 +155,7 @@ public abstract class MovieDatabase : IMovieDatabase
     {
         if (id <= 0)
         {
-            return null;
+            throw new ArgumentOutOfRangeException(nameof(id), "ID Must Be Greater Than 0");
         }
         return GetCore(id);
     }
