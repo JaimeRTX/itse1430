@@ -49,9 +49,28 @@ public partial class MainForm : Form
                 return;
             }
 
-            //TODO:Add Movie to Library
-            //_movie = dlg.Movie;
-            _database.Add(dlg.Movie);
+
+            //Try This
+            try
+            {
+                //Add Movie to Library
+                //_movie = dlg.Movie;
+                _database.Add(dlg.Movie);
+                break;
+            } 
+            catch(InvalidOperationException)
+            {
+                MessageBox.Show(this, "Movie Already Added", "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(ArgumentException)
+            {
+                MessageBox.Show(this, "You Fumbled Tbh", "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception ex)
+            {
+                //Error Handling
+                MessageBox.Show(this, ex.Message, "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             break;
             
             //MessageBox.Show(this, error, "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -82,10 +101,23 @@ public partial class MainForm : Form
             }
 
             //_movie = dlg.Movie;
-            _database.Update(movie.Id, dlg.Movie);
+            //_database.Update(movie.Id, dlg.Movie);
+            //break;
+
+            try
+            {
+                //Add Movie to Library
+                //_movie = dlg.Movie;
+                _database.Update(movie.Id, dlg.Movie);
+                break;
+            } 
+            catch (Exception ex)
+            {
+                //Error Handling
+                MessageBox.Show(this, ex.Message, "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             break;
- 
-            //MessageBox.Show(this, error, "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           
         } while (true);
 
         RefreshMovies();
@@ -103,8 +135,18 @@ public partial class MainForm : Form
         }
 
         //_movie = null;
-        _database.Delete(movie.Id);
-        RefreshMovies();
+        //_database.Delete(movie.Id);
+        //RefreshMovies();
+
+        try
+        {
+            _database.Delete(movie.Id);
+            RefreshMovies();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(this, ex.Message, "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 
     private void OnHelpAbout ( object sender, EventArgs e )
@@ -126,37 +168,48 @@ public partial class MainForm : Form
 
     private void RefreshMovies (bool initial = false)
     {
-        _lstMovies.DataSource = null;
-
-        //HACK: Fix This
-        IEnumerable<Movie> movie = _database.GetAll();
-
-        if (initial && !movie.Any() && Confirm("Seed", "Do You Want to Seed the Database with movies?"))
+        //_lstMovies.DataSource = null;
+        IEnumerable<Movie> movie = null;
+        try
         {
-            //_database.Seed();
-            _database.Seed();
+         movie = _database.GetAll();
 
-            movie =_database.GetAll();
-        }
+            if (initial && !movie.Any() && Confirm("Seed", "Do You Want to Seed the Database with movies?"))
+            {
+                //_database.Seed();
+                _database.Seed();
+
+                movie =_database.GetAll();
+            }         
+                movie = from m in movie orderby m.Title, m.ReleaseYear descending select m;
+        } catch
+        {
+            MessageBox.Show(this, "Unable to Retrieve Movies", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        } finally
+        {
+            _lstMovies.DataSource = movie?.ToArray();
+        };
+        //HACK: Fix This
+        //IEnumerable<Movie> movie = _database.GetAll();
+
+       
         
        // var typedMovies = movies.OfType<Movie>();
        //var source = new BindingSource() { DataSource = movie };
        // movie = movie.OrderBy();
 
-
-       movie = from m in movie orderby m.Title, m.ReleaseYear descending select m;
+      
 
         //movie.OrderBy(x => x.Title)
         //    .ThenByDescending(x=> x.ReleaseYear);
 
-        _lstMovies.DataSource = movie.ToArray();
 
         //movie[10] = new Movie() { Title = "Bob" };
 
         //var movies2 = _database.GetAll();
     }
 
-    private IMovieDatabase _database = new MemoryMovieDatabase();
+    private IMovieDatabase _database = new IO.CSVMovieDatabase("movies.csv");
 
     private void _lstMovies_SelectedIndexChanged ( object sender, EventArgs e )
     {

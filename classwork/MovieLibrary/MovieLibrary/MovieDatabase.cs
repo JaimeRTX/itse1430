@@ -10,6 +10,8 @@ public abstract class MovieDatabase : IMovieDatabase
 
     public virtual Movie Add ( Movie movie )
     {
+        
+
         //Validate: null, invalid movie
         if (movie == null)
         {
@@ -36,7 +38,15 @@ public abstract class MovieDatabase : IMovieDatabase
         //}
 
         //Hack This is a Hack For Now
-        return AddCore(movie);
+        try
+        {
+            return AddCore(movie);
+        }
+        catch(Exception ex)
+        {
+            throw new InvalidCastException("Add Failed", ex);
+        }
+        //return AddCore(movie);
     }
 
     protected abstract Movie AddCore ( Movie movie );
@@ -68,8 +78,15 @@ public abstract class MovieDatabase : IMovieDatabase
         {
             throw new ArgumentException("Movie Not Found", nameof(id));
         }
-
-        UpdateCore(id, movie);
+        try
+        {
+            UpdateCore(id, movie);
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException("Add Failed", ex);
+        }
+        //UpdateCore(id, movie);
         //Update;
     }
 
@@ -88,7 +105,14 @@ public abstract class MovieDatabase : IMovieDatabase
         {
             throw new ArgumentOutOfRangeException(nameof(id), "ID Must Be Greater Than 0");
         }
-        DeleteCore(id);
+         try
+        {
+            DeleteCore(id);
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException("Add Failed", ex);
+        }
     }
 
     protected abstract void DeleteCore ( int id );
@@ -139,7 +163,6 @@ public abstract class MovieDatabase : IMovieDatabase
 
     //Expression Body ::= member who uses lambda syntax
     public virtual IEnumerable<Movie> GetAll () => GetAllCore() ?? Enumerable.Empty<Movie>();
-
     protected abstract IEnumerable<Movie> GetAllCore ();
 
     //private readonly Movie[] _movies = new Movie[100];
