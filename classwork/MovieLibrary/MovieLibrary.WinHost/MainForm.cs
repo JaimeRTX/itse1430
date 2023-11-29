@@ -209,7 +209,7 @@ public partial class MainForm : Form
         //var movies2 = _database.GetAll();
     }
 
-    private IMovieDatabase _database = new IO.CSVMovieDatabase("movies.csv");
+    private readonly IMovieDatabase _database = new Sql.SqlMovieDatabase(Program.GetConnectionString("MovieDatabase"));
 
     private void _lstMovies_SelectedIndexChanged ( object sender, EventArgs e )
     {
