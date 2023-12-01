@@ -64,7 +64,7 @@ public partial class MainForm : Form
             }
             catch(ArgumentException)
             {
-                MessageBox.Show(this, "You Fumbled Tbh", "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Movie Can't Be Added", "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch(Exception ex)
             {

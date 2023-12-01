@@ -63,7 +63,7 @@ namespace MovieLibrary.WinHost
 
             movie.Rating = new Rating(_cbRating.Text);
             movie.ReleaseYear = GetInt32(_txtReleaseYear, 0);
-            movie.RunLength = GetInt32(_txtReleaseYear, -1);
+            movie.RunLength = GetInt32(_txtRunLength, -1);
 
             movie.IsBlackAndWhite = _chkBlackWhite.Checked;
 
