@@ -6,6 +6,9 @@
     <Nullable>disable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Authors>Jaime Rodriguez</Authors>
+    <Company>Introduction to C# Programing</Company>
+    <Product>Fall 2023</Product>
   </PropertyGroup>
 
   <ItemGroup>

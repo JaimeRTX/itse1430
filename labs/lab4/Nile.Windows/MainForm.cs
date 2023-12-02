@@ -7,13 +7,13 @@ namespace Nile.Windows
     {
         #region Construction
 
-        public MainForm()
+        public MainForm ()
         {
             InitializeComponent();
         }
         #endregion
 
-        protected override void OnLoad(EventArgs e)
+        protected override void OnLoad ( EventArgs e )
         {
             base.OnLoad(e);
 
@@ -25,12 +25,12 @@ namespace Nile.Windows
 
         #region Event Handlers
 
-        private void OnFileExit(object sender, EventArgs e)
+        private void OnFileExit ( object sender, EventArgs e )
         {
             Close();
         }
 
-        private void OnProductAdd(object sender, EventArgs e)
+        private void OnProductAdd ( object sender, EventArgs e )
         {
             var child = new ProductDetailForm("Product Details");
             if (child.ShowDialog(this) != DialogResult.OK)
@@ -42,7 +42,7 @@ namespace Nile.Windows
             UpdateList();
         }
 
-        private void OnProductEdit(object sender, EventArgs e)
+        private void OnProductEdit ( object sender, EventArgs e )
         {
             var product = GetSelectedProduct();
             if (product == null)
@@ -54,7 +54,7 @@ namespace Nile.Windows
             EditProduct(product);
         }
 
-        private void OnProductDelete(object sender, EventArgs e)
+        private void OnProductDelete ( object sender, EventArgs e )
         {
             var product = GetSelectedProduct();
             if (product == null)
@@ -63,7 +63,7 @@ namespace Nile.Windows
             DeleteProduct(product);
         }
 
-        private void OnEditRow(object sender, DataGridViewCellEventArgs e)
+        private void OnEditRow ( object sender, DataGridViewCellEventArgs e )
         {
             var grid = sender as DataGridView;
 
@@ -78,7 +78,7 @@ namespace Nile.Windows
                 EditProduct(item);
         }
 
-        private void OnKeyDownGrid(object sender, KeyEventArgs e)
+        private void OnKeyDownGrid ( object sender, KeyEventArgs e )
         {
             if (e.KeyCode != Keys.Delete)
                 return;
@@ -91,11 +91,17 @@ namespace Nile.Windows
             e.SuppressKeyPress = true;
         }
 
+        private void OnAboutBox ( object sender, EventArgs e )
+        {
+            var about = new AboutBox();
+            about.ShowDialog();
+        }
+
         #endregion
 
         #region Private Members
 
-        private void DeleteProduct(Product product)
+        private void DeleteProduct ( Product product )
         {
             //Confirm
             if (MessageBox.Show(this, $"Are you sure you want to delete '{product.Name}'?",
@@ -108,7 +114,7 @@ namespace Nile.Windows
             UpdateList();
         }
 
-        private void EditProduct(Product product)
+        private void EditProduct ( Product product )
         {
             var child = new ProductDetailForm("Product Details");
             child.Product = product;
@@ -121,7 +127,7 @@ namespace Nile.Windows
             UpdateList();
         }
 
-        private Product GetSelectedProduct()
+        private Product GetSelectedProduct ()
         {
             if (_gridProducts.SelectedRows.Count > 0)
                 return _gridProducts.SelectedRows[0].DataBoundItem as Product;
@@ -129,7 +135,7 @@ namespace Nile.Windows
             return null;
         }
 
-        private void UpdateList()
+        private void UpdateList ()
         {
             //TODO: Handle errors
 
