@@ -71,13 +71,48 @@ public class SqlProjectDatabase : ProductDatabase
     {
         using var conn = OpenConnection();
 
-        var cmd = new SqlCommand("Update Product");
+        var cmd = new SqlCommand("UpdateProduct");
 
-        //cmd.Parameters.AddWithValue("@Id", id);
+        cmd.Parameters.AddWithValue("@id", existing);
+        cmd.Parameters.AddWithValue("@name", newItem.Name);
+        cmd.Parameters.AddWithValue("@price", newItem.Price);
+        cmd.Parameters.AddWithValue("@description", newItem.Description);
+        cmd.Parameters.AddWithValue("@isDiscountinued", newItem.IsDiscontinued);
+        cmd.ExecuteNonQuery();
     }
-    protected override Product AddCore ( Product product ) => throw new NotImplementedException();
-    protected override Product FindByName ( string name ) => throw new NotImplementedException();
-    protected override Product FindById ( int id ) => throw new NotImplementedException();
+    protected override Product AddCore ( Product product )
+    {
+        using var conn = OpenConnection();
+        var cmd = new SqlCommand("AddMovie", conn) { CommandType = CommandType.StoredProcedure };
+
+        cmd.Parameters.AddWithValue("@name", product.Name);
+        cmd.Parameters.AddWithValue("@price", product.Price);
+        cmd.Parameters.AddWithValue("@description", product.Description);
+        cmd.Parameters.AddWithValue("@IsDiscountinued", product.IsDiscontinued);
+
+        product.Id = Convert.ToInt32(cmd.ExecuteScalar());
+
+        return product;
+    }
+    protected override Product FindByName ( string name )
+    {
+        using var conn = OpenConnection();
+        var cmd = new SqlCommand("FindByName", conn) { CommandType = CommandType.StoredProcedure };
+        cmd.Parameters.AddWithValue("@name", name);
+        var reader = cmd.ExecuteReader();
+        while (reader.Read())
+        {
+            return new Product() {
+                Id =reader.GetInt32("Id"),
+                Name = reader.GetString("Name"),
+                Price = reader.GetDecimal("Price"),
+                Description = reader.IsDBNull("Description") ? "" : reader.GetFieldValue<string>("Description"),
+                IsDiscontinued = reader.GetBoolean("IsDiscouninued")
+            };
+        }
+        return null;
+    }
+    protected override Product FindById ( int id ) => GetCore( id );
 
     private SqlConnection OpenConnection ()
     {
