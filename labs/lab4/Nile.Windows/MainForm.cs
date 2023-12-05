@@ -1,6 +1,8 @@
 /*
  * ITSE 1430
  */
+using Nile.Stores.Sql;
+
 namespace Nile.Windows
 {
     public partial class MainForm : Form
@@ -36,9 +38,22 @@ namespace Nile.Windows
             if (child.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            //TODO: Handle errors
-            //Save product
-            _database.Add(child.Product);
+            try
+            {
+                _database.Add(child.Product);
+            }
+            catch(InvalidOperationException)
+            {
+                MessageBox.Show(this, "Product Already Added In", "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
+            catch (ArgumentException)
+            {
+                MessageBox.Show(this, "Product Can't Be Added", "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Add Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             UpdateList();
         }
 
@@ -108,23 +123,42 @@ namespace Nile.Windows
                                 "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
 
-            //TODO: Handle errors
             //Delete product
-            _database.Remove(product.Id);
-            UpdateList();
+            try
+            {
+                _database.Remove(product.Id);
+                UpdateList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void EditProduct ( Product product )
         {
             var child = new ProductDetailForm("Product Details");
             child.Product = product;
-            if (child.ShowDialog(this) != DialogResult.OK)
-                return;
 
-            //TODO: Handle errors
-            //Save product
-            _database.Update(child.Product);
-            UpdateList();
+            do
+            {
+
+                if (child.ShowDialog(this) != DialogResult.OK)
+                    return;
+
+                try
+                {
+                    _database.Update(product.Id, child.Product);
+                    break;
+                } 
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, ex.Message, "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                //Save product
+                UpdateList();
+            } while (true);
         }
 
         private Product GetSelectedProduct ()
@@ -137,12 +171,17 @@ namespace Nile.Windows
 
         private void UpdateList ()
         {
-            //TODO: Handle errors
-
-            _bsProducts.DataSource = _database.GetAll();
+            try
+            {
+                _bsProducts.DataSource = _database.GetAll();
+            } 
+            catch
+            {
+                MessageBox.Show(this, "Unable To Retrive the Inventory", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private readonly IProductDatabase _database = new Nile.Stores.MemoryProductDatabase();
+        private readonly IProductDatabase _database = new Sql.SqlProjectDatabase(Program.GetConnectionString("ProjectDatabase"));
         #endregion
     }
 }

@@ -1,10 +1,12 @@
 /*
  * ITSE 1430
  */
+using System.ComponentModel.DataAnnotations;
+
 namespace Nile
 {
     /// <summary>Represents a product.</summary>
-    public class Product
+    public class Product : IValidatableObject
     {
         /// <summary>Gets or sets the unique identifier.</summary>
         public int Id { get; set; }
@@ -33,6 +35,18 @@ namespace Nile
         public override string ToString()
         {
             return Name;
+        }
+
+        public IEnumerable<ValidationResult> Validate ( ValidationContext validationContext )
+        {
+            if (Id < 0)
+                yield return new ValidationResult("ID is Invalid");
+
+            if (String.IsNullOrEmpty(Name))
+                yield return new ValidationResult("Name is Required");
+
+            if (Price < 0)
+                yield return new ValidationResult("Price Must be Higher Than 0");
         }
 
         #region Private Members

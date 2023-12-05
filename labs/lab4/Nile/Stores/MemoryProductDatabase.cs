@@ -44,7 +44,7 @@ namespace Nile.Stores
         }
 
         /// <inheritdoc />
-        protected override Product UpdateCore ( Product existing, Product product )
+        protected override void UpdateCore ( Product existing, Product product )
         {
             //Replace 
             existing = FindProduct(product.Id);
@@ -53,8 +53,11 @@ namespace Nile.Stores
             var newProduct = CopyProduct(product);
             _products.Add(newProduct);
 
-            return CopyProduct(newProduct);
+            CopyProduct(newProduct);
         }
+
+        protected override Product FindByName ( string name ) => throw new NotImplementedException();
+        protected override Product FindById ( int id ) => throw new NotImplementedException();
 
         #region Private Members
 
