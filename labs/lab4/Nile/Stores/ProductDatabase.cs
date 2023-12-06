@@ -101,7 +101,7 @@ namespace Nile.Stores
             }
             catch(Exception ex) 
             {
-                throw new InvalidOperationException("Add Failed", ex);
+                throw new InvalidOperationException("Update Failed", ex);
             }
         }
 
@@ -113,7 +113,7 @@ namespace Nile.Stores
 
         protected abstract void RemoveCore( int id );
 
-        protected abstract void UpdateCore( Product existing, Product newItem );
+        protected abstract void UpdateCore(Product existing,Product newItem );
 
         protected abstract Product AddCore( Product product );
 

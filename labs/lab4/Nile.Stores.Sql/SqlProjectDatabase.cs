@@ -36,7 +36,7 @@ public class SqlProjectDatabase : ProductDatabase
 
         var ds = new DataSet();
         var da = new SqlDataAdapter() {
-            SelectCommand = new SqlCommand("GetAllProduct", conn) { CommandType = CommandType.StoredProcedure }
+            SelectCommand = new SqlCommand("GetAllProducts", conn) { CommandType = CommandType.StoredProcedure }
         };
         
         da.Fill(ds);
@@ -62,7 +62,7 @@ public class SqlProjectDatabase : ProductDatabase
     {
         using var conn = OpenConnection();
 
-        var cmd = new SqlCommand("DeleteProduct", conn) { CommandType = CommandType.StoredProcedure };
+        var cmd = new SqlCommand("RemoveProduct", conn) { CommandType = CommandType.StoredProcedure };
         cmd.Parameters.AddWithValue("@id", id);
 
         cmd.ExecuteNonQuery();
@@ -71,24 +71,24 @@ public class SqlProjectDatabase : ProductDatabase
     {
         using var conn = OpenConnection();
 
-        var cmd = new SqlCommand("UpdateProduct");
+        var cmd = new SqlCommand("UpdateProduct", conn) { CommandType = CommandType.StoredProcedure };
 
-        cmd.Parameters.AddWithValue("@id", existing);
+        cmd.Parameters.AddWithValue("@id", existing.Id);
         cmd.Parameters.AddWithValue("@name", newItem.Name);
         cmd.Parameters.AddWithValue("@price", newItem.Price);
         cmd.Parameters.AddWithValue("@description", newItem.Description);
-        cmd.Parameters.AddWithValue("@isDiscountinued", newItem.IsDiscontinued);
+        cmd.Parameters.AddWithValue("@IsDiscontinued", newItem.IsDiscontinued);
         cmd.ExecuteNonQuery();
     }
     protected override Product AddCore ( Product product )
     {
         using var conn = OpenConnection();
-        var cmd = new SqlCommand("AddMovie", conn) { CommandType = CommandType.StoredProcedure };
+        var cmd = new SqlCommand("AddProduct", conn) { CommandType = CommandType.StoredProcedure };
 
         cmd.Parameters.AddWithValue("@name", product.Name);
         cmd.Parameters.AddWithValue("@price", product.Price);
         cmd.Parameters.AddWithValue("@description", product.Description);
-        cmd.Parameters.AddWithValue("@IsDiscountinued", product.IsDiscontinued);
+        cmd.Parameters.AddWithValue("@IsDiscontinued", product.IsDiscontinued);
 
         product.Id = Convert.ToInt32(cmd.ExecuteScalar());
 
@@ -97,7 +97,7 @@ public class SqlProjectDatabase : ProductDatabase
     protected override Product FindByName ( string name )
     {
         using var conn = OpenConnection();
-        var cmd = new SqlCommand("FindByName", conn) { CommandType = CommandType.StoredProcedure };
+        var cmd = new SqlCommand("FindProductByName", conn) { CommandType = CommandType.StoredProcedure };
         cmd.Parameters.AddWithValue("@name", name);
         var reader = cmd.ExecuteReader();
         while (reader.Read())
@@ -107,7 +107,7 @@ public class SqlProjectDatabase : ProductDatabase
                 Name = reader.GetString("Name"),
                 Price = reader.GetDecimal("Price"),
                 Description = reader.IsDBNull("Description") ? "" : reader.GetFieldValue<string>("Description"),
-                IsDiscontinued = reader.GetBoolean("IsDiscouninued")
+                IsDiscontinued = reader.GetBoolean("IsDiscontinued")
             };
         }
         return null;

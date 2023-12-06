@@ -149,7 +149,9 @@ namespace Nile.Windows
                 try
                 {
                     _database.Update(product.Id, child.Product);
+                    UpdateList();
                     break;
+
                 } 
                 catch (Exception ex)
                 {
