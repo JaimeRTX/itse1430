@@ -181,7 +181,7 @@ namespace Nile.Windows
             }
         }
 
-        private readonly IProductDatabase _database = new Sql.SqlProjectDatabase(Program.GetConnectionString("ProjectDatabase"));
+        private readonly IProductDatabase _database = new SqlProjectDatabase(Program.GetConnectionString("ProductDatabase"));
         #endregion
     }
 }

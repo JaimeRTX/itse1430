@@ -70,6 +70,8 @@ public class Movie : IValidatableObject
     /// <summary>
     /// Gets or Sets The Title of Movie
     /// </summary>
+    [Required(AllowEmptyStrings =false)] //Check For Null Approach 1
+    [StringLength(100)]
     public string Title
     {
         //MUst Eventually Return a String
@@ -146,7 +148,7 @@ public class Movie : IValidatableObject
     //        _rating = value;
     //    }
     //}
-
+    [StringLength(20)]
     public Rating Rating { get; set; }
 
     /// <summary>
@@ -163,6 +165,7 @@ public class Movie : IValidatableObject
     //}
 
     //Auto Property Syntax
+    [Range(0, Int32.MaxValue, ErrorMessage = "Run Length Must be At Least 0!")]
     public int RunLength
     {
         get;
@@ -183,7 +186,7 @@ public class Movie : IValidatableObject
     //        _releaseYear = value;
     //    }
     //}
-
+    [Range(MininumReleaseYear, 2100)] //Required Parameters to be used
     public int ReleaseYear { get; set; } = MininumReleaseYear;
 
     //private bool _isBlackAndWhite;
@@ -277,11 +280,11 @@ public class Movie : IValidatableObject
     public IEnumerable<ValidationResult> Validate ( ValidationContext validationContext )
     {
 
-        if (String.IsNullOrEmpty(_title))
-            yield return new ValidationResult("Title is Required");
+        //if (String.IsNullOrEmpty(_title))
+        //    yield return new ValidationResult("Title is Required");
        
-        if (ReleaseYear < MininumReleaseYear)
-            yield return new ValidationResult($"Release Year must be >= {MininumReleaseYear}");
+        //if (ReleaseYear < MininumReleaseYear)
+        //    yield return new ValidationResult($"Release Year must be >= {MininumReleaseYear}");
 
         if (_length < 0)
             yield return new ValidationResult("Length must be at least 0");

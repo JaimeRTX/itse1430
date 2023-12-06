@@ -103,7 +103,7 @@ public class SqlProjectDatabase : ProductDatabase
         while (reader.Read())
         {
             return new Product() {
-                Id =reader.GetInt32("Id"),
+                Id = reader.GetInt32("Id"),
                 Name = reader.GetString("Name"),
                 Price = reader.GetDecimal("Price"),
                 Description = reader.IsDBNull("Description") ? "" : reader.GetFieldValue<string>("Description"),
