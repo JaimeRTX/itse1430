@@ -173,9 +173,11 @@ namespace Nile.Windows
 
         private void UpdateList ()
         {
+            IEnumerable<Product> products = null;
             try
             {
                 _bsProducts.DataSource = _database.GetAll();
+                products = from m in products orderby m.Name ascending select m;
             } 
             catch
             {
